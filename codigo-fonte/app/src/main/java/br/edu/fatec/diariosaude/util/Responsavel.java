@@ -1,16 +1,22 @@
 package br.edu.fatec.diariosaude.util;
 
-public class Responsavel {
+public class Responsavel extends Pessoa {
+
+    //ATRIBUTOS
     String tituloAcademico, biografia;
 
+    //CONSTRUTORES
     public Responsavel() {
+        super();
     }
 
-    public Responsavel(String biografia, String tituloAcademico) {
+    public Responsavel(String nome, String cpf, String email, String biografia, String tituloAcademico) {
+        super(nome, cpf, email);
         this.biografia = biografia;
         this.tituloAcademico = tituloAcademico;
     }
 
+    //GETTERS E SETTERS
     public String getBiografia() {
         return biografia;
     }

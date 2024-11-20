@@ -1,6 +1,8 @@
 package br.edu.fatec.diariosaude.util;
 
 public class Pessoa {
+
+    //ATRIBUTOS
     private String nome, cpf, email;
 
     // CONSTRUTORES
@@ -13,6 +15,7 @@ public class Pessoa {
         this.email = email;
     }
 
+    //GETTERS E SETTERS
     public String getNome() {
         return nome;
     }
