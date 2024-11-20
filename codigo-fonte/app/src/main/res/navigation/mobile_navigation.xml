@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_pagina_inicial">
+
+    <fragment
+        android:id="@+id/nav_pagina_inicial"
+        android:name="br.edu.fatec.diariosaude.view.HomeFragment"
+        android:label="@string/str_home"
+        tools:layout="@layout/fragment_home">
+    <action
+        android:id="@+id/action_home_to_cadastro"
+        app:destination="@id/nav_cadastro"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_controle"
+        android:name="br.edu.fatec.diariosaude.view.ControleFragment"
+        android:label="@string/str_controle"
+        tools:layout="@layout/fragment_controle">
+        <action
+            android:id="@+id/action_controle_to_manutencao"
+            app:destination="@id/nav_manutencao" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cadastro"
+        android:name="br.edu.fatec.diariosaude.view.CadastroFragment"
+        android:label="@string/str_cadastro"
+        tools:layout="@layout/fragment_cadastro" />
+
+    <fragment
+        android:id="@+id/nav_sugestao"
+        android:name="br.edu.fatec.diariosaude.view.SugestaoFragment"
+        android:label="@string/str_sugestoes"
+        tools:layout="@layout/fragment_sugestao" />
+
+    <fragment
+        android:id="@+id/nav_manutencao"
+        android:name="br.edu.fatec.diariosaude.view.ManutencaoFragment"
+        android:label="@string/str_manutencao" >
+        <argument
+            android:name="pessoaSelecionadaID"
+            app:argType="integer" />
+    </fragment>
+
+
+</navigation>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_pagina_inicial"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/str_home" />
+        <item
+            android:id="@+id/nav_controle"
+            android:icon="@drawable/ic_menu_controle"
+            android:title="@string/str_controle" />
+
+        <item
+            android:id="@+id/nav_cadastro"
+            android:icon="@drawable/ic_menu_cadastro"
+            android:title="@string/str_cadastro" />
+
+        <item
+            android:id="@+id/nav_sugestao"
+            android:icon="@drawable/ic_menu_sugestao"
+            android:title="@string/str_sugestoes" />
+    </group>
+</menu>

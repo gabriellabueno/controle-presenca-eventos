@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- EDIT TEXT - INPUTS -->
+    <style name="edt_input">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="endIconMode">clear_text</item>
+
+    </style>
+
+    <!-- BOTÃO SWITCH BOOLEANO -->
+    <style name="btn_switch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:thumbTint">@color/switch_track_selector</item>
+        <item name="android:trackTint">@color/switch_track_selector</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+
+    <!-- TEXTVIEW SIMPLES - LEGENDAS -->
+    <style name="txt_legenda">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <!-- BOTÕES -->
+    <style name="botao">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="backgroundTint">@color/cor_secundaria</item>
+    </style>
+
+    <!-- ITENS LISTVIEW -->
+    <style name="itens_listview" parent="">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="txt_IMC">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="txt_simples">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+</resources>
