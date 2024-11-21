@@ -16,11 +16,14 @@ public class PalestranteDAO {
     private SQLiteDatabase banco;
 
     // Variáveis pra consultas SQL
-    private static final String table = "pessoa";
-    private static final String id = "id";
-    private static final String nome = "nome";
+    private static final String table = "tb_palestrante";
+    private static final String cpf = "cpf_palestrante_pk";
+    private static final String nome = "nome_responsavel";
+    private static final String email = "email";
+    private static final String titulo = "titulo";
+    private static final String biografia = "biografia";
 
-    String[] args = {id, nome,};
+    String[] args = {cpf, nome, email, titulo, biografia};
 
     // Construtor
     public PalestranteDAO(Context context){
@@ -32,28 +35,45 @@ public class PalestranteDAO {
     // MÉTODOS CRUD - CREATE, READ, UPDATE, DELETE
 
     // CREATE
-    public void create(Palestrante pessoa){
+    // Insere novo cadastro na tabela "palestrante"
+    public void create(Palestrante palestrante){
         ContentValues values = new ContentValues();
 
-        values.put(nome, pessoa.getNome());
-
+        values.put(cpf, palestrante.getCpf());
+        values.put(nome, palestrante.getNome());
+        values.put(email, palestrante.getEmail());
+        values.put(titulo, palestrante.getTituloAcademico());
+        values.put(biografia, palestrante.getBiografia());
 
         banco.insert(table, null, values);
     }
 
-    // UPDATE
-    public void update(Palestrante pessoa) {
+    // Insere palestrante na tabela "palestra"
+    // linka palestrante e evento
+    public void create(Integer idEvento, String idPalestrante){
         ContentValues values = new ContentValues();
 
-        values.put(nome, pessoa.getNome());
+        values.put("id_evento_fk", String.valueOf(idEvento));
+        values.put("cpf_palestrante_fk", idPalestrante);
 
-
-       // String[] idPalestrante = {String.valueOf(pessoa.getId())};
-
-       // banco.update(table, values, "id=?", idPalestrante);
+        banco.insert("tb_palestra", null, values);
     }
 
-    // Reseta ID da tabela "pessoa"
+    // UPDATE
+    public void update(Palestrante palestrante) {
+        ContentValues values = new ContentValues();
+
+        values.put(nome, palestrante.getNome());
+        values.put(email, palestrante.getEmail());
+        values.put(titulo, palestrante.getTituloAcademico());
+        values.put(biografia, palestrante.getBiografia());
+
+       String[] idPalestrante = {String.valueOf(palestrante.getCpf())};
+
+       banco.update(table, values, "cpf_palestrante_pk=?", idPalestrante);
+    }
+
+    // Reseta ID da tabela "palestrante"
     public void updateTableID() {
         banco.delete("sqlite_sequence", "name = ?", new String[]{table});
         banco.delete(table, null, null);
@@ -61,39 +81,40 @@ public class PalestranteDAO {
 
 
     // DELETE
-    public void delete(Palestrante pessoa) {
-        //String[] idPalestrante = {String.valueOf(pessoa.getId())};
+    public void delete(Palestrante palestrante) {
+        String[] idPalestrante = {String.valueOf(palestrante.getCpf())};
 
-        //banco.delete(table,"id=?", idPalestrante);
+        banco.delete(table,"cpf_palestrante_pk=?", idPalestrante);
     }
 
 
     // READ
-    public Palestrante read(Integer id) {
-        String[] idPalestrante = {String.valueOf(id)};
+    public Palestrante read(String cpf) {
+        String[] idPalestrante = {cpf};
 
         Cursor cursor = banco.query(table, args,
-                "id=?", idPalestrante, null, null, null);
+                "cpf_palestrante_pk=?", idPalestrante, null, null, null);
 
         cursor.moveToFirst();
 
-        Palestrante pessoa = new Palestrante();
+        Palestrante p = new Palestrante();
 
         // Percorre todas as colunas do registro
         if(cursor.getCount() > 0){
-            pessoa.setNome(cursor.getString(1));
-
+            p.setCpf(cursor.getString(1));
+            p.setNome(cursor.getString(2));
+            p.setEmail(cursor.getString(3));
+            p.setTituloAcademico(cursor.getString(4));
+            p.setBiografia(cursor.getString(5));
         }
         cursor.close();
-        return pessoa;
+        return p;
     }
 
     // Retorna uma lista com todos os registros
     // para apresentar no ListView
     public List<Palestrante> listAll() {
-        List<Palestrante> pessoas = new ArrayList<>(); // Array de pessoas
-
-        String[] args = {id, nome};
+        List<Palestrante> palestrantes = new ArrayList<>(); // Array de palestrantes
 
         Cursor cursor = banco.query(table, args,
                 null, null, null, null, null );
@@ -102,13 +123,16 @@ public class PalestranteDAO {
         while (cursor.moveToNext()) {
             Palestrante p = new Palestrante();
 
-          //  p.setId(cursor.getInt(0));
-            p.setNome(cursor.getString(1));
-            pessoas.add(p); // adiciona pessoa ao array
+            p.setCpf(cursor.getString(1));
+            p.setNome(cursor.getString(2));
+            p.setEmail(cursor.getString(3));
+            p.setTituloAcademico(cursor.getString(4));
+            p.setBiografia(cursor.getString(5));
+            palestrantes.add(p);
         }
 
         cursor.close();
-        return pessoas;
+        return palestrantes;
     }
 
 }
