@@ -32,7 +32,7 @@ public class EventoDAO {
             status = "status",
             organizador = "organizador";
 
-    String[] args = {id, nome,};
+    String[] args = {id, nome, data, horaInicio, horaFim, duracao, local, status, organizador};
 
     // Construtor
     public EventoDAO(Context context){
@@ -48,7 +48,13 @@ public class EventoDAO {
         ContentValues values = new ContentValues();
 
         values.put(nome, evento.getNome());
-
+        values.put(data, String.valueOf(evento.getData()));
+        values.put(horaInicio, String.valueOf(evento.getHoraInicio()));
+        values.put(horaFim, String.valueOf(evento.getHoraFim()));
+        values.put(duracao, String.valueOf(evento.getDuracao()));
+        values.put(local, evento.getLocal());
+        values.put(status, String.valueOf(evento.isStatus()));
+        values.put(organizador, evento.getOrganizadores());
 
         banco.insert(table, null, values);
     }
@@ -58,34 +64,40 @@ public class EventoDAO {
         ContentValues values = new ContentValues();
 
         values.put(nome, evento.getNome());
+        values.put(data, String.valueOf(evento.getData()));
+        values.put(horaInicio, String.valueOf(evento.getHoraInicio()));
+        values.put(horaFim, String.valueOf(evento.getHoraFim()));
+        values.put(duracao, String.valueOf(evento.getDuracao()));
+        values.put(local, evento.getLocal());
+        values.put(status, String.valueOf(evento.isStatus()));
+        values.put(organizador, evento.getOrganizadores());
 
+        String[] idEvento = {String.valueOf(evento.getId())};
 
-        // String[] idPessoa = {String.valueOf(pessoa.getId())};
-
-        // banco.update(table, values, "id=?", idPessoa);
+        banco.update(table, values, id + "=?" , idEvento);
     }
 
     // Reseta ID da tabela "pessoa"
     public void updateTableID() {
-        banco.delete("sqlite_sequence", "name = ?", new String[]{table});
+        banco.delete("sqlite_sequence", nome + "=?", new String[]{table});
         banco.delete(table, null, null);
     }
 
 
     // DELETE
     public void delete(Evento evento) {
-        //String[] idPessoa = {String.valueOf(pessoa.getId())};
+        String[] idEvento = {String.valueOf(evento.getId())};
 
-        //banco.delete(table,"id=?", idPessoa);
+        banco.delete(table,id + "=?", idEvento);
     }
 
 
     // READ
     public Evento read(Integer id) {
-        String[] idPessoa = {String.valueOf(id)};
+        String[] idEvento = {String.valueOf(id)};
 
         Cursor cursor = banco.query(table, args,
-                "id=?", idPessoa, null, null, null);
+                EventoDAO.id + "=?", idEvento, null, null, null);
 
         cursor.moveToFirst();
 
@@ -105,7 +117,7 @@ public class EventoDAO {
     public List<Evento> listAll() {
         List<Evento> eventos = new ArrayList<>(); // Array de eventos
 
-        String[] args = {id, nome};
+        String[] args = {id, nome, data, horaInicio, horaFim, duracao, local, status, organizador};
 
         Cursor cursor = banco.query(table, args,
                 null, null, null, null, null );
@@ -114,8 +126,16 @@ public class EventoDAO {
         while (cursor.moveToNext()) {
             Evento e = new Evento();
 
-            //  p.setId(cursor.getInt(0));
+            e.setId(cursor.getInt(0));
             e.setNome(cursor.getString(1));
+            //e.setData(); Arrumar tipo de data
+            //e.setHoraInicio(); Arrumar tipo de data
+            //e.setHoraFim(); Arrumar tipo de data
+            e.setDuracao(cursor.getInt(5));
+            e.setLocal(cursor.getString(6));
+            e.setStatus(cursor.getInt(7));
+            e.setOrganizadores(cursor.getString(8));
+
             eventos.add(e); // adiciona evento ao array
         }
 

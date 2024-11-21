@@ -16,11 +16,14 @@ public class ParticipanteDAO {
     private SQLiteDatabase banco;
 
     // Variáveis pra consultas SQL
-    private static final String table = "pessoa";
-    private static final String id = "id";
-    private static final String nome = "nome";
+    private static final String table = "tb_participante",
+            cpf = "cpf_participante_pk",
+            nome = "nome",
+            email = "email",
+            cargaHoraria = "cargaHoraria",
+            curso = "curso";
 
-    String[] args = {id, nome,};
+    String[] args = {cpf, nome, email, cargaHoraria, curso};
 
     // Construtor
     public ParticipanteDAO(Context context){
@@ -32,25 +35,31 @@ public class ParticipanteDAO {
     // MÉTODOS CRUD - CREATE, READ, UPDATE, DELETE
 
     // CREATE
-    public void create(Participante pessoa){
+    public void create(Participante participante){
         ContentValues values = new ContentValues();
 
-        values.put(nome, pessoa.getNome());
+        values.put(cpf, participante.getCpf());
+        values.put(nome, participante.getNome());
+        values.put(email, participante.getEmail());
+        values.put(cargaHoraria, participante.getCargaHoraria());
+        values.put(curso, participante.getCurso());
 
 
         banco.insert(table, null, values);
     }
 
     // UPDATE
-    public void update(Participante pessoa) {
+    public void update(Participante participante) {
         ContentValues values = new ContentValues();
 
-        values.put(nome, pessoa.getNome());
+        values.put(nome, participante.getNome());
+        values.put(email, participante.getEmail());
+        values.put(cargaHoraria, participante.getCargaHoraria());
+        values.put(curso, participante.getCurso());
 
+       String[] cpfParticipante = {String.valueOf(participante.getCpf())};
 
-       // String[] idParticipante = {String.valueOf(pessoa.getId())};
-
-       // banco.update(table, values, "id=?", idParticipante);
+       banco.update(table, values, cpf + "=?", cpfParticipante);
     }
 
     // Reseta ID da tabela "pessoa"
@@ -61,39 +70,40 @@ public class ParticipanteDAO {
 
 
     // DELETE
-    public void delete(Participante pessoa) {
-        //String[] idParticipante = {String.valueOf(pessoa.getId())};
+    public void delete(Participante participante) {
+        String[] idParticipante = {String.valueOf(participante.getCpf())};
 
-        //banco.delete(table,"id=?", idParticipante);
+        banco.delete(table,cpf + "=?", idParticipante);
     }
 
 
     // READ
-    public Participante read(Integer id) {
-        String[] idParticipante = {String.valueOf(id)};
+    public Participante read(String cpf) {
+        String[] cpfParticipante = {cpf};
 
         Cursor cursor = banco.query(table, args,
-                "id=?", idParticipante, null, null, null);
+                ParticipanteDAO.cpf + "=?", cpfParticipante, null, null, null);
 
         cursor.moveToFirst();
 
-        Participante pessoa = new Participante();
+        Participante participante = new Participante();
 
         // Percorre todas as colunas do registro
         if(cursor.getCount() > 0){
-            pessoa.setNome(cursor.getString(1));
+            participante.setNome(cursor.getString(1));
+            participante.setNome(cursor.getString(1));
 
         }
         cursor.close();
-        return pessoa;
+        return participante;
     }
 
     // Retorna uma lista com todos os registros
     // para apresentar no ListView
     public List<Participante> listAll() {
-        List<Participante> pessoas = new ArrayList<>(); // Array de pessoas
+        List<Participante> participantes = new ArrayList<>(); // Array de participantes
 
-        String[] args = {id, nome};
+        String[] args = {cpf, nome, email, cargaHoraria, curso};
 
         Cursor cursor = banco.query(table, args,
                 null, null, null, null, null );
@@ -102,13 +112,16 @@ public class ParticipanteDAO {
         while (cursor.moveToNext()) {
             Participante p = new Participante();
 
-          //  p.setId(cursor.getInt(0));
+            p.setCpf(cursor.getString(0));
             p.setNome(cursor.getString(1));
-            pessoas.add(p); // adiciona pessoa ao array
+            p.setEmail(cursor.getString(2));
+            p.setCargaHoraria(cursor.getInt(3));
+            p.setCurso(cursor.getString(4));
+            participantes.add(p); // adiciona pessoa ao array
         }
 
         cursor.close();
-        return pessoas;
+        return participantes;
     }
 
 }

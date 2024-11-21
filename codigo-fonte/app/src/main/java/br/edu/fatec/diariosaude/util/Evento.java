@@ -6,20 +6,19 @@ import java.util.Date;
 public class Evento {
 
     //ATRIBUTOS
-    private String nome, local;
+    private String nome, local, organizadores;
     private Date data;
     private LocalTime horaInicio, horaFim;
-    private Palestrante[] palestrantes, organizadores;
+    private Palestrante[] palestrantes;
     private Participante[] participantes;
-    private Integer duracao;
-    private boolean status;
+    private Integer id, duracao, status;
 
     //CONSTRUTORES
     public Evento() {}
 
 
     public Evento(String nome, String local, Date data, LocalTime horaInicio, LocalTime horaFim,
-                  Palestrante[] palestrantes, Palestrante[] organizadores, Participante[] participantes, Integer duracao, boolean status) {
+                  Palestrante[] palestrantes, String organizadores, Participante[] participantes, Integer duracao, Integer status) {
         this.nome = nome;
         this.local = local;
         this.data = data;
@@ -33,8 +32,8 @@ public class Evento {
     }
 
     //MÉTODO PARA FINALIZAR O EVENTO
-    public boolean finalizaEvento() {
-        return true;
+    public Integer finalizaEvento() {
+        return 1;
     }
 
     //MÉTODO PARA ADICIONAR PARTICIPANTE NO EVENTO
@@ -91,11 +90,11 @@ public class Evento {
         this.palestrantes = palestrantes;
     }
 
-    public Palestrante[] getOrganizadores() {
+    public String getOrganizadores() {
         return organizadores;
     }
 
-    public void setOrganizadores(Palestrante[] organizadores) {
+    public void setOrganizadores(String organizadores) {
         this.organizadores = organizadores;
     }
 
@@ -107,6 +106,14 @@ public class Evento {
         this.participantes = participantes;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getDuracao() {
         return duracao;
     }
@@ -115,11 +122,11 @@ public class Evento {
         this.duracao = duracao;
     }
 
-    public boolean isStatus() {
+    public Integer isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }
