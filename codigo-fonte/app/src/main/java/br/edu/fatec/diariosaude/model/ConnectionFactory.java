@@ -37,15 +37,15 @@ public class ConnectionFactory extends SQLiteOpenHelper {
                 " curso VARCHAR(20));";
         db.execSQL(createTbParticipante);
 
-        String createTbParticipacao = "CREATE TABLE tb_participacao (" +
-                " id_participacao INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+        String createTbInscricao = "CREATE TABLE tb_inscricao (" +
+                " id_inscricao INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 " id_evento_fk INTEGER NOT NULL," +
                 " cpf_participante_fk VARCHAR(15) NOT NULL," +
                 " FOREIGN KEY (id_evento_fk) REFERENCES tb_evento(id_evento_pk)" +
                 " ON DELETE CASCADE ON UPDATE CASCADE," +
                 " FOREIGN KEY (cpf_participante_fk) " +
                 " REFERENCES tb_participante(cpf_participante_pk));";
-        db.execSQL(createTbParticipacao);
+        db.execSQL(createTbInscricao);
 
         String createTbPalestrante = "CREATE TABLE tb_palestrante (" +
                 " cpf_palestrante_pk VARCHAR(15) NOT NULL PRIMARY KEY," +
@@ -70,13 +70,13 @@ public class ConnectionFactory extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String dropTbEvento = "DROP TABLE IF EXISTS tb_evento",
                 dropTbParticipante = "DROP TABLE IF EXISTS tb_participante",
-                dropTbParticipacao = "DROP TABLE IF EXISTS tb_participacao",
+                dropTbInscricao = "DROP TABLE IF EXISTS tb_participacao",
                 dropTbPalestra = "DROP TABLE IF EXISTS tb_palestra",
                 dropTbPalestrante = "DROP TABLE IF EXISTS tb_palestrante";
 
         db.execSQL(dropTbEvento);
         db.execSQL(dropTbParticipante);
-        db.execSQL(dropTbParticipacao);
+        db.execSQL(dropTbInscricao);
         db.execSQL(dropTbPalestra);
         db.execSQL(dropTbPalestrante);
         onCreate(db);

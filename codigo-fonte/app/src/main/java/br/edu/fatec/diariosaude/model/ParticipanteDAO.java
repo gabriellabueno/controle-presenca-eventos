@@ -16,7 +16,8 @@ public class ParticipanteDAO {
     private SQLiteDatabase banco;
 
     // Variáveis pra consultas SQL
-    private static final String table = "tb_participante",
+    private static final String
+            table = "tb_participante",
             cpf = "cpf_participante_pk",
             nome = "nome",
             email = "email",
@@ -35,6 +36,7 @@ public class ParticipanteDAO {
     // MÉTODOS CRUD - CREATE, READ, UPDATE, DELETE
 
     // CREATE
+    // Insere novo cadastro na tabela "participante"
     public void create(Participante participante){
         ContentValues values = new ContentValues();
 
@@ -46,6 +48,17 @@ public class ParticipanteDAO {
 
 
         banco.insert(table, null, values);
+    }
+
+    // Insere participante na tabela "inscricao"
+    // linka participante e evento
+    public void create(Integer idEvento, String idParticipante){
+        ContentValues values = new ContentValues();
+
+        values.put("id_evento_fk", String.valueOf(idEvento));
+        values.put("cpf_participante_fk", idParticipante);
+
+        banco.insert("tb_inscricao", null, values);
     }
 
     // UPDATE

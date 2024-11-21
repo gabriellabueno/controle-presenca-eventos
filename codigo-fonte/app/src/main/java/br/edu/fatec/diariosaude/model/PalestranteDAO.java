@@ -16,12 +16,13 @@ public class PalestranteDAO {
     private SQLiteDatabase banco;
 
     // Variáveis pra consultas SQL
-    private static final String table = "tb_palestrante";
-    private static final String cpf = "cpf_palestrante_pk";
-    private static final String nome = "nome_responsavel";
-    private static final String email = "email";
-    private static final String titulo = "titulo";
-    private static final String biografia = "biografia";
+    private static final String
+            table = "tb_palestrante",
+             cpf = "cpf_palestrante_pk",
+             nome = "nome_responsavel",
+             email = "email",
+             titulo = "titulo",
+             biografia = "biografia";
 
     String[] args = {cpf, nome, email, titulo, biografia};
 
