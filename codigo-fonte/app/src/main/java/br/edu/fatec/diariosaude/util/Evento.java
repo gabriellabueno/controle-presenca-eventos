@@ -83,7 +83,7 @@ public class Evento {
         this.horaFim = horaFim;
     }
 
-    public Pessoa[] getPalestrantes() {
+    public Palestrante[] getPalestrantes() {
         return palestrantes;
     }
 
@@ -91,7 +91,7 @@ public class Evento {
         this.palestrantes = palestrantes;
     }
 
-    public Pessoa[] getOrganizadores() {
+    public Palestrante[] getOrganizadores() {
         return organizadores;
     }
 
@@ -99,7 +99,7 @@ public class Evento {
         this.organizadores = organizadores;
     }
 
-    public Pessoa[] getParticipantes() {
+    public Participante[] getParticipantes() {
         return participantes;
     }
 
