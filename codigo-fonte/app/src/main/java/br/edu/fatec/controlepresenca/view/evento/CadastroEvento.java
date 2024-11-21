@@ -1,10 +1,7 @@
-package br.edu.fatec.diariosaude.view.pessoa;
+package br.edu.fatec.controlepresenca.view.evento;
 
 import android.app.Dialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +12,12 @@ import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import br.edu.fatec.diariosaude.R;
-import br.edu.fatec.diariosaude.controller.ParticipanteController;
+import androidx.fragment.app.Fragment;
 
-public class CadastroPessoa extends Fragment {
+import br.edu.fatec.controlepresenca.R;
+import br.edu.fatec.controlepresenca.controller.ParticipanteController;
+
+public class CadastroEvento extends Fragment {
     
     // Variáveis para componentes XML
     private EditText edtNome, edtGenero, edtIdade, edtAltura, edtPeso;

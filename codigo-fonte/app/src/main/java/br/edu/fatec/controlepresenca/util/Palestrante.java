@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.util;
+package br.edu.fatec.controlepresenca.util;
 
 public class Palestrante {
 

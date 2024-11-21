@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.model;
+package br.edu.fatec.controlepresenca.model;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.fatec.diariosaude.util.Participante;
+import br.edu.fatec.controlepresenca.util.Participante;
 
 public class ParticipanteDAO {
     // Variáveis de Conexão

@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.view;
+package br.edu.fatec.controlepresenca.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import br.edu.fatec.diariosaude.R;
+import br.edu.fatec.controlepresenca.R;
 
 public class HomeFragment extends Fragment {
 

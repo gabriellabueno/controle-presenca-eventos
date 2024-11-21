@@ -1,14 +1,25 @@
 <resources>
-    <string name="app_name">Controle de Presença</string>
+    <string name="app_name">Controle de Presença em Evento</string>
+    <string name="str_palestrante">Palestrante</string>
 
+    <!-- Itens menu drawer-->
     <string name="str_home">Página Inicial</string>
-    <string name="str_controle">Pessoas Cadastradas</string>
-    <string name="str_cadastro">Cadastro</string>
-    <string name="str_sugestoes">Dicas de Saúde</string>
-    <string name="str_manutencao">Atualizar Cadastro</string>
-    <string name="tela_perfil">Perfil</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_novo_evento">Novo Evento</string>
+    <string name="str_eventos">Eventos Cadastrados</string>
+
+    <!-- Nome das Telas -->
+    <string name="str_evento_cadastro">Cadastro de Evento</string>
+    <string name="str_evento_manutencao">Atualizar Evento</string>
+    <string name="str_palestrante_cadastro">Cadastro de Palestrante</string>
+    <string name="str_palestrante_manutencao">Atualizar informações do Palestrante</string>
+    <string name="str_checkin_participante">Check-in Participante</string>
+
+
+    <!-- Botões -->
+    <string name="str_btn_cadastrar">Cadastrar</string>
+    <string name="str_btn_atualizar">Atualizar</string>
+    <string name="str_btn_excluir">Excluir</string>
+
 
 
 </resources>

@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude;
+package br.edu.fatec.controlepresenca;
 
 import android.os.Bundle;
 
@@ -11,7 +11,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import br.edu.fatec.diariosaude.databinding.ActivityMainBinding;
+import br.edu.fatec.controlepresenca.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 

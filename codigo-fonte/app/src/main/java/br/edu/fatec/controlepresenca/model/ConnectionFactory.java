@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.model;
+package br.edu.fatec.controlepresenca.model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

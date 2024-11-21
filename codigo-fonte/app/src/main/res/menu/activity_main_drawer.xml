@@ -12,12 +12,12 @@
         <item
             android:id="@+id/nav_controle"
             android:icon="@drawable/ic_menu_controle"
-            android:title="@string/str_controle" />
+            android:title="@string/str_evento_consulta" />
 
         <item
             android:id="@+id/nav_cadastro"
             android:icon="@drawable/ic_menu_cadastro"
-            android:title="@string/str_cadastro" />
+            android:title="@string/str_evento_cadastro" />
 
         <item
             android:id="@+id/nav_sugestao"

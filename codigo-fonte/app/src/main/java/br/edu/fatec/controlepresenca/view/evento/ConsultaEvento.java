@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.view.evento;
+package br.edu.fatec.controlepresenca.view.evento;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
-import br.edu.fatec.diariosaude.R;
-import br.edu.fatec.diariosaude.controller.EventoController;
-import br.edu.fatec.diariosaude.util.Evento;
-import br.edu.fatec.diariosaude.util.PessoaAdapter;
+import br.edu.fatec.controlepresenca.R;
+import br.edu.fatec.controlepresenca.controller.EventoController;
+import br.edu.fatec.controlepresenca.util.Evento;
+import br.edu.fatec.controlepresenca.util.PessoaAdapter;
 
 public class ConsultaEvento extends Fragment {
 

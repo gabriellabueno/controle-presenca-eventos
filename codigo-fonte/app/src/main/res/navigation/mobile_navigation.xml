@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_pagina_inicial"
-        android:name="br.edu.fatec.diariosaude.view.HomeFragment"
+        android:name="br.edu.fatec.controlepresenca.view.HomeFragment"
         android:label="@string/str_home"
         tools:layout="@layout/fragment_home">
     <action
@@ -17,8 +17,8 @@
 
     <fragment
         android:id="@+id/nav_controle"
-        android:name="br.edu.fatec.diariosaude.view.pessoa.ConsultaPessoa"
-        android:label="@string/str_controle"
+        android:name="br.edu.fatec.controlepresenca.view.pessoa.ConsultaPessoa"
+        android:label="@string/str_evento_consulta"
         tools:layout="@layout/fragment_controle">
         <action
             android:id="@+id/action_controle_to_manutencao"
@@ -27,20 +27,20 @@
 
     <fragment
         android:id="@+id/nav_cadastro"
-        android:name="br.edu.fatec.diariosaude.view.pessoa.CadastroPessoa"
-        android:label="@string/str_cadastro"
+        android:name="br.edu.fatec.controlepresenca.view.pessoa.CadastroPessoa"
+        android:label="@string/str_evento_cadastro"
         tools:layout="@layout/fragment_cadastro" />
 
     <fragment
         android:id="@+id/nav_sugestao"
-        android:name="br.edu.fatec.diariosaude.view.SugestaoFragment"
+        android:name="br.edu.fatec.controlepresenca.view.SugestaoFragment"
         android:label="@string/str_sugestoes"
         tools:layout="@layout/fragment_sugestao" />
 
     <fragment
         android:id="@+id/nav_manutencao"
-        android:name="br.edu.fatec.diariosaude.view.pessoa.ManutencaoPessoa"
-        android:label="@string/str_manutencao" >
+        android:name="br.edu.fatec.controlepresenca.view.pessoa.ManutencaoPessoa"
+        android:label="@string/str_evento_manutencao" >
         <argument
             android:name="pessoaSelecionadaID"
             app:argType="integer" />

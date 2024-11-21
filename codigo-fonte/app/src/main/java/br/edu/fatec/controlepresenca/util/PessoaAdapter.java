@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.util;
+package br.edu.fatec.controlepresenca.util;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.edu.fatec.diariosaude.R;
+import br.edu.fatec.controlepresenca.R;
 
 public class PessoaAdapter extends ArrayAdapter<Pessoa> {
     private Context context;

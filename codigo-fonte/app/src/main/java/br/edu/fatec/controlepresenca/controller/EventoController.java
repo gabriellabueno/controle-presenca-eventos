@@ -1,12 +1,12 @@
-package br.edu.fatec.diariosaude.controller;
+package br.edu.fatec.controlepresenca.controller;
 
 import android.content.Context;
 import android.widget.Toast;
 
 import java.util.List;
 
-import br.edu.fatec.diariosaude.model.EventoDAO;
-import br.edu.fatec.diariosaude.util.Evento;
+import br.edu.fatec.controlepresenca.model.EventoDAO;
+import br.edu.fatec.controlepresenca.util.Evento;
 
 public class EventoController {
     private EventoDAO dao;

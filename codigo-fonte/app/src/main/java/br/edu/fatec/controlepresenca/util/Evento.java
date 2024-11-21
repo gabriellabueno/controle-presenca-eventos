@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.util;
+package br.edu.fatec.controlepresenca.util;
 
 import java.time.LocalTime;
 import java.util.Date;

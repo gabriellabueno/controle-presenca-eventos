@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.view.pessoa;
+package br.edu.fatec.controlepresenca.view.pessoa;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -18,8 +18,8 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
-import br.edu.fatec.diariosaude.R;
-import br.edu.fatec.diariosaude.controller.ParticipanteController;
+import br.edu.fatec.controlepresenca.R;
+import br.edu.fatec.controlepresenca.controller.ParticipanteController;
 
 public class ManutencaoPessoa extends Fragment {
 
