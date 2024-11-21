@@ -6,38 +6,39 @@ import android.widget.Toast;
 import java.util.List;
 
 import br.edu.fatec.diariosaude.model.PalestranteDAO;
+import br.edu.fatec.diariosaude.util.Palestrante;
 
-public class PessoaController {
+public class PalestranteController {
     private PalestranteDAO dao;
     private Context context;
 
     // Construtor
-    public PessoaController(Context context) {
+    public PalestranteController(Context context) {
         this.context = context;
         this.dao = new PalestranteDAO(context); // Abre BD
     }
 
-    public void create(Pessoa pessoa) {
+    public void create(Integer idEvento, Palestrante palestrante) {
         dao = new PalestranteDAO(context);
-        dao.create(pessoa);
+        dao.create(idEvento, palestrante);
     }
 
-    public void update(Pessoa pessoa) {
+    public void update(Palestrante palestrante) {
         dao = new PalestranteDAO(context);
-        dao.update(pessoa);
+        dao.update(palestrante);
     }
 
-    public void delete(Pessoa pessoa) {
+    public void delete(Palestrante palestrante) {
         dao = new PalestranteDAO(context);
-        dao.delete(pessoa);
+        dao.delete(palestrante);
     }
 
-    public Pessoa read(Integer id) {
+    public Palestrante read(String cpf) {
         dao = new PalestranteDAO(context);
-        return dao.read(id);
+        return dao.read(cpf);
     }
 
-    public List<Pessoa> listAll() {
+    public List<Palestrante> listAll() {
         return dao.listAll();
     }
 
@@ -46,7 +47,7 @@ public class PessoaController {
     }
 
     public void mostrarMensagem(String mensagem) {
-        Toast.makeText(context, "Pessoa foi " + mensagem + " com sucesso",
+        Toast.makeText(context, "Palestrante foi " + mensagem + " com sucesso",
                 Toast.LENGTH_SHORT).show();
     }
 

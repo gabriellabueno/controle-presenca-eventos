@@ -11,7 +11,8 @@ import androidx.fragment.app.Fragment;
 import java.util.List;
 
 import br.edu.fatec.diariosaude.R;
-import br.edu.fatec.diariosaude.controller.PessoaController;
+import br.edu.fatec.diariosaude.controller.EventoController;
+import br.edu.fatec.diariosaude.util.Evento;
 import br.edu.fatec.diariosaude.util.PessoaAdapter;
 
 public class ConsultaEvento extends Fragment {
@@ -19,7 +20,7 @@ public class ConsultaEvento extends Fragment {
     private ListView listViewControle;
 
     // Variáveis para Controller
-    private PessoaController controller;
+    private EventoController controller;
 
     // Adapter para apresentar dados no ListView
     PessoaAdapter adapter;
@@ -33,13 +34,13 @@ public class ConsultaEvento extends Fragment {
         View view = inflater.inflate(R.layout.fragment_controle, container, false);
 
         // Inicializando o controller
-        controller = new PessoaController(this.getContext());
+        controller = new EventoController(this.getContext());
 
 
         listViewControle = view.findViewById(R.id.listViewControle);
 
         // Listar pessoas no ListView
-        List<Pessoa> pessoas = listAll();
+        List<Evento> pessoas = listAll();
         if(pessoas == null) {
             controller.updateTable();
         }
@@ -49,7 +50,7 @@ public class ConsultaEvento extends Fragment {
         listViewControle.setOnItemClickListener((parent, v, position, id) -> {
 
             // Obtém o pessoa clicada
-            Pessoa pessoaSelecionada = adapter.getItem(position);
+           // Evento eventoSelecionado = adapter.getItem(position);
            // Integer pessoaSelecionadaID = pessoaSelecionada.getId();
 
             /*
@@ -83,18 +84,18 @@ public class ConsultaEvento extends Fragment {
     }
 
 
-    // Listar todos os alunos na ListvIiew
-    public List<Pessoa> listAll() {
+    // Listar todos os eventos na ListvIiew
+    public List<Evento> listAll() {
 
         // Popula array com dados do BD
-        List<Pessoa> pessoas = controller.listAll();
+        List<Evento> eventos = controller.listAll();
 
         // Envia array para adapter
-        adapter = new PessoaAdapter(getContext(), pessoas);
+      //  adapter = new PessoaAdapter(getContext(), eventos);
 
         // Popula ListView com itens do array
         listViewControle.setAdapter(adapter);
-        return pessoas;
+        return eventos;
     }
 
 

@@ -6,6 +6,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import br.edu.fatec.diariosaude.model.EventoDAO;
+import br.edu.fatec.diariosaude.util.Evento;
 
 public class EventoController {
     private EventoDAO dao;
@@ -17,27 +18,27 @@ public class EventoController {
         this.dao = new EventoDAO(context); // Abre BD
     }
 
-    public void create(Pessoa pessoa) {
+    public void create(Evento evento) {
         dao = new EventoDAO(context);
-        dao.create(pessoa);
+        dao.create(evento);
     }
 
-    public void update(Pessoa pessoa) {
+    public void update(Evento evento) {
         dao = new EventoDAO(context);
-        dao.update(pessoa);
+        dao.update(evento);
     }
 
-    public void delete(Pessoa pessoa) {
+    public void delete(Evento evento) {
         dao = new EventoDAO(context);
-        dao.delete(pessoa);
+        dao.delete(evento);
     }
 
-    public Pessoa read(Integer id) {
+    public Evento read(Integer id) {
         dao = new EventoDAO(context);
         return dao.read(id);
     }
 
-    public List<Pessoa> listAll() {
+    public List<Evento> listAll() {
         return dao.listAll();
     }
 
@@ -46,7 +47,7 @@ public class EventoController {
     }
 
     public void mostrarMensagem(String mensagem) {
-        Toast.makeText(context, "Pessoa foi " + mensagem + " com sucesso",
+        Toast.makeText(context, "Evento foi " + mensagem + " com sucesso",
                 Toast.LENGTH_SHORT).show();
     }
 

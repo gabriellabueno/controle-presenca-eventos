@@ -19,7 +19,7 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 
 import br.edu.fatec.diariosaude.R;
-import br.edu.fatec.diariosaude.controller.PessoaController;
+import br.edu.fatec.diariosaude.controller.ParticipanteController;
 
 public class ManutencaoPessoa extends Fragment {
 
@@ -31,7 +31,7 @@ public class ManutencaoPessoa extends Fragment {
     private Button btnAtualizar, btnExcluir;
 
     // Variáveis para controller:
-    private PessoaController controller;
+    private ParticipanteController controller;
     private Pessoa pessoa;
 
     // Variáveis para definir valores booleanos
@@ -49,7 +49,7 @@ public class ManutencaoPessoa extends Fragment {
         View view = inflater.inflate(R.layout.fragment_manutencao, container, false);
 
         // Inicializa Controller
-        controller = new PessoaController(this.getContext());
+        controller = new ParticipanteController(this.getContext());
 
         // Variáveis para componentes XML
         edtNome = view.findViewById(R.id.edtNome);
@@ -84,7 +84,7 @@ public class ManutencaoPessoa extends Fragment {
         }
 
         // Busca dados a partir do ID e armazena em instância de Pessoa
-        pessoa = controller.read(pessoaSelecionadaID);
+        //pessoa = controller.read(pessoaSelecionadaID);
 
 
         swtGestante.setVisibility(View.GONE); // switch gestante invisível até selecionar sexo
@@ -131,7 +131,7 @@ public class ManutencaoPessoa extends Fragment {
                     mostraPopup();
                 else {
                     pessoa.setId(pessoaSelecionadaID);
-                    controller.update(pessoa);
+                   // controller.update(pessoa);
                     controller.mostrarMensagem("atualizada");
                 }
             }
@@ -146,7 +146,7 @@ public class ManutencaoPessoa extends Fragment {
         btnExcluir.setOnClickListener(v -> {
             pessoa = new Pessoa();
             pessoa.setId(pessoaSelecionadaID);
-            controller.delete(pessoa);
+           // controller.delete(pessoa);
             controller.mostrarMensagem("removida");
             limpaCamposEdt();
         });

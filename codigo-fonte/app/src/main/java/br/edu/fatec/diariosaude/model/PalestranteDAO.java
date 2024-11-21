@@ -37,7 +37,7 @@ public class PalestranteDAO {
 
     // CREATE
     // Insere novo cadastro na tabela "palestrante"
-    public void create(Palestrante palestrante){
+    public void create(Integer idEvento, Palestrante palestrante){
         ContentValues values = new ContentValues();
 
         values.put(cpf, palestrante.getCpf());
@@ -45,17 +45,18 @@ public class PalestranteDAO {
         values.put(email, palestrante.getEmail());
         values.put(titulo, palestrante.getTituloAcademico());
         values.put(biografia, palestrante.getBiografia());
-
         banco.insert(table, null, values);
+
+        cadastraPalestrante(idEvento, palestrante.getCpf());
     }
 
     // Insere palestrante na tabela "palestra"
     // linka palestrante e evento
-    public void create(Integer idEvento, String idPalestrante){
+    public void cadastraPalestrante(Integer idEvento, String cpfPalestrante){
         ContentValues values = new ContentValues();
 
         values.put("id_evento_fk", String.valueOf(idEvento));
-        values.put("cpf_palestrante_fk", idPalestrante);
+        values.put("cpf_palestrante_fk", cpfPalestrante);
 
         banco.insert("tb_palestra", null, values);
     }

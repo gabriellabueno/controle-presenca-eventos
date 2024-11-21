@@ -37,7 +37,7 @@ public class ParticipanteDAO {
 
     // CREATE
     // Insere novo cadastro na tabela "participante"
-    public void create(Participante participante){
+    public void create(Integer idEvento, Participante participante){
         ContentValues values = new ContentValues();
 
         values.put(cpf, participante.getCpf());
@@ -45,18 +45,18 @@ public class ParticipanteDAO {
         values.put(email, participante.getEmail());
         values.put(cargaHoraria, participante.getCargaHoraria());
         values.put(curso, participante.getCurso());
-
-
         banco.insert(table, null, values);
+
+        inscreveParticipante(idEvento, participante.getCpf());
     }
 
     // Insere participante na tabela "inscricao"
     // linka participante e evento
-    public void create(Integer idEvento, String idParticipante){
+    public void inscreveParticipante(Integer idEvento, String cpfParticipante){
         ContentValues values = new ContentValues();
 
         values.put("id_evento_fk", String.valueOf(idEvento));
-        values.put("cpf_participante_fk", idParticipante);
+        values.put("cpf_participante_fk", cpfParticipante);
 
         banco.insert("tb_inscricao", null, values);
     }

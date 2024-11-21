@@ -5,15 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import br.edu.fatec.diariosaude.util.Evento;
-import br.edu.fatec.diariosaude.util.Palestrante;
-import br.edu.fatec.diariosaude.util.Participante;
+
 
 public class EventoDAO {
     // Variáveis de Conexão

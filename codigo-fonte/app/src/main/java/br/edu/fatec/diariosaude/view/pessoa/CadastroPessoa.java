@@ -16,7 +16,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import br.edu.fatec.diariosaude.R;
-import br.edu.fatec.diariosaude.controller.PessoaController;
+import br.edu.fatec.diariosaude.controller.ParticipanteController;
 
 public class CadastroPessoa extends Fragment {
     
@@ -28,7 +28,7 @@ public class CadastroPessoa extends Fragment {
     private Button btnCadastrar;
 
     // Variáveis para Controller
-    private PessoaController pessoaController;
+    private ParticipanteController pessoaController;
     private Pessoa pessoa;
 
     // Variáveis para definir valores booleanos
@@ -45,7 +45,7 @@ public class CadastroPessoa extends Fragment {
 
         pessoa = new Pessoa();
         // Inicializa Controller
-        pessoaController = new PessoaController(this.getContext());
+        pessoaController = new ParticipanteController(this.getContext());
 
 
         // Variáveis para componentes XML
