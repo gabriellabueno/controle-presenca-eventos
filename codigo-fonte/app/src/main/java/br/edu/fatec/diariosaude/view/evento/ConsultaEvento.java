@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.view;
+package br.edu.fatec.diariosaude.view.evento;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,17 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.List;
 
 import br.edu.fatec.diariosaude.R;
 import br.edu.fatec.diariosaude.controller.PessoaController;
-import br.edu.fatec.diariosaude.util.Pessoa;
 import br.edu.fatec.diariosaude.util.PessoaAdapter;
 
-public class ControleFragment extends Fragment {
+public class ConsultaEvento extends Fragment {
 
     private ListView listViewControle;
 

@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.view;
+package br.edu.fatec.diariosaude.view.pessoa;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -20,9 +20,8 @@ import java.text.DecimalFormat;
 
 import br.edu.fatec.diariosaude.R;
 import br.edu.fatec.diariosaude.controller.PessoaController;
-import br.edu.fatec.diariosaude.util.Pessoa;
 
-public class ManutencaoFragment extends Fragment {
+public class ManutencaoPessoa extends Fragment {
 
     // Variáveis para componentes XML
     private EditText edtNome, edtGenero, edtIdade, edtAltura, edtPeso;

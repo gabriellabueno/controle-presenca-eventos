@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventoDAO {
+import br.edu.fatec.diariosaude.util.Palestrante;
+
+public class PalestranteDAO {
     // Variáveis de Conexão
     private ConnectionFactory conexao;
     private SQLiteDatabase banco;
@@ -21,7 +23,7 @@ public class EventoDAO {
     String[] args = {id, nome,};
 
     // Construtor
-    public EventoDAO(Context context){
+    public PalestranteDAO(Context context){
         // Abre conexão com BD
         conexao = new ConnectionFactory(context);
         banco = conexao.getWritableDatabase();
@@ -30,7 +32,7 @@ public class EventoDAO {
     // MÉTODOS CRUD - CREATE, READ, UPDATE, DELETE
 
     // CREATE
-    public void create(Pessoa pessoa){
+    public void create(Palestrante pessoa){
         ContentValues values = new ContentValues();
 
         values.put(nome, pessoa.getNome());
@@ -40,15 +42,15 @@ public class EventoDAO {
     }
 
     // UPDATE
-    public void update(Pessoa pessoa) {
+    public void update(Palestrante pessoa) {
         ContentValues values = new ContentValues();
 
         values.put(nome, pessoa.getNome());
 
 
-        // String[] idPessoa = {String.valueOf(pessoa.getId())};
+       // String[] idPalestrante = {String.valueOf(pessoa.getId())};
 
-        // banco.update(table, values, "id=?", idPessoa);
+       // banco.update(table, values, "id=?", idPalestrante);
     }
 
     // Reseta ID da tabela "pessoa"
@@ -59,23 +61,23 @@ public class EventoDAO {
 
 
     // DELETE
-    public void delete(Pessoa pessoa) {
-        //String[] idPessoa = {String.valueOf(pessoa.getId())};
+    public void delete(Palestrante pessoa) {
+        //String[] idPalestrante = {String.valueOf(pessoa.getId())};
 
-        //banco.delete(table,"id=?", idPessoa);
+        //banco.delete(table,"id=?", idPalestrante);
     }
 
 
     // READ
-    public Pessoa read(Integer id) {
-        String[] idPessoa = {String.valueOf(id)};
+    public Palestrante read(Integer id) {
+        String[] idPalestrante = {String.valueOf(id)};
 
         Cursor cursor = banco.query(table, args,
-                "id=?", idPessoa, null, null, null);
+                "id=?", idPalestrante, null, null, null);
 
         cursor.moveToFirst();
 
-        Pessoa pessoa = new Pessoa();
+        Palestrante pessoa = new Palestrante();
 
         // Percorre todas as colunas do registro
         if(cursor.getCount() > 0){
@@ -88,8 +90,8 @@ public class EventoDAO {
 
     // Retorna uma lista com todos os registros
     // para apresentar no ListView
-    public List<Pessoa> listAll() {
-        List<Pessoa> pessoas = new ArrayList<>(); // Array de pessoas
+    public List<Palestrante> listAll() {
+        List<Palestrante> pessoas = new ArrayList<>(); // Array de pessoas
 
         String[] args = {id, nome};
 
@@ -98,9 +100,9 @@ public class EventoDAO {
 
         // Loop para percorrer todas as linhas da tabela
         while (cursor.moveToNext()) {
-            Pessoa p = new Pessoa();
+            Palestrante p = new Palestrante();
 
-            //  p.setId(cursor.getInt(0));
+          //  p.setId(cursor.getInt(0));
             p.setNome(cursor.getString(1));
             pessoas.add(p); // adiciona pessoa ao array
         }

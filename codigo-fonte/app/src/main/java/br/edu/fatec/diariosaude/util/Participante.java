@@ -1,23 +1,26 @@
 package br.edu.fatec.diariosaude.util;
 
-public class Participante extends Pessoa {
+public class Participante {
 
     //ATRIBUTOS
+    private String nome, cpf, email, curso;
     private Integer cargaHoraria;
-    private String curso;
 
     //CONSTRUTORES
     public Participante() {
         super();
     }
 
-    public Participante(String nome, String cpf, String email, Integer cargaHoraria, String curso) {
-        super(nome, cpf, email);
+    public Participante(Integer cargaHoraria, String cpf, String curso, String email, String nome) {
         this.cargaHoraria = cargaHoraria;
+        this.cpf = cpf;
         this.curso = curso;
+        this.email = email;
+        this.nome = nome;
     }
 
     //GETTERS E SETTERS
+
     public Integer getCargaHoraria() {
         return cargaHoraria;
     }
@@ -26,11 +29,35 @@ public class Participante extends Pessoa {
         this.cargaHoraria = cargaHoraria;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     public String getCurso() {
         return curso;
     }
 
     public void setCurso(String curso) {
         this.curso = curso;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

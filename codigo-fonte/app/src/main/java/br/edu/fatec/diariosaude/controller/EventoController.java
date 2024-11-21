@@ -3,11 +3,9 @@ package br.edu.fatec.diariosaude.controller;
 import android.content.Context;
 import android.widget.Toast;
 
-import java.util.EventObject;
 import java.util.List;
 
 import br.edu.fatec.diariosaude.model.EventoDAO;
-import br.edu.fatec.diariosaude.util.Pessoa;
 
 public class EventoController {
     private EventoDAO dao;
@@ -44,7 +42,7 @@ public class EventoController {
     }
 
     public void updateTable() {
-     //   dao.updateTableID();
+        dao.updateTableID();
     }
 
     public void mostrarMensagem(String mensagem) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ControleFragment"
+    tools:context=".view.pessoa.ConsultaPessoa"
     android:paddingVertical="50dp"
     android:id="@+id/fragment_controle"
     android:gravity="center_horizontal"

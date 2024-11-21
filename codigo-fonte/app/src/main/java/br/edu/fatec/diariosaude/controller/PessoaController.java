@@ -5,36 +5,35 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import br.edu.fatec.diariosaude.util.Pessoa;
-import br.edu.fatec.diariosaude.model.PessoaDAO;
+import br.edu.fatec.diariosaude.model.PalestranteDAO;
 
 public class PessoaController {
-    private PessoaDAO dao;
+    private PalestranteDAO dao;
     private Context context;
 
     // Construtor
     public PessoaController(Context context) {
         this.context = context;
-        this.dao = new PessoaDAO(context); // Abre BD
+        this.dao = new PalestranteDAO(context); // Abre BD
     }
 
     public void create(Pessoa pessoa) {
-        dao = new PessoaDAO(context);
+        dao = new PalestranteDAO(context);
         dao.create(pessoa);
     }
 
     public void update(Pessoa pessoa) {
-        dao = new PessoaDAO(context);
+        dao = new PalestranteDAO(context);
         dao.update(pessoa);
     }
 
     public void delete(Pessoa pessoa) {
-        dao = new PessoaDAO(context);
+        dao = new PalestranteDAO(context);
         dao.delete(pessoa);
     }
 
     public Pessoa read(Integer id) {
-        dao = new PessoaDAO(context);
+        dao = new PalestranteDAO(context);
         return dao.read(id);
     }
 

@@ -9,7 +9,8 @@ public class Evento {
     private String nome, local;
     private Date data;
     private LocalTime horaInicio, horaFim;
-    private Pessoa palestrantes[], organizadores[], participantes[];
+    private Palestrante[] palestrantes, organizadores;
+    private Participante[] participantes;
     private Integer duracao;
     private boolean status;
 
@@ -17,7 +18,8 @@ public class Evento {
     public Evento() {}
 
 
-    public Evento(String nome, String local, Date data, LocalTime horaInicio, LocalTime horaFim, Pessoa[] palestrantes, Pessoa[] organizadores, Pessoa[] participantes, Integer duracao, boolean status) {
+    public Evento(String nome, String local, Date data, LocalTime horaInicio, LocalTime horaFim,
+                  Palestrante[] palestrantes, Palestrante[] organizadores, Participante[] participantes, Integer duracao, boolean status) {
         this.nome = nome;
         this.local = local;
         this.data = data;
@@ -36,7 +38,7 @@ public class Evento {
     }
 
     //MÉTODO PARA ADICIONAR PARTICIPANTE NO EVENTO
-    public void adicionaParticipante(Pessoa participante) {
+    public void adicionaParticipante(Participante participante) {
         
     }
 
@@ -85,7 +87,7 @@ public class Evento {
         return palestrantes;
     }
 
-    public void setPalestrantes(Pessoa[] palestrantes) {
+    public void setPalestrantes(Palestrante[] palestrantes) {
         this.palestrantes = palestrantes;
     }
 
@@ -93,7 +95,7 @@ public class Evento {
         return organizadores;
     }
 
-    public void setOrganizadores(Pessoa[] organizadores) {
+    public void setOrganizadores(Palestrante[] organizadores) {
         this.organizadores = organizadores;
     }
 
@@ -101,7 +103,7 @@ public class Evento {
         return participantes;
     }
 
-    public void setParticipantes(Pessoa[] participantes) {
+    public void setParticipantes(Participante[] participantes) {
         this.participantes = participantes;
     }
 

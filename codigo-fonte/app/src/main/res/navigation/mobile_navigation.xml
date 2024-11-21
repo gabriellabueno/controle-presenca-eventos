@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/nav_controle"
-        android:name="br.edu.fatec.diariosaude.view.ControleFragment"
+        android:name="br.edu.fatec.diariosaude.view.pessoa.ConsultaPessoa"
         android:label="@string/str_controle"
         tools:layout="@layout/fragment_controle">
         <action
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/nav_cadastro"
-        android:name="br.edu.fatec.diariosaude.view.CadastroFragment"
+        android:name="br.edu.fatec.diariosaude.view.pessoa.CadastroPessoa"
         android:label="@string/str_cadastro"
         tools:layout="@layout/fragment_cadastro" />
 
@@ -39,7 +39,7 @@
 
     <fragment
         android:id="@+id/nav_manutencao"
-        android:name="br.edu.fatec.diariosaude.view.ManutencaoFragment"
+        android:name="br.edu.fatec.diariosaude.view.pessoa.ManutencaoPessoa"
         android:label="@string/str_manutencao" >
         <argument
             android:name="pessoaSelecionadaID"

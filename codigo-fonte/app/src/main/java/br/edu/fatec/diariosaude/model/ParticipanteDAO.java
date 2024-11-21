@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.fatec.diariosaude.util.Pessoa;
+import br.edu.fatec.diariosaude.util.Participante;
 
-public class PessoaDAO {
+public class ParticipanteDAO {
     // Variáveis de Conexão
     private ConnectionFactory conexao;
     private SQLiteDatabase banco;
@@ -23,7 +23,7 @@ public class PessoaDAO {
     String[] args = {id, nome,};
 
     // Construtor
-    public PessoaDAO(Context context){
+    public ParticipanteDAO(Context context){
         // Abre conexão com BD
         conexao = new ConnectionFactory(context);
         banco = conexao.getWritableDatabase();
@@ -32,7 +32,7 @@ public class PessoaDAO {
     // MÉTODOS CRUD - CREATE, READ, UPDATE, DELETE
 
     // CREATE
-    public void create(Pessoa pessoa){
+    public void create(Participante pessoa){
         ContentValues values = new ContentValues();
 
         values.put(nome, pessoa.getNome());
@@ -42,15 +42,15 @@ public class PessoaDAO {
     }
 
     // UPDATE
-    public void update(Pessoa pessoa) {
+    public void update(Participante pessoa) {
         ContentValues values = new ContentValues();
 
         values.put(nome, pessoa.getNome());
 
 
-       // String[] idPessoa = {String.valueOf(pessoa.getId())};
+       // String[] idParticipante = {String.valueOf(pessoa.getId())};
 
-       // banco.update(table, values, "id=?", idPessoa);
+       // banco.update(table, values, "id=?", idParticipante);
     }
 
     // Reseta ID da tabela "pessoa"
@@ -61,23 +61,23 @@ public class PessoaDAO {
 
 
     // DELETE
-    public void delete(Pessoa pessoa) {
-        //String[] idPessoa = {String.valueOf(pessoa.getId())};
+    public void delete(Participante pessoa) {
+        //String[] idParticipante = {String.valueOf(pessoa.getId())};
 
-        //banco.delete(table,"id=?", idPessoa);
+        //banco.delete(table,"id=?", idParticipante);
     }
 
 
     // READ
-    public Pessoa read(Integer id) {
-        String[] idPessoa = {String.valueOf(id)};
+    public Participante read(Integer id) {
+        String[] idParticipante = {String.valueOf(id)};
 
         Cursor cursor = banco.query(table, args,
-                "id=?", idPessoa, null, null, null);
+                "id=?", idParticipante, null, null, null);
 
         cursor.moveToFirst();
 
-        Pessoa pessoa = new Pessoa();
+        Participante pessoa = new Participante();
 
         // Percorre todas as colunas do registro
         if(cursor.getCount() > 0){
@@ -90,8 +90,8 @@ public class PessoaDAO {
 
     // Retorna uma lista com todos os registros
     // para apresentar no ListView
-    public List<Pessoa> listAll() {
-        List<Pessoa> pessoas = new ArrayList<>(); // Array de pessoas
+    public List<Participante> listAll() {
+        List<Participante> pessoas = new ArrayList<>(); // Array de pessoas
 
         String[] args = {id, nome};
 
@@ -100,7 +100,7 @@ public class PessoaDAO {
 
         // Loop para percorrer todas as linhas da tabela
         while (cursor.moveToNext()) {
-            Pessoa p = new Pessoa();
+            Participante p = new Participante();
 
           //  p.setId(cursor.getInt(0));
             p.setNome(cursor.getString(1));
