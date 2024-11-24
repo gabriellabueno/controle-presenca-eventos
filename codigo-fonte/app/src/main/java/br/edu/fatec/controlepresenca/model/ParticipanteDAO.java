@@ -21,10 +21,10 @@ public class ParticipanteDAO {
             cpf = "cpf_participante_pk",
             nome = "nome",
             email = "email",
-            cargaHoraria = "cargaHoraria",
-            curso = "curso";
+            curso = "curso",
+            cargaHoraria = "cargaHoraria"; // Será utilizada somente se houver certificado
 
-    String[] args = {cpf, nome, email, cargaHoraria, curso};
+    String[] args = {cpf, nome, email, curso};
 
     // Construtor
     public ParticipanteDAO(Context context){
@@ -43,7 +43,6 @@ public class ParticipanteDAO {
         values.put(cpf, participante.getCpf());
         values.put(nome, participante.getNome());
         values.put(email, participante.getEmail());
-        values.put(cargaHoraria, participante.getCargaHoraria());
         values.put(curso, participante.getCurso());
         banco.insert(table, null, values);
 
@@ -67,7 +66,6 @@ public class ParticipanteDAO {
 
         values.put(nome, participante.getNome());
         values.put(email, participante.getEmail());
-        values.put(cargaHoraria, participante.getCargaHoraria());
         values.put(curso, participante.getCurso());
 
        String[] cpfParticipante = {String.valueOf(participante.getCpf())};
@@ -103,8 +101,10 @@ public class ParticipanteDAO {
 
         // Percorre todas as colunas do registro
         if(cursor.getCount() > 0){
-            participante.setNome(cursor.getString(1));
-            participante.setNome(cursor.getString(1));
+            participante.setCpf(cursor.getString(1));
+            participante.setNome(cursor.getString(2));
+            participante.setEmail(cursor.getString(3));
+            participante.setCurso(cursor.getString(4));
 
         }
         cursor.close();
@@ -116,7 +116,7 @@ public class ParticipanteDAO {
     public List<Participante> listAll() {
         List<Participante> participantes = new ArrayList<>(); // Array de participantes
 
-        String[] args = {cpf, nome, email, cargaHoraria, curso};
+        String[] args = {cpf, nome, email, curso};
 
         Cursor cursor = banco.query(table, args,
                 null, null, null, null, null );
@@ -125,10 +125,9 @@ public class ParticipanteDAO {
         while (cursor.moveToNext()) {
             Participante p = new Participante();
 
-            p.setCpf(cursor.getString(0));
-            p.setNome(cursor.getString(1));
-            p.setEmail(cursor.getString(2));
-            p.setCargaHoraria(cursor.getInt(3));
+            p.setCpf(cursor.getString(1));
+            p.setNome(cursor.getString(2));
+            p.setEmail(cursor.getString(3));
             p.setCurso(cursor.getString(4));
             participantes.add(p); // adiciona pessoa ao array
         }

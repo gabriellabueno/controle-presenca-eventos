@@ -8,23 +8,21 @@ CREATE TABLE tb_evento (
     duracao TINYINT NOT NULL,
     local VARCHAR(50) NOT NULL,
     status TINYINT NOT NULL,
-    organizador VARCHAR(100)
+    organizador VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE tb_participante (
     cpf_participante_pk VARCHAR(15) NOT NULL PRIMARY KEY ,
-    nome_participante VARCHAR(100) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    cargaHoraria TINYINT,
-    curso VARCHAR(20)
+    curso VARCHAR(20) NOT NULL,
+    cargaHoraria TINYINT
 );
 
 CREATE TABLE tb_palestrante (
     cpf_palestrante_pk VARCHAR(15) NOT NULL PRIMARY KEY,
-    nome_responsavel VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    titulo VARCHAR(50),
-    biografia VARCHAR(255)
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE tb_inscricao (

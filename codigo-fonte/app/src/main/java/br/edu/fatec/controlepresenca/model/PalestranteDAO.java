@@ -19,12 +19,10 @@ public class PalestranteDAO {
     private static final String
             table = "tb_palestrante",
              cpf = "cpf_palestrante_pk",
-             nome = "nome_responsavel",
-             email = "email",
-             titulo = "titulo",
-             biografia = "biografia";
+             nome = "nome",
+             email = "email";
 
-    String[] args = {cpf, nome, email, titulo, biografia};
+    String[] args = {cpf, nome, email};
 
     // Construtor
     public PalestranteDAO(Context context){
@@ -43,8 +41,7 @@ public class PalestranteDAO {
         values.put(cpf, palestrante.getCpf());
         values.put(nome, palestrante.getNome());
         values.put(email, palestrante.getEmail());
-        values.put(titulo, palestrante.getTituloAcademico());
-        values.put(biografia, palestrante.getBiografia());
+
         banco.insert(table, null, values);
 
         cadastraPalestrante(idEvento, palestrante.getCpf());
@@ -67,8 +64,6 @@ public class PalestranteDAO {
 
         values.put(nome, palestrante.getNome());
         values.put(email, palestrante.getEmail());
-        values.put(titulo, palestrante.getTituloAcademico());
-        values.put(biografia, palestrante.getBiografia());
 
        String[] idPalestrante = {String.valueOf(palestrante.getCpf())};
 
@@ -106,8 +101,6 @@ public class PalestranteDAO {
             p.setCpf(cursor.getString(1));
             p.setNome(cursor.getString(2));
             p.setEmail(cursor.getString(3));
-            p.setTituloAcademico(cursor.getString(4));
-            p.setBiografia(cursor.getString(5));
         }
         cursor.close();
         return p;
@@ -128,8 +121,6 @@ public class PalestranteDAO {
             p.setCpf(cursor.getString(1));
             p.setNome(cursor.getString(2));
             p.setEmail(cursor.getString(3));
-            p.setTituloAcademico(cursor.getString(4));
-            p.setBiografia(cursor.getString(5));
             palestrantes.add(p);
         }
 

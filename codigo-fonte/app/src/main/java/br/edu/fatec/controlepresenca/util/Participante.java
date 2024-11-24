@@ -2,32 +2,22 @@ package br.edu.fatec.controlepresenca.util;
 
 public class Participante {
 
-    //ATRIBUTOS
+    // ATRIBUTOS
     private String nome, cpf, email, curso;
-    private Integer cargaHoraria;
+    private Integer cargaHoraria; // Será utilizada somente se houver certificado
 
-    //CONSTRUTORES
+    // CONSTRUTORES
     public Participante() {
-        super();
     }
 
-    public Participante(Integer cargaHoraria, String cpf, String curso, String email, String nome) {
-        this.cargaHoraria = cargaHoraria;
+    public Participante(String cpf, String nome, String email, String curso) {
         this.cpf = cpf;
-        this.curso = curso;
-        this.email = email;
         this.nome = nome;
+        this.email = email;
+        this.curso = curso;
     }
 
-    //GETTERS E SETTERS
-
-    public Integer getCargaHoraria() {
-        return cargaHoraria;
-    }
-
-    public void setCargaHoraria(Integer cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
-    }
+    // GETTERS E SETTERS
 
     public String getCpf() {
         return cpf;
@@ -37,12 +27,12 @@ public class Participante {
         this.cpf = cpf;
     }
 
-    public String getCurso() {
-        return curso;
+    public String getNome() {
+        return nome;
     }
 
-    public void setCurso(String curso) {
-        this.curso = curso;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getEmail() {
@@ -53,11 +43,26 @@ public class Participante {
         this.email = email;
     }
 
-    public String getNome() {
-        return nome;
+    public String getCurso() {
+        return curso;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+
+
+
+
+
+    // Será utilizada somente se houver certificado
+
+    public Integer getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public void setCargaHoraria(Integer cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
     }
 }
