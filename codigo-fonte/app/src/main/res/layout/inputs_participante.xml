@@ -25,139 +25,49 @@
             android:inputType="text|textCapWords" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Identidade de Gênero -->
+    <!-- CPF -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtLocal"
+        android:id="@+id/txtCpf"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtLocal"
+            android:id="@+id/edtCpf"
             style="@style/edt_input"
-            android:hint="Identidade de gênero"
+            android:hint="Cpf"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Layout com o restante dos inputs -->
-    <LinearLayout
+    <!-- Email -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <!-- Coluna Esquerda -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmail"
+            style="@style/edt_input"
+            android:hint="E-mail"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Peso -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtHoraInicio"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtHoraInicio"
-                    style="@style/edt_input"
-                    android:hint="Peso (kg)"
-                    android:inputType="numberDecimal" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Idade -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtData"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtData"
-                    style="@style/edt_input"
-                    android:hint="Idade"
-                    android:inputType="number"
-                    app:suffixText="anos" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <!-- Espaço para separar colunas -->
-        <Space
-            android:layout_width="50dp"
-            android:layout_height="match_parent" />
-
-
-        <!-- Coluna Direita -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Altura -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtDuracao"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtDuracao"
-                    style="@style/edt_input"
-                    android:hint="Altura (metros)"
-                    android:inputType="numberDecimal" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Sedentario -->
-            <Switch
-                android:id="@+id/swtSedentario"
-                style="@style/btn_switch"
-                android:text="Sedentário\t\t" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Sexo -->
-
-    <LinearLayout
+    <!-- Curso -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtCurso"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="50dp">
+        android:layout_height="wrap_content">
 
-        <RadioGroup
-            android:id="@+id/rdgSexo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtCurso"
+            style="@style/edt_input"
+            android:hint="Curso "
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/txtSexo"
-                style="@style/txt_legenda"
-                android:text="Sexo" />
 
-            <RadioButton
-                android:id="@+id/rdbFeminino"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Feminino" />
-
-            <RadioButton
-                android:id="@+id/rdbMasculino"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Masculino" />
-
-        </RadioGroup>
-
-        <Switch
-            android:id="@+id/swtGestante"
-            style="@style/btn_switch"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="38dp"
-            android:text="Gestante\t\t"
-            android:textStyle="italic" />
-
-    </LinearLayout>
 
 
 </LinearLayout>

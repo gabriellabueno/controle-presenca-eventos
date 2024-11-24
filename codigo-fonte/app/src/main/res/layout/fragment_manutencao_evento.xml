@@ -25,6 +25,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- PALESTRANTES DISPONÍVEIS PARA MANUTENÇÃO -->
+
             <TextView
                 android:id="@+id/lbl"
                 style="@style/txt_legenda"
