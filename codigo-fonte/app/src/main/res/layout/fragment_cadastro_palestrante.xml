@@ -19,8 +19,7 @@
     <Button
         android:id="@+id/btnCadastrar"
         android:layout_marginTop="40dp"
-        android:backgroundTint="@color/cor_secundaria"
-        android:text="Cadastrar"
+        android:text="@string/str_btn_cadastrar"
         style="@style/botao"
         />
 

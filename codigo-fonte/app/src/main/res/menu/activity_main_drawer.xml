@@ -10,18 +10,14 @@
             android:icon="@drawable/ic_menu_home"
             android:title="@string/str_home" />
         <item
-            android:id="@+id/nav_controle"
-            android:icon="@drawable/ic_menu_controle"
-            android:title="@string/str_evento_consulta" />
-
-        <item
-            android:id="@+id/nav_cadastro"
+            android:id="@+id/nav_novo_evento"
             android:icon="@drawable/ic_menu_cadastro"
-            android:title="@string/str_evento_cadastro" />
+            android:title="@string/str_novo_evento" />
 
         <item
-            android:id="@+id/nav_sugestao"
-            android:icon="@drawable/ic_menu_sugestao"
-            android:title="@string/str_sugestoes" />
+            android:id="@+id/nav_eventos_cadastrados"
+            android:icon="@drawable/ic_menu_controle"
+            android:title="@string/str_eventos" />
+
     </group>
 </menu>

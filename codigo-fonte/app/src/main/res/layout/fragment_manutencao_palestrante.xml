@@ -27,7 +27,7 @@
             android:id="@+id/btnAtualizar"
             style="@style/botao"
             android:gravity="center"
-            android:text="Atualizar" />
+            android:text="@string/str_btn_atualizar" />
 
         <Space
             android:layout_width="30dp"
@@ -39,7 +39,7 @@
             android:id="@+id/btnExcluir"
             style="@style/botao"
             android:gravity="center"
-            android:text="Excluir" />
+            android:text="@string/str_btn_excluir" />
     </LinearLayout>
 
 

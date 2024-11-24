@@ -32,7 +32,7 @@
                 style="@style/txt_legenda"
                 android:layout_marginHorizontal="50dp"
                 android:layout_marginBottom="20dp"
-                android:text="Palestrantes" />
+                android:text="@string/str_palestrantes" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -66,7 +66,7 @@
             android:id="@+id/btnAtualizar"
             style="@style/botao"
             android:gravity="center"
-            android:text="Atualizar" />
+            android:text="@string/str_btn_atualizar" />
 
         <Space
             android:layout_width="30dp"
@@ -78,7 +78,7 @@
             android:id="@+id/btnExcluir"
             style="@style/botao"
             android:gravity="center"
-            android:text="Excluir" />
+            android:text="@string/str_btn_excluir" />
     </LinearLayout>
 
 
