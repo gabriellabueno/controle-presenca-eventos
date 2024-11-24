@@ -48,10 +48,17 @@
 
             </androidx.cardview.widget.CardView>
 
+            <Button
+                android:id="@+id/btnNovoPalestrante"
+                style="@style/botaoSecundario"
+                android:layout_gravity="center"
+                android:text="Button" />
+
         </LinearLayout>
     </ScrollView>
 
     <!-- Botão Cadastrar -->
+
     <Button
         android:id="@+id/btnCadastrar"
         style="@style/botao"
