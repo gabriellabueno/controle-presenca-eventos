@@ -14,13 +14,11 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         app:startIconDrawable="@drawable/ic_pessoa">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtNome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/edt_input"
             android:hint="Nome do Palestrante"
             android:inputType="text|textCapWords" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -35,7 +33,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtCpf"
             style="@style/edt_input"
-            android:hint="Cpf"
+            android:hint="CPF"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,78 +50,5 @@
             android:hint="E-mail"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Layout com o restante dos inputs -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <!-- Título Acadêmico-->
-        <RadioGroup
-            android:id="@+id/rdgTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/txtTitulo"
-                style="@style/txt_legenda"
-                android:text="Título acadêmico (opcional)" />
-
-            <!-- Usando GridLayout para dividir em duas colunas -->
-            <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rdbTecnologo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="50dp"
-                    android:text="Tecnólogo" /> <!-- Margem entre colunas -->
-
-                <RadioButton
-                    android:id="@+id/rdbEspecialista"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="50dp"
-                    android:text="Especialista" /> <!-- Margem entre colunas -->
-
-                <RadioButton
-                    android:id="@+id/rdbLicenciado"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="50dp"
-                    android:text="Licenciado" /> <!-- Margem entre colunas -->
-
-                <RadioButton
-                    android:id="@+id/rdbMestre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="50dp"
-                    android:text="Mestre" /> <!-- Margem entre colunas -->
-
-                <RadioButton
-                    android:id="@+id/rdbBacharel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="50dp"
-                    android:text="Bacharel" /> <!-- Margem entre colunas -->
-
-                <RadioButton
-                    android:id="@+id/rdbDoutor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="50dp"
-                    android:text="Doutor" /> <!-- Margem entre colunas -->
-
-            </GridLayout>
-
-        </RadioGroup>
-
-    </LinearLayout>
 
 </LinearLayout>

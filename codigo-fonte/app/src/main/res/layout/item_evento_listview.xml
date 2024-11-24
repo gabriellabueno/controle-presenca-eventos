@@ -16,53 +16,110 @@
         <!-- Nome -->
         <TextView
             android:id="@+id/tvNome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Nome"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="Nome do Evento"
+            style="@style/titulo_item_listview" />
 
         <!-- Layout para restate dos itens -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <!-- ID -->
+            <!-- Legendas -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:gravity="right"
+                >
 
                 <TextView
-                    style="@style/itens_listview"
+                    style="@style/txt_listview"
                     android:text="ID:"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvID"
-                    style="@style/itens_listview"
-                    android:text="ID" />
-            </LinearLayout>
-
-            <!-- Idade -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/itens_listview"
-                    android:text="Idade:"
+                    style="@style/txt_listview"
+                    android:text="Data:"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvIdade"
-                    style="@style/itens_listview"
-                    android:text="Idade" />
+                    style="@style/txt_listview"
+                    android:text="Início:"
+                    android:textStyle="bold" />
 
+                <TextView
+                    style="@style/txt_listview"
+                    android:text="Fim:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:text="Duração:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:text="Local:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:text="Status:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:text="Organizador(es):"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Valores -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvID"
+                    android:text="ID" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvData"
+                    android:text="00/00/0000" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvInicio"
+                    android:text="00:00" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvFim"
+                    android:text="00:00" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvDuracao"
+                    android:text="0 h" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvLocal"
+                    android:text="Local" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvStatus"
+                    android:text="Status" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvOrganizador"
+                    android:text="Orgs" />
             </LinearLayout>
 
 

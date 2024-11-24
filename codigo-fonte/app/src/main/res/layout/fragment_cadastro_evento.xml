@@ -51,7 +51,7 @@
 
             <Button
                 android:id="@+id/btnNovoPalestrante"
-                style="@style/botaoTransparente"
+                style="@style/botao_transparente"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:drawableLeft="@drawable/ic_add"

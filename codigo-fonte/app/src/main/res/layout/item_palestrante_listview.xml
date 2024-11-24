@@ -16,13 +16,9 @@
         <!-- Nome -->
         <TextView
             android:id="@+id/tvNome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:text="Nome"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            style="@style/titulo_item_listview"
+            />
 
         <!-- Layout para restate dos itens -->
         <LinearLayout
@@ -37,14 +33,15 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/itens_listview"
-                    android:text="ID:"
-                    android:textStyle="bold" />
+                    android:text="CPF:"
+                    android:textStyle="bold"
+                    style="@style/txt_listview" />
 
                 <TextView
-                    android:id="@+id/tvID"
-                    style="@style/itens_listview"
-                    android:text="ID" />
+                    android:id="@+id/tvCPF"
+                    android:text="CPF"
+                    style="@style/txt_listview"
+                    />
             </LinearLayout>
 
             <!-- Idade -->
@@ -54,14 +51,14 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/itens_listview"
-                    android:text="Idade:"
+                    style="@style/txt_listview"
+                    android:text="E-mail:"
                     android:textStyle="bold" />
 
                 <TextView
+                    style="@style/txt_listview"
                     android:id="@+id/tvIdade"
-                    style="@style/itens_listview"
-                    android:text="Idade" />
+                    android:text="E-mail" />
 
             </LinearLayout>
 
