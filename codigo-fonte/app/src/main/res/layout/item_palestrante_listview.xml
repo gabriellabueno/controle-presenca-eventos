@@ -10,41 +10,47 @@
         android:layout_height="wrap_content"
         android:background="#D5D3D3"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="10dp">
 
-        <!-- Nome -->
-        <TextView
-            android:id="@+id/tvNome"
-            android:text="Nome"
-            style="@style/titulo_item_listview"
-            />
 
-        <!-- Layout para restate dos itens -->
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/cbPalestrante"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ID -->
+            <!-- Nome -->
+
+            <TextView
+                android:id="@+id/tvNome"
+                style="@style/titulo_item_listview"
+                android:text="Nome" />
+
+            <!-- CPF -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
+                    style="@style/txt_listview"
                     android:text="CPF:"
-                    android:textStyle="bold"
-                    style="@style/txt_listview" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvCPF"
-                    android:text="CPF"
                     style="@style/txt_listview"
-                    />
+                    android:text="CPF" />
             </LinearLayout>
 
-            <!-- Idade -->
+            <!-- Email -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,8 +62,8 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvEmail"
                     style="@style/txt_listview"
-                    android:id="@+id/tvIdade"
                     android:text="E-mail" />
 
             </LinearLayout>

@@ -73,6 +73,12 @@
                     android:text="Organizador(es):"
                     android:textStyle="bold" />
 
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:text="Palestrante(s):"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
             <!-- Valores -->
@@ -120,6 +126,13 @@
                     style="@style/txt_listview"
                     android:id="@+id/tvOrganizador"
                     android:text="Orgs" />
+
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvPalestrantes"
+                    android:text="Palestrantes" />
+
             </LinearLayout>
 
 

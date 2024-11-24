@@ -1,14 +1,14 @@
 package br.edu.fatec.controlepresenca.util;
 
-import java.time.LocalTime;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 
 public class Evento {
 
     //ATRIBUTOS
     private String nome, local, organizadores;
     private Date data;
-    private LocalTime horaInicio, horaFim;
+    private Time horaInicio, horaFim;
     private Palestrante[] palestrantes;
     private Participante[] participantes;
     private Integer id, duracao, status;
@@ -17,7 +17,7 @@ public class Evento {
     public Evento() {}
 
 
-    public Evento(String nome, String local, Date data, LocalTime horaInicio, LocalTime horaFim,
+    public Evento(String nome, String local, Date data, Time horaInicio, Time horaFim,
                   Palestrante[] palestrantes, String organizadores, Participante[] participantes, Integer duracao, Integer status) {
         this.nome = nome;
         this.local = local;
@@ -42,6 +42,15 @@ public class Evento {
     }
 
     //GETTERS E SETTERS
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -66,19 +75,19 @@ public class Evento {
         this.data = data;
     }
 
-    public LocalTime getHoraInicio() {
+    public Time getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(LocalTime horaInicio) {
+    public void setHoraInicio(Time horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public LocalTime getHoraFim() {
+    public Time getHoraFim() {
         return horaFim;
     }
 
-    public void setHoraFim(LocalTime horaFim) {
+    public void setHoraFim(Time horaFim) {
         this.horaFim = horaFim;
     }
 
@@ -106,14 +115,6 @@ public class Evento {
         this.participantes = participantes;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Integer getDuracao() {
         return duracao;
     }
@@ -122,7 +123,7 @@ public class Evento {
         this.duracao = duracao;
     }
 
-    public Integer isStatus() {
+    public Integer getStatus() {
         return status;
     }
 
