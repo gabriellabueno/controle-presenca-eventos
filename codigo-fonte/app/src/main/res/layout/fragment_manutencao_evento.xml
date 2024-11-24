@@ -5,13 +5,13 @@
     android:id="@+id/fragment_manutencao"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".view.pessoa.ManutencaoPessoa">
 
 
     <!-- INPUTS -->
-    <include layout="@layout/inputs_palestrante">
+    <include layout="@layout/inputs_evento">
 
     </include>
 

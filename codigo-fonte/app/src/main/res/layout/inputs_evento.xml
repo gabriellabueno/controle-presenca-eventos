@@ -1,168 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <!-- Nome do Evento-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtNome"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="30dp"
+        android:layout_marginBottom="20dp">
+        <!-- app:startIconDrawable="@drawable/ic_pessoa" -->
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome do Evento"
+            android:inputType="text|textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Local do Evento -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtLocal"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtLocal"
+            style="@style/edt_input"
+            android:hint="Local"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Organizador(es) -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtOrganizador"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtOrganizador"
+            style="@style/edt_input"
+            android:hint="Organizador(es)"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Data -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtData"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtData"
+            style="@style/edt_input"
+            android:hint="Data"
+            android:inputType="date" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Layout com o restante dos inputs -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        >
+        android:orientation="horizontal">
 
-        <!-- Nome -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtNome"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:startIconDrawable="@drawable/ic_pessoa">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtNome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nome"
-                android:inputType="text|textCapWords" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Identidade de Gênero -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtIdentidade"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtGenero"
-                style="@style/edt_input"
-                android:hint="Identidade de gênero"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Layout com o restante dos inputs -->
+        <!-- Coluna Esquerda -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <!-- Coluna Esquerda -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Peso -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtPeso"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtPeso"
-                        style="@style/edt_input"
-                        android:hint="Peso (kg)"
-                        android:inputType="numberDecimal" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Idade -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtIdade"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtIdade"
-                        style="@style/edt_input"
-                        android:hint="Idade"
-                        android:inputType="number"
-                        app:suffixText="anos" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <!-- Espaço para separar colunas -->
-            <Space
-                android:layout_width="50dp"
-                android:layout_height="match_parent" />
+            android:orientation="vertical">
 
 
-            <!-- Coluna Direita -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Altura -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtAltura"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtAltura"
-                        style="@style/edt_input"
-                        android:hint="Altura (metros)"
-                        android:inputType="numberDecimal" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Sedentario -->
-                <Switch
-                    android:id="@+id/swtSedentario"
-                    style="@style/btn_switch"
-                    android:text="Sedentário\t\t" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Sexo -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="50dp"
-            >
-
-            <RadioGroup
-                android:id="@+id/rdgSexo"
-                android:layout_width="wrap_content"
+            <!-- Horário de Início -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtHoraInicio"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/txtSexo"
-                    style="@style/txt_legenda"
-                    android:text="Sexo" />
-
-                <RadioButton
-                    android:id="@+id/rdbFeminino"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Feminino" />
-
-                <RadioButton
-                    android:id="@+id/rdbMasculino"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Masculino" />
-
-            </RadioGroup>
-
-            <Switch
-                android:id="@+id/swtGestante"
-                style="@style/btn_switch"
-                android:text="Gestante\t\t"
-                android:layout_marginTop="38dp"
-                android:layout_marginLeft="30dp"
-                android:textStyle="italic"
-                />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtHoraInicio"
+                    style="@style/edt_input"
+                    android:hint="Horário Inicial"
+                    android:inputType="time" /> <!-- Recebe input no formato HH:mm-->
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
+        <!-- Espaço para separar colunas -->
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
 
 
+        <!-- Coluna Direita -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Horário de Término -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtHoraFim"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtHoraFim"
+                    style="@style/edt_input"
+                    android:hint="Horário Final"
+                    android:inputType="time" /> <!-- Recebe input no formato HH:mm-->
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
     </LinearLayout>
+
+</LinearLayout>
