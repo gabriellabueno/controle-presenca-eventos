@@ -5,9 +5,17 @@
     <style name="edt_input">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
         <item name="endIconMode">clear_text</item>
     </style>
+
+    <style name="edt_input_data">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">time</item> <!-- Recebe input no formato HH:mm-->
+        <item name="endIconMode">clear_text</item>
+    </style>
+
 
     <!-- TEXTVIEW SIMPLES - LEGENDAS -->
     <style name="txt_legenda">
@@ -64,9 +72,5 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-
-
-
-
 
 </resources>

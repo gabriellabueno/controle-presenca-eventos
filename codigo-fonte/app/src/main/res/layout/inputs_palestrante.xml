@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="20dp">
 
     <!-- Nome -->
     <com.google.android.material.textfield.TextInputLayout
@@ -18,9 +18,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtNome"
-            style="@style/edt_input"
             android:hint="Nome do Palestrante"
-            android:inputType="text|textCapWords" />
+            android:inputType="text|textCapWords"
+            style="@style/edt_input"
+        />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- CPF -->
@@ -32,9 +33,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtCpf"
-            style="@style/edt_input"
             android:hint="CPF"
-            android:inputType="text" />
+            android:inputType="text"
+            style="@style/edt_input"
+        />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Email -->
@@ -46,9 +48,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEmail"
-            style="@style/edt_input"
             android:hint="E-mail"
-            android:inputType="text" />
+            android:inputType="text"
+            style="@style/edt_input"
+        />
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

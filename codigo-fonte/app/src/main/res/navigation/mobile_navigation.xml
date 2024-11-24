@@ -5,46 +5,94 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_pagina_inicial">
 
+    <!-- HOME -->
     <fragment
         android:id="@+id/nav_pagina_inicial"
-        android:name="br.edu.fatec.controlepresenca.view.HomeFragment"
+        android:name="br.edu.fatec.controlepresenca.view.Home"
         android:label="@string/str_home"
         tools:layout="@layout/fragment_home">
     <action
         android:id="@+id/action_home_to_cadastro"
-        app:destination="@id/nav_cadastro"/>
+        app:destination="@id/nav_cadastro_evento"/>
     </fragment>
 
+    <!-- CADASTRO EVENTO -->
     <fragment
-        android:id="@+id/nav_controle"
-        android:name="br.edu.fatec.controlepresenca.view.pessoa.ConsultaPessoa"
-        android:label="@string/str_evento_consulta"
+        android:id="@+id/nav_cadastro_evento"
+        android:name="br.edu.fatec.controlepresenca.view.evento.CadastroEvento"
+        android:label="@string/str_evento_cadastro"
+        tools:layout="@layout/fragment_cadastro_evento">
+        <argument
+            android:name="palestranteSelecionadoID"
+            app:argType="integer"
+            />
+        <action
+            android:id="@+id/action_nav_cadastro_evento_to_nav_cadastro_palestrante"
+            app:destination="@id/nav_cadastro_palestrante" />
+    </fragment>
+
+    <!-- CADASTRO PALESTRANTE -->
+    <fragment
+        android:id="@+id/nav_cadastro_palestrante"
+        android:name="br.edu.fatec.controlepresenca.view.palestrante.CadastroPalestrante"
+        android:label="@string/str_palestrante_cadastro"
+        tools:layout="@layout/fragment_cadastro_palestrante" />
+
+
+    <!-- CONSULTA EVENTO / EVENTOS CADASTRADOS -->
+    <fragment
+        android:id="@+id/nav_consulta_evento"
+        android:name="br.edu.fatec.controlepresenca.view.evento.ConsultaEvento"
+        android:label="@string/str_eventos"
         tools:layout="@layout/fragment_consulta_evento">
         <action
-            android:id="@+id/action_controle_to_manutencao"
-            app:destination="@id/nav_manutencao" />
+            android:id="@+id/action_popup"
+            app:destination="@id/nav_popup" />
     </fragment>
 
+    <!-- POPUP-->
     <fragment
-        android:id="@+id/nav_cadastro"
-        android:name="br.edu.fatec.controlepresenca.view.pessoa.CadastroPessoa"
-        android:label="@string/str_evento_cadastro"
-        tools:layout="@layout/fragment_cadastro_evento" />
+        android:id="@+id/nav_popup"
+        android:name="br.edu.fatec.controlepresenca.view.CheckinParticipante"
+        android:label=""
+        tools:layout="@layout/popup_dialog" >
+        <action
+            android:id="@+id/action_nav_popup_to_nav_checkin_participante"
+            app:destination="@id/nav_checkin_participante" />
+        <action
+            android:id="@+id/action_nav_popup_to_nav_manutencao_evento"
+            app:destination="@id/nav_manutencao_evento" />
+    </fragment>
 
+    <!-- CHECK-IN PARTICIPANTE -->
     <fragment
-        android:id="@+id/nav_sugestao"
-        android:name="br.edu.fatec.controlepresenca.view.SugestaoFragment"
-        android:label="@string/str_sugestoes"
-        tools:layout="@layout/fragment_sugestao" />
+        android:id="@+id/nav_checkin_participante"
+        android:name="br.edu.fatec.controlepresenca.view.CheckinParticipante"
+        android:label="@string/str_checkin_participante"
+        tools:layout="@layout/fragment_checkin_participante" />
 
+    <!-- MANUTENÇÃO EVENTO -->
     <fragment
-        android:id="@+id/nav_manutencao"
-        android:name="br.edu.fatec.controlepresenca.view.pessoa.ManutencaoPessoa"
-        android:label="@string/str_evento_manutencao" >
+        android:id="@+id/nav_manutencao_evento"
+        android:name="br.edu.fatec.controlepresenca.view.evento.ManutencaoEvento"
+        android:label="@string/str_evento_manutencao"
+        tools:layout="@layout/fragment_manutencao_evento"
+        >
         <argument
-            android:name="pessoaSelecionadaID"
-            app:argType="integer" />
+            android:name="eventoSelecionadoID"
+            app:argType="integer"
+            />
+        <action
+            android:id="@+id/action_nav_manutencao_evento_manutencao_palestrante"
+            app:destination="@id/nav_manutencao_palestrante" />
     </fragment>
+
+    <!-- MANUTENÇÃO PALESTRANTE -->
+    <fragment
+        android:id="@+id/nav_manutencao_palestrante"
+        android:name="br.edu.fatec.controlepresenca.view.palestrante.ManutencaoPalestrante"
+        android:label="@string/str_palestrante_manutencao"
+        tools:layout="@layout/fragment_manutencao_palestrante" />
 
 
 </navigation>

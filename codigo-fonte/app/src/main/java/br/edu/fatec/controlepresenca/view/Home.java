@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import br.edu.fatec.controlepresenca.R;
+import br.edu.fatec.diariosaude.R;
 
-public class HomeFragment extends Fragment {
+public class Home extends Fragment {
 
     Button btnComecar;
     TextView txtIntroducao;
@@ -29,13 +29,7 @@ public class HomeFragment extends Fragment {
 
 
         // Insere texto no TextView (txtIntroducao)
-        String introducao = "\nSua jornada para uma vida saudável começa aqui. " +
-                "Nós acreditamos que cada pessoa é única, e por isso oferecemos sugestões personalizadas " +
-                "de alimentação e exercícios físicos levando em consideração suas características corporais." +
-                "\nCom o Saúde em Dia, você terá acesso a:" +
-                "\n\nSugestões Nutricionais: Dicas de refeições saudáveis adaptadas às suas necessidades." +
-                "\n\nRotinas de Exercícios: Sugestões de atividades físicas que se encaixam no seu perfil e estilo de vida." +
-                "\n\nPrepare-se para transformar sua saúde e bem-estar de forma simples e eficaz. Vamos juntos nessa jornada!";
+        String introducao = "";
         txtIntroducao.setText(introducao);
 
 

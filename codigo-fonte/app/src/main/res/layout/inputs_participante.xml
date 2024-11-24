@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="20dp">
 
     <!-- Nome -->
     <com.google.android.material.textfield.TextInputLayout
@@ -14,14 +14,12 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         app:startIconDrawable="@drawable/ic_pessoa">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtNome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:hint="Nome"
+            style="@style/edt_input"
             android:inputType="text|textCapWords" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -34,9 +32,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtCpf"
-            style="@style/edt_input"
             android:hint="Cpf"
-            android:inputType="text" />
+            android:inputType="text"
+            style="@style/edt_input"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Email -->
@@ -48,9 +47,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEmail"
-            style="@style/edt_input"
             android:hint="E-mail"
-            android:inputType="text" />
+            android:inputType="text"
+            style="@style/edt_input"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Curso -->
@@ -62,9 +62,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtCurso"
+            android:hint="Curso"
+            android:inputType="text"
             style="@style/edt_input"
-            android:hint="Curso "
-            android:inputType="text" />
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
 

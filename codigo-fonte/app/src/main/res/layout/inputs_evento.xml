@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="20dp">
 
     <!-- Nome do Evento-->
     <com.google.android.material.textfield.TextInputLayout
@@ -19,9 +19,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtNome"
-            style="@style/edt_input"
             android:hint="Nome do Evento"
-            android:inputType="text|textCapWords" />
+            android:inputType="text|textCapWords"
+            style="@style/edt_input"
+        />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Local do Evento -->
@@ -33,9 +34,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtLocal"
-            style="@style/edt_input"
             android:hint="Local"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            style="@style/edt_input"
+        />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Organizador(es) -->
@@ -47,9 +49,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtOrganizador"
-            style="@style/edt_input"
             android:hint="Organizador(es)"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            style="@style/edt_input"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Data -->
@@ -61,68 +64,58 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtData"
-            style="@style/edt_input"
             android:hint="Data"
-            android:inputType="date" />
+            android:inputType="date"
+            style="@style/edt_input"
+        />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Layout com o restante dos inputs -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <!-- Coluna Esquerda -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
 
 
-            <!-- Horário de Início -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtHoraInicio"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content">
+        <!-- Horário de Início -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtHoraInicio"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtHoraInicio"
-                    style="@style/edt_input"
-                    android:hint="Horário Inicial"
-                    android:inputType="time" /> <!-- Recebe input no formato HH:mm-->
-            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtHoraInicio"
+                android:hint="Horário Inicial"
+                style="@style/edt_input_data"
+            />
 
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Espaço para separar colunas -->
+
+
         <Space
-            android:layout_width="50dp"
-            android:layout_height="match_parent" />
-
-
-        <!-- Coluna Direita -->
-        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_weight="1" />
 
-            <!-- Horário de Término -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtHoraFim"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtHoraFim"
-                    style="@style/edt_input"
-                    android:hint="Horário Final"
-                    android:inputType="time" /> <!-- Recebe input no formato HH:mm-->
-            </com.google.android.material.textfield.TextInputLayout>
+        <!-- Horário de Término -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtHoraFim"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content">
 
-        </LinearLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtHoraFim"
+                android:hint="Horário Final"
+                style="@style/edt_input_data"
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
     </LinearLayout>
 
 </LinearLayout>

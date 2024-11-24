@@ -1,4 +1,4 @@
-package br.edu.fatec.controlepresenca.view.pessoa;
+package br.edu.fatec.controlepresenca.view.palestrante;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ import java.text.DecimalFormat;
 import br.edu.fatec.controlepresenca.R;
 import br.edu.fatec.controlepresenca.controller.ParticipanteController;
 
-public class ManutencaoPessoa extends Fragment {
+public class ManutencaoPalestrante extends Fragment {
 
     // Variáveis para componentes XML
     private EditText edtNome, edtGenero, edtIdade, edtAltura, edtPeso;

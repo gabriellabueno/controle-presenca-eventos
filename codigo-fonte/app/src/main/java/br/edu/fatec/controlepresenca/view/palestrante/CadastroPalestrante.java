@@ -1,4 +1,4 @@
-package br.edu.fatec.controlepresenca.view.pessoa;
+package br.edu.fatec.controlepresenca.view.palestrante;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -15,10 +15,10 @@ import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import br.edu.fatec.controlepresenca.R;
 import br.edu.fatec.controlepresenca.controller.ParticipanteController;
+import br.edu.fatec.controlepresenca.util.Palestrante;
 
-public class CadastroPessoa extends Fragment {
+public class CadastroPalestrante extends Fragment {
     
     // Variáveis para componentes XML
     private EditText edtNome, edtGenero, edtIdade, edtAltura, edtPeso;
@@ -29,7 +29,7 @@ public class CadastroPessoa extends Fragment {
 
     // Variáveis para Controller
     private ParticipanteController pessoaController;
-    private Pessoa pessoa;
+    private Palestrante palestrante;
 
     // Variáveis para definir valores booleanos
     // Salvos como INT pois o MySQL não aceita booleano

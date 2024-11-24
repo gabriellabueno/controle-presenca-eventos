@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".view.pessoa.CadastroPessoa">
+    tools:context="br.edu.fatec.controlepresenca.view.palestrante.CadastroPalestrante">
 
 
     <!-- INPUTS -->
@@ -18,8 +18,8 @@
     <!-- Botão Cadastrar -->
     <Button
         android:id="@+id/btnCadastrar"
-        android:layout_marginTop="40dp"
         android:text="@string/str_btn_cadastrar"
+        android:layout_marginTop="20dp"
         style="@style/botao"
         />
 

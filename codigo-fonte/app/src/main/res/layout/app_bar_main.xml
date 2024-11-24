@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="br.edu.fatec.controlepresenca.MainActivity">
 
     <!-- Activity para unir LAYOUT (barra, botão) e CONTEÚDO DA MAIN -->
 
@@ -12,14 +12,14 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.DiarioDeSaude.AppBarOverlay">
+        android:theme="@style/Theme.ControlePresenca.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.DiarioDeSaude.PopupOverlay" />
+            app:popupTheme="@style/Theme.ControlePresenca.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

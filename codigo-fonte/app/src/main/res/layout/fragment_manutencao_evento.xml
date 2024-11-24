@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".view.pessoa.ManutencaoPessoa">
+    tools:context="br.edu.fatec.controlepresenca.view.evento.ManutencaoEvento">
 
 
     <!-- INPUTS -->
@@ -23,16 +23,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- PALESTRANTES DISPONÍVEIS PARA MANUTENÇÃO -->
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            >
 
             <TextView
                 android:id="@+id/lbl"
                 style="@style/txt_legenda"
-                android:layout_marginHorizontal="50dp"
-                android:layout_marginBottom="20dp"
                 android:text="@string/str_palestrantes" />
+
+            <!-- PALESTRANTES DISPONÍVEIS PARA MANUTENÇÃO -->
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -59,14 +59,16 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        >
 
         <!-- Botão Atualizar -->
         <Button
             android:id="@+id/btnAtualizar"
+            android:text="@string/str_btn_atualizar"
             style="@style/botao"
-            android:gravity="center"
-            android:text="@string/str_btn_atualizar" />
+            />
 
         <Space
             android:layout_width="30dp"
@@ -77,7 +79,6 @@
         <Button
             android:id="@+id/btnExcluir"
             style="@style/botao"
-            android:gravity="center"
             android:text="@string/str_btn_excluir" />
     </LinearLayout>
 

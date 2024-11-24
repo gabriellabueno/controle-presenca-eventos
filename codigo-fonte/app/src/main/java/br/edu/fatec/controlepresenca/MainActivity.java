@@ -11,7 +11,9 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import br.edu.fatec.controlepresenca.databinding.ActivityMainBinding;
+import br.edu.fatec.diariosaude.R;
+import br.edu.fatec.diariosaude.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_pagina_inicial, R.id.nav_controle, R.id.nav_cadastro, R.id.nav_sugestao)
+                R.id.nav_pagina_inicial, R.id.nav_consulta_evento, R.id.nav_cadastro_palestrante, R.id.nav_sugestao)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_fragment_content_main);
