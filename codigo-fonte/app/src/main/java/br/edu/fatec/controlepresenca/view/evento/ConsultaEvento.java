@@ -13,7 +13,7 @@ import java.util.List;
 import br.edu.fatec.controlepresenca.R;
 import br.edu.fatec.controlepresenca.controller.EventoController;
 import br.edu.fatec.controlepresenca.util.Evento;
-import br.edu.fatec.controlepresenca.util.PessoaAdapter;
+import br.edu.fatec.controlepresenca.util.EventoAdapter;
 
 public class ConsultaEvento extends Fragment {
 
@@ -23,7 +23,7 @@ public class ConsultaEvento extends Fragment {
     private EventoController controller;
 
     // Adapter para apresentar dados no ListView
-    PessoaAdapter adapter;
+    EventoAdapter adapter;
 
 
 

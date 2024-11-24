@@ -11,7 +11,7 @@
 
 
     <!-- INPUTS -->
-    <include layout="@layout/campos_inputs">
+    <include layout="@layout/inputs_palestrante">
 
     </include>
 

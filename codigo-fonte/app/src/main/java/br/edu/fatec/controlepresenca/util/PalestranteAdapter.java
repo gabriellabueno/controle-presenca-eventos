@@ -1,5 +1,7 @@
 package br.edu.fatec.controlepresenca.util;
 
+import static android.os.Build.VERSION_CODES.R;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +11,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.edu.fatec.controlepresenca.R;
-
-public class PessoaAdapter extends ArrayAdapter<Pessoa> {
+public class PalestranteAdapter extends ArrayAdapter<Palestrante> {
     private Context context;
 
-    public PessoaAdapter(Context context, List<Pessoa> pessoas) {
-        super(context, 0, pessoas);
+    // ADICIONAR PARÂMETRO PARA VISIBILIDADE DO CHECKBOX
+    public PalestranteAdapter(Context context, List<Palestrante> palestrantes) {
+        super(context, 0, palestrantes);
         this.context = context;
     }
 

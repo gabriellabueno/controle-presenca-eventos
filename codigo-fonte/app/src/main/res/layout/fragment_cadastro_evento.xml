@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_cadastro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".view.pessoa.CadastroPessoa">
+
+
+    <!-- INPUTS -->
+    <include layout="@layout/inputs_palestrante">
+
+    </include>
+
+    <!-- LIST VIEW COM CHECKBOX -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lbl"
+                style="@style/txt_legenda"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginBottom="20dp"
+                android:text="Palestrantes" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ListView
+                    android:id="@+id/listViewSugestao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Botão Cadastrar -->
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:backgroundTint="@color/cor_secundaria"
+        android:text="Cadastrar"
+        style="@style/botao"
+        />
+
+</LinearLayout>

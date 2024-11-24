@@ -121,7 +121,7 @@ WHERE cpf_participante_fk LIKE('11111111111');
 
 -- Remove participante do evento
 DELETE FROM tb_inscricao 
-WHERE id_inscricao = 4 
+WHERE id_inscricao = 2 
 AND id_evento_fk = 2;
 
 SELECT * FROM tb_inscricao;
@@ -164,7 +164,7 @@ SELECT * FROM tb_palestra;
 
 --
 
--- TESTA REMOÇÃO DE UM EVENTO
+-- REMOÇÃO DE UM EVENTO
 -- Também deve deletar incricao e palestra automaticamente
 DELETE FROM tb_evento WHERE id_evento_pk = 1;
 SELECT * FROM tb_evento;

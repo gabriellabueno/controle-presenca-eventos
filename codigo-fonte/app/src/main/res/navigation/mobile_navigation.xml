@@ -19,7 +19,7 @@
         android:id="@+id/nav_controle"
         android:name="br.edu.fatec.controlepresenca.view.pessoa.ConsultaPessoa"
         android:label="@string/str_evento_consulta"
-        tools:layout="@layout/fragment_controle">
+        tools:layout="@layout/fragment_consulta_evento">
         <action
             android:id="@+id/action_controle_to_manutencao"
             app:destination="@id/nav_manutencao" />
@@ -29,7 +29,7 @@
         android:id="@+id/nav_cadastro"
         android:name="br.edu.fatec.controlepresenca.view.pessoa.CadastroPessoa"
         android:label="@string/str_evento_cadastro"
-        tools:layout="@layout/fragment_cadastro" />
+        tools:layout="@layout/fragment_cadastro_evento" />
 
     <fragment
         android:id="@+id/nav_sugestao"
