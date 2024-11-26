@@ -21,9 +21,7 @@ import br.edu.fatec.controlepresenca.util.Evento;
 public class ManutencaoEvento extends Fragment {
 
     // Variáveis para componentes XML
-    private EditText edtNome, edtLocal, edtOrganizador,
-            edtData, edtHoraInicio, edtHoraFim;
-    private ListView lvPalestrantesM;
+    private EditText edtNome, edtLocal, edtPalestrante, edtOrganizador, edtData, edtHoraInicio, edtHoraFim;
     private Button btnAtualizar, btnExcluir;
 
     // Variáveis para controller:
@@ -51,12 +49,11 @@ public class ManutencaoEvento extends Fragment {
         // Variáveis para componentes XML
         edtNome = view.findViewById(R.id.edtNome);
         edtLocal = view.findViewById(R.id.edtLocal);
+        edtPalestrante = view.findViewById(R.id.edtPalestrante);
         edtOrganizador = view.findViewById(R.id.edtOrganizador);
         edtData = view.findViewById(R.id.edtData);
         edtHoraInicio = view.findViewById(R.id.edtHoraInicio);
         edtHoraFim = view.findViewById(R.id.edtHoraFim);
-        lvPalestrantesM = view.findViewById(R.id.lvPalestrantesM);
-
         btnAtualizar = view.findViewById(R.id.btnAtualizar);
         btnExcluir = view.findViewById(R.id.btnExcluir);
 
@@ -65,17 +62,12 @@ public class ManutencaoEvento extends Fragment {
             eventoSelecionadoID = getArguments().getInt("eventoSelecionadoID");
         }
 
-        // Busca dados a partir do ID e armazena em instância de Pessoa
+        // Busca dados a partir do ID e armazena em instância de Evento
         evento = eventoController.read(eventoSelecionadoID);
 
 
         // Preenche campos de inputs com os dados retornados
         preencheCamposEdt(evento);
-
-        //Clica no item do list view leva para Manutenção de palestrantes
-        lvPalestrantesM.setOnClickListener(view1 -> {
-
-        });
 
 
         // BOTÃO ATUALIZAR
@@ -83,7 +75,8 @@ public class ManutencaoEvento extends Fragment {
             evento = recebeInputs();
 
             if (evento == null) {
-                Toast.makeText(getContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Por favor, preencha todos os campos",
+                        Toast.LENGTH_SHORT).show();
             } else {
                 evento.setId(eventoSelecionadoID);
                 eventoController.update(evento);
@@ -117,6 +110,7 @@ public class ManutencaoEvento extends Fragment {
 
         if (edtNome.getText().toString().isEmpty()
                 || edtLocal.getText().toString().isEmpty()
+                || edtPalestrante.getText().toString().isEmpty()
                 || edtOrganizador.getText().toString().isEmpty()
                 || edtData.getText().toString().isEmpty()
                 || edtHoraInicio.getText().toString().isEmpty()
@@ -127,6 +121,7 @@ public class ManutencaoEvento extends Fragment {
             evento = new Evento();
             evento.setNome(edtNome.getText().toString());
             evento.setLocal(edtLocal.getText().toString());
+            evento.setPalestrantes(edtPalestrante.getText().toString());
             evento.setOrganizadores(edtOrganizador.getText().toString());
             evento.setData(Date.valueOf(edtData.getText().toString()));
             evento.setHoraInicio(Time.valueOf(edtHoraInicio.getText().toString()));
@@ -140,6 +135,7 @@ public class ManutencaoEvento extends Fragment {
     public void preencheCamposEdt(Evento evento) {
         edtNome.setText(evento.getNome());
         edtLocal.setText(evento.getLocal());
+        edtPalestrante.setText(evento.getOrganizadores());
         edtOrganizador.setText(evento.getOrganizadores());
         edtData.setText(String.valueOf(evento.getData()));
         edtHoraInicio.setText(String.valueOf(evento.getHoraInicio()));
@@ -149,6 +145,7 @@ public class ManutencaoEvento extends Fragment {
     public void limpaCamposEdt() {
         edtNome.setText(null);
         edtLocal.setText(null);
+        edtPalestrante.setText(null);
         edtOrganizador.setText(null);
         edtData.setText(null);
         edtHoraInicio.setText(null);

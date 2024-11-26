@@ -28,12 +28,12 @@ public class Evento {
         this.organizadores = organizadores;
         this.participantes = participantes;
         this.duracao = duracao;
-        this.status = status;
+        this.status = 1;
     }
 
     //MÉTODO PARA FINALIZAR O EVENTO
-    public Integer finalizaEvento() {
-        return 1;
+    public void finalizaEvento() {
+        status = 0;
     }
 
     //MÉTODO PARA ADICIONAR PARTICIPANTE NO EVENTO

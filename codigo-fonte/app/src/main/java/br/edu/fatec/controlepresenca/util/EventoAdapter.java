@@ -55,7 +55,12 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
             tvFim.setText(evento.getHoraFim().toString());
             tvDuracao.setText(evento.getDuracao());
             tvLocal.setText(evento.getLocal());
-            tvStatus.setText(evento.getStatus());
+
+            if(evento.getStatus() == 1)
+                tvStatus.setText("Aberto");
+            else
+                tvStatus.setText("Fechado");
+
             tvOrganizador.setText(evento.getNome());
             tvPalestrantes.setText(evento.getPalestrantes());
         }

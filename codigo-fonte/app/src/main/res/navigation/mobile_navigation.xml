@@ -22,13 +22,7 @@
         android:name="br.edu.fatec.controlepresenca.view.evento.CadastroEvento"
         android:label="@string/str_evento_cadastro"
         tools:layout="@layout/fragment_cadastro_evento">
-        <argument
-            android:name="palestranteSelecionadoID"
-            app:argType="integer"
-            />
     </fragment>
-
-
 
     <!-- CONSULTA EVENTO / EVENTOS CADASTRADOS -->
     <fragment
@@ -38,7 +32,11 @@
         tools:layout="@layout/fragment_consulta_evento">
         <action
             android:id="@+id/action_popup"
-            app:destination="@id/nav_popup" />
+            app:destination="@id/nav_popup">
+            <argument
+                android:name="eventoSelecionadoID"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <!-- POPUP-->
@@ -48,11 +46,14 @@
         android:label=""
         tools:layout="@layout/popup_dialog" >
         <action
-            android:id="@+id/action_nav_popup_to_nav_checkin_participante"
+            android:id="@+id/action_popup_to_checkin"
             app:destination="@id/nav_checkin_participante" />
         <action
-            android:id="@+id/action_nav_popup_to_nav_manutencao_evento"
+            android:id="@+id/action_popup_to_manutencao"
             app:destination="@id/nav_manutencao_evento" />
+        <argument
+            android:name="eventoSelecionadoID"
+            app:argType="integer" />
     </fragment>
 
     <!-- CHECK-IN PARTICIPANTE -->
@@ -67,15 +68,7 @@
         android:id="@+id/nav_manutencao_evento"
         android:name="br.edu.fatec.controlepresenca.view.evento.ManutencaoEvento"
         android:label="@string/str_evento_manutencao"
-        tools:layout="@layout/fragment_manutencao_evento"
-        >
-        <argument
-            android:name="eventoSelecionadoID"
-            app:argType="integer"
-            />
-        <action
-            android:id="@+id/action_nav_manutencao_evento_manutencao_palestrante"
-            app:destination="@id/nav_manutencao_palestrante" />
+        tools:layout="@layout/fragment_manutencao_evento">
     </fragment>
 
 

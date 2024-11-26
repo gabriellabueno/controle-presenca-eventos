@@ -22,6 +22,7 @@ import br.edu.fatec.controlepresenca.R;
 
 public class ConsultaEvento extends Fragment {
 
+    // ListView
     private ListView listViewControle;
 
     // Variáveis para Controller
@@ -30,7 +31,6 @@ public class ConsultaEvento extends Fragment {
     // Adapter para apresentar dados no ListView
     EventoAdapter adapter;
 
-    private Evento evento;
 
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class ConsultaEvento extends Fragment {
         // Inicializando o controller
         controller = new EventoController(this.getContext());
 
-
+        // XML ListView
         listViewControle = view.findViewById(R.id.listViewControle);
 
         // Listar pessoas no ListView
@@ -60,10 +60,7 @@ public class ConsultaEvento extends Fragment {
 
 
            if(eventoSelecionadoID != null) {
-                NavController navController = NavHostFragment.findNavController(this);
-                Bundle bundle = new Bundle();
-                bundle.putInt("eventoSelecionadoID", eventoSelecionadoID);
-                //navController.navigate(R.id.action_controle_to_manutencao, bundle);
+                mostraPopup(eventoSelecionadoID);
             }
 
         });
@@ -102,7 +99,7 @@ public class ConsultaEvento extends Fragment {
         return eventos;
     }
 
-    private void mostraPopup() {
+    private void mostraPopup(Integer eventoSelecionadoID) {
         Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.popup_dialog);
 
@@ -120,19 +117,24 @@ public class ConsultaEvento extends Fragment {
 
         //Métodos para botões
         btn_1.setOnClickListener(v -> {
-            dialog.dismiss();
-            //Mudar para fragment CheckinParticipante
+            // Mudar para fragment CheckinParticipante
             NavController navController = NavHostFragment.findNavController(this);
-            //navController.navigate(R.id.action_home_to_cadastro);
+            Bundle bundle = new Bundle();
+            bundle.putInt("eventoSelecionadoID", eventoSelecionadoID);
+            navController.navigate(R.id.action_popup_to_checkin, bundle);
         });
 
         btn_2.setOnClickListener(view -> {
-            //Mudar para fragment CheckinParticipante
+            // Mudar para fragment ManutencaoEvento
             NavController navController = NavHostFragment.findNavController(this);
-            //navController.navigate(R.id.action_home_to_cadastro);
+            Bundle bundle = new Bundle();
+            bundle.putInt("eventoSelecionadoID", eventoSelecionadoID);
+            navController.navigate(R.id.action_popup_to_manutencao, bundle);
         });
 
         btn_3.setOnClickListener(view -> {
+
+            Evento evento = controller.read(eventoSelecionadoID);
             evento.finalizaEvento();
         });
 
