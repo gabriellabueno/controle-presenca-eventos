@@ -7,61 +7,89 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import br.edu.fatec.controlepresenca.R;
+import br.edu.fatec.controlepresenca.controller.ParticipanteController;
+import br.edu.fatec.controlepresenca.util.Participante;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CheckinParticipante#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CheckinParticipante extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private EditText edtNome, edtCpf, edtEmail, edtCurso;
+    private Button btnLerQrCode, btnPresenca;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    // Variável para Controller
+    private ParticipanteController controller;
 
-    public CheckinParticipante() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CheckinParticipante.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CheckinParticipante newInstance(String param1, String param2) {
-        CheckinParticipante fragment = new CheckinParticipante();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    // Variável para manipular evento selecionado em Controle
+    private Integer eventoSelecionadoID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_checkin_participante, container, false);
+
+        // Apresenta o layout do Fragment
+        View view = inflater.inflate(R.layout.fragment_checkin_participante, container, false);
+
+        // Elementos XML
+        edtNome = view.findViewById(R.id.edtNome);
+        edtCpf = view.findViewById(R.id.edtCpf);
+        edtEmail = view.findViewById(R.id.edtEmail);
+        edtCurso = view.findViewById(R.id.edtCurso);
+        btnLerQrCode = view.findViewById(R.id.btnLerQrCode);
+        btnPresenca = view.findViewById(R.id.btnPresenca);
+
+
+        // Listener botão Ler QR CODE
+        btnLerQrCode.setOnClickListener(view1 -> {
+
+
+        });
+
+
+        // Recebe ID do evento selecionada da tela Consulta
+        if (getArguments() != null) {
+            eventoSelecionadoID = getArguments().getInt("eventoSelecionadoID");
+        }
+
+        // Listener botão Registrar Presença
+        btnPresenca.setOnClickListener(view1 -> {
+            Participante participante = recebeInputs();
+
+            controller.create(eventoSelecionadoID, participante);
+        });
+
+
+        return view;
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    // Recebe dados do participante e armazena em nova instância de Participante
+    public Participante recebeInputs() {
+
+        if (edtNome.getText().toString().isEmpty()
+                || edtCpf.getText().toString().isEmpty()
+                || edtEmail.getText().toString().isEmpty()
+                || edtCurso.getText().toString().isEmpty()) {
+            return null;
+
+        } else {
+            Participante participante = new Participante();
+
+            participante.setNome(edtNome.getText().toString());
+            participante.setCpf(edtCpf.getText().toString());
+            participante.setEmail(edtEmail.getText().toString());
+            participante.setCurso(edtCurso.getText().toString());
+
+            return participante;
+        }
+
+    }
+
 }

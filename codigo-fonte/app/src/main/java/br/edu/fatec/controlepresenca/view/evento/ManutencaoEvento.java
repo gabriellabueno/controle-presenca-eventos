@@ -32,7 +32,7 @@ public class ManutencaoEvento extends Fragment {
     // Salvos como INT pois o MySQL não aceita booleano
     private Integer status;
 
-    // Variável para manipular pessoa selecionada em Controle
+    // Variável para manipular evento selecionado em Controle
     private Integer eventoSelecionadoID;
 
 
@@ -57,7 +57,7 @@ public class ManutencaoEvento extends Fragment {
         btnAtualizar = view.findViewById(R.id.btnAtualizar);
         btnExcluir = view.findViewById(R.id.btnExcluir);
 
-        // Recebe ID da pessoa selecionada da tela Controle
+        // Recebe ID do evento selecionado da tela Consulta
         if (getArguments() != null) {
             eventoSelecionadoID = getArguments().getInt("eventoSelecionadoID");
         }

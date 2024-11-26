@@ -107,7 +107,9 @@ public class ConsultaEvento extends Fragment {
         TextView title = dialog.findViewById(R.id.popup_title);
         Button btn_1 = dialog.findViewById(R.id.popup_btn_1),
                 btn_2 = dialog.findViewById(R.id.popup_btn_2),
-                btn_3 = dialog.findViewById(R.id.popup_btn_3);
+                btn_3 = dialog.findViewById(R.id.popup_btn_3),
+                btn_sair = dialog.findViewById(R.id.btn_sair);
+
 
         //Definindo texto do título e botões
         title.setText("Selecione a opção desejada:");
@@ -115,28 +117,34 @@ public class ConsultaEvento extends Fragment {
         btn_2.setText("Alterar evento");
         btn_3.setText("Finalizar evento");
 
-        //Métodos para botões
+        // Checkin Participante
         btn_1.setOnClickListener(v -> {
-            // Mudar para fragment CheckinParticipante
             NavController navController = NavHostFragment.findNavController(this);
             Bundle bundle = new Bundle();
             bundle.putInt("eventoSelecionadoID", eventoSelecionadoID);
             navController.navigate(R.id.action_popup_to_checkin, bundle);
         });
 
+        // Manutencao Evento
         btn_2.setOnClickListener(view -> {
-            // Mudar para fragment ManutencaoEvento
             NavController navController = NavHostFragment.findNavController(this);
             Bundle bundle = new Bundle();
             bundle.putInt("eventoSelecionadoID", eventoSelecionadoID);
             navController.navigate(R.id.action_popup_to_manutencao, bundle);
         });
 
+        // Finaliza Evento
         btn_3.setOnClickListener(view -> {
 
             Evento evento = controller.read(eventoSelecionadoID);
             evento.finalizaEvento();
         });
+
+        // Sair
+        btn_sair.setOnClickListener(view -> {
+           dialog.dismiss();
+        });
+
 
         dialog.show();
     }
