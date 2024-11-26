@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-
 import androidx.annotation.NonNull;
 
-import java.util.Arrays;
 import java.util.List;
 
 import br.edu.fatec.controlepresenca.R;
@@ -44,7 +42,8 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
                 tvDuracao = convertView.findViewById(R.id.tvDuracao),
                 tvLocal = convertView.findViewById(R.id.tvLocal),
                 tvStatus = convertView.findViewById(R.id.tvStatus),
-                tvOrganizador = convertView.findViewById(R.id.tvOrganizador);
+                tvOrganizador = convertView.findViewById(R.id.tvOrganizador),
+                tvPalestrantes = convertView.findViewById(R.id.tvPalestrantes);
 
 
         // Popula os campos do item com o objeto passado
@@ -58,7 +57,7 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
             tvLocal.setText(evento.getLocal());
             tvStatus.setText(evento.getStatus());
             tvOrganizador.setText(evento.getNome());
-            tvOrganizador.setText(Arrays.toString(evento.getPalestrantes()));
+            tvPalestrantes.setText(evento.getPalestrantes());
         }
 
         return convertView;

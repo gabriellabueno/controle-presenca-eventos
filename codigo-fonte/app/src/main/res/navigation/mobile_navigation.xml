@@ -26,17 +26,8 @@
             android:name="palestranteSelecionadoID"
             app:argType="integer"
             />
-        <action
-            android:id="@+id/action_nav_cadastro_evento_to_nav_cadastro_palestrante"
-            app:destination="@id/nav_cadastro_palestrante" />
     </fragment>
 
-    <!-- CADASTRO PALESTRANTE -->
-    <fragment
-        android:id="@+id/nav_cadastro_palestrante"
-        android:name="br.edu.fatec.controlepresenca.view.palestrante.CadastroPalestrante"
-        android:label="@string/str_palestrante_cadastro"
-        tools:layout="@layout/fragment_cadastro_palestrante" />
 
 
     <!-- CONSULTA EVENTO / EVENTOS CADASTRADOS -->
@@ -86,13 +77,6 @@
             android:id="@+id/action_nav_manutencao_evento_manutencao_palestrante"
             app:destination="@id/nav_manutencao_palestrante" />
     </fragment>
-
-    <!-- MANUTENÇÃO PALESTRANTE -->
-    <fragment
-        android:id="@+id/nav_manutencao_palestrante"
-        android:name="br.edu.fatec.controlepresenca.view.palestrante.ManutencaoPalestrante"
-        android:label="@string/str_palestrante_manutencao"
-        tools:layout="@layout/fragment_manutencao_palestrante" />
 
 
 </navigation>

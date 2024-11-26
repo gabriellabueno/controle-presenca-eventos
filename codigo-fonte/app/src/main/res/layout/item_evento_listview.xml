@@ -70,14 +70,15 @@
 
                 <TextView
                     style="@style/txt_listview"
+                    android:text="Palestrante(s):"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/txt_listview"
                     android:text="Organizador(es):"
                     android:textStyle="bold" />
 
 
-                <TextView
-                    style="@style/txt_listview"
-                    android:text="Palestrante(s):"
-                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -124,14 +125,14 @@
 
                 <TextView
                     style="@style/txt_listview"
-                    android:id="@+id/tvOrganizador"
-                    android:text="Orgs" />
+                    android:id="@+id/tvPalestrantes"
+                    android:text="Palestrantes" />
 
 
                 <TextView
                     style="@style/txt_listview"
-                    android:id="@+id/tvPalestrantes"
-                    android:text="Palestrantes" />
+                    android:id="@+id/tvOrganizador"
+                    android:text="Orgs" />
 
             </LinearLayout>
 
