@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.ResultSet;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +30,10 @@ public class EventoDAO {
             duracao = "duracao",
             local = "local",
             status = "status",
+            palestrante = "palestrante",
             organizador = "organizador";
 
-    String[] args = {id, nome, data, horaInicio, horaFim, duracao, local, status, organizador};
+    String[] args = {id, nome, data, horaInicio, horaFim, duracao, local, status, palestrante, organizador};
 
     // Construtor
     public EventoDAO(Context context){
@@ -47,9 +52,10 @@ public class EventoDAO {
         values.put(data, String.valueOf(evento.getData()));
         values.put(horaInicio, String.valueOf(evento.getHoraInicio()));
         values.put(horaFim, String.valueOf(evento.getHoraFim()));
-        values.put(duracao, String.valueOf(evento.getDuracao()));
+        values.put(duracao, evento.getDuracao());
         values.put(local, evento.getLocal());
-        values.put(status, String.valueOf(evento.isStatus()));
+        values.put(status, String.valueOf(evento.getStatus()));
+        values.put(palestrante, evento.getPalestrantes());
         values.put(organizador, evento.getOrganizadores());
 
         banco.insert(table, null, values);
@@ -63,9 +69,10 @@ public class EventoDAO {
         values.put(data, String.valueOf(evento.getData()));
         values.put(horaInicio, String.valueOf(evento.getHoraInicio()));
         values.put(horaFim, String.valueOf(evento.getHoraFim()));
-        values.put(duracao, String.valueOf(evento.getDuracao()));
+        values.put(duracao, evento.getDuracao());
         values.put(local, evento.getLocal());
-        values.put(status, String.valueOf(evento.isStatus()));
+        values.put(status, String.valueOf(evento.getStatus()));
+        values.put(palestrante, evento.getPalestrantes());
         values.put(organizador, evento.getOrganizadores());
 
         String[] idEvento = {String.valueOf(evento.getId())};
@@ -113,7 +120,7 @@ public class EventoDAO {
     public List<Evento> listAll() {
         List<Evento> eventos = new ArrayList<>(); // Array de eventos
 
-        String[] args = {id, nome, data, horaInicio, horaFim, duracao, local, status, organizador};
+        String[] args = {id, nome, data, horaInicio, horaFim, duracao, local, status, palestrante, organizador};
 
         Cursor cursor = banco.query(table, args,
                 null, null, null, null, null );
@@ -124,13 +131,14 @@ public class EventoDAO {
 
             e.setId(cursor.getInt(0));
             e.setNome(cursor.getString(1));
-            //e.setData(); Arrumar tipo de data
-            //e.setHoraInicio(); Arrumar tipo de data
-            //e.setHoraFim(); Arrumar tipo de data
-            e.setDuracao(cursor.getInt(5));
+            e.setData(Date.valueOf(cursor.getString(2)));
+            e.setHoraInicio(Time.valueOf(cursor.getString(3)));
+            e.setHoraFim(Time.valueOf(cursor.getString(4)));
+            e.setDuracao(cursor.getString(5));
             e.setLocal(cursor.getString(6));
             e.setStatus(cursor.getInt(7));
-            e.setOrganizadores(cursor.getString(8));
+            e.setPalestrantes(cursor.getString(8));
+            e.setOrganizadores(cursor.getString(9));
 
             eventos.add(e); // adiciona evento ao array
         }

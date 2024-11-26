@@ -2,18 +2,14 @@ package br.edu.fatec.controlepresenca.util;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalTime;
-import java.time.Duration;
 import java.util.List;
 
 public class Evento {
 
     //ATRIBUTOS
-    private String nome, local, organizadores, duracao;
+    private String nome, local, organizadores, duracao, palestrantes;
     private Date data;
     private Time horaInicio, horaFim;
-    private Palestrante[] palestrantes;
-    //private Participante[] participantes;
     private List<Participante> participantes;
     private Integer id, status;
 
@@ -22,7 +18,7 @@ public class Evento {
 
 
     public Evento(String nome, String local, Date data, Time horaInicio, Time horaFim,
-                  Palestrante[] palestrantes, String organizadores, List<Participante> participantes, String duracao, Integer status) {
+                  String palestrantes, String organizadores, List<Participante> participantes, String duracao, Integer status) {
         this.nome = nome;
         this.local = local;
         this.data = data;
@@ -43,6 +39,18 @@ public class Evento {
     //MÉTODO PARA ADICIONAR PARTICIPANTE NO EVENTO
     public void adicionaParticipante(Participante participante) {
         participantes.add(participante);
+    }
+
+    public void calculaDuracao() {
+        // Calculando a diferença em milissegundos
+        long diferencaMili = Math.abs(horaFim.getTime() - horaInicio.getTime());
+
+        // Convertendo para horas e minutos
+        int horas = (int) (diferencaMili / (1000 * 60 * 60));
+        int minutos = (int) ((diferencaMili / (1000 * 60)) % 60);
+
+        //Passando para String
+        duracao = horas + ":" + minutos;
     }
 
     //GETTERS E SETTERS
@@ -95,11 +103,11 @@ public class Evento {
         this.horaFim = horaFim;
     }
 
-    public Palestrante[] getPalestrantes() {
+    public String getPalestrantes() {
         return palestrantes;
     }
 
-    public void setPalestrantes(Palestrante[] palestrantes) {
+    public void setPalestrantes(String palestrantes) {
         this.palestrantes = palestrantes;
     }
 
@@ -123,17 +131,7 @@ public class Evento {
         return duracao;
     }
 
-    public void setDuracao() {
-        // Calculando a diferença em milissegundos
-        long diferencaMili = Math.abs(horaFim.getTime() - horaInicio.getTime());
-
-        // Convertendo para horas e minutos
-        int horas = (int) (diferencaMili / (1000 * 60 * 60));
-        int minutos = (int) ((diferencaMili / (1000 * 60)) % 60);
-
-        //Passando para String
-        duracao = horas + ":" + minutos;
-    }
+    public void setDuracao(String duracao) {}
 
     public Integer getStatus() {
         return status;
