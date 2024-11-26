@@ -1,7 +1,5 @@
 package br.edu.fatec.controlepresenca.view.evento;
 
-import static android.os.Build.VERSION_CODES.R;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +16,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import java.sql.Date;
 import java.sql.Time;
 
+import br.edu.fatec.controlepresenca.R;
 import br.edu.fatec.controlepresenca.controller.EventoController;
 import br.edu.fatec.controlepresenca.util.Evento;
-import br.edu.fatec.diariosaude.R;
 
 public class CadastroEvento extends Fragment {
 

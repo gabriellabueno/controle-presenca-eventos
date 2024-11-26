@@ -13,7 +13,8 @@ import androidx.annotation.NonNull;
 import java.util.Arrays;
 import java.util.List;
 
-import br.edu.fatec.diariosaude.R;
+import br.edu.fatec.controlepresenca.R;
+
 
 public class EventoAdapter extends ArrayAdapter<Evento> {
     private Context context;

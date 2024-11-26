@@ -18,7 +18,7 @@ import java.util.List;
 import br.edu.fatec.controlepresenca.controller.EventoController;
 import br.edu.fatec.controlepresenca.util.Evento;
 import br.edu.fatec.controlepresenca.util.EventoAdapter;
-import br.edu.fatec.diariosaude.R;
+import br.edu.fatec.controlepresenca.R;
 
 public class ConsultaEvento extends Fragment {
 

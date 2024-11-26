@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import br.edu.fatec.diariosaude.R;
+import br.edu.fatec.controlepresenca.R;
 
 public class Home extends Fragment {
 

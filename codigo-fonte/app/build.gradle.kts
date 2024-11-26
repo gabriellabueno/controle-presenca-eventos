@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "br.edu.fatec.diariosaude"
+    namespace = "br.edu.fatec.controlepresenca"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "br.edu.fatec.diariosaude"
+        applicationId = "br.edu.fatec.controlepresenca"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

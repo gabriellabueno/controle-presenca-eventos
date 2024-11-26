@@ -1,12 +1,9 @@
 package br.edu.fatec.controlepresenca.view.palestrante;
 
-import static android.os.Build.VERSION_CODES.R;
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.text.DecimalFormat;
 
+import br.edu.fatec.controlepresenca.R;
 import br.edu.fatec.controlepresenca.controller.PalestranteController;
 import br.edu.fatec.controlepresenca.util.Palestrante;
 
@@ -43,9 +40,9 @@ public class ManutencaoPalestrante extends Fragment {
         palestranteController = new PalestranteController(this.getContext());
 
         // Variáveis para componentes XML
-        edtNome = view.findViewById(br.edu.fatec.diariosaude.R.id.edtNome);
-        edtCpf = view.findViewById(br.edu.fatec.diariosaude.R.id.edtCpf);
-        edtEmail = view.findViewById(br.edu.fatec.diariosaude.R.id.edtEmail);
+        edtNome = view.findViewById(R.id.edtNome);
+        edtCpf = view.findViewById(R.id.edtCpf);
+        edtEmail = view.findViewById(R.id.edtEmail);
 
         /* POSSÍVEL MÉTODO PARA MÁSCARA DE CPF
 

@@ -1,7 +1,5 @@
 package br.edu.fatec.controlepresenca.view.evento;
 
-import static android.os.Build.VERSION_CODES.R;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import java.sql.Date;
 import java.sql.Time;
 
-import br.edu.fatec.diariosaude.R;
+import br.edu.fatec.controlepresenca.R;
 import br.edu.fatec.controlepresenca.controller.EventoController;
 import br.edu.fatec.controlepresenca.util.Evento;
 
@@ -57,7 +55,7 @@ public class ManutencaoEvento extends Fragment {
         edtData = view.findViewById(R.id.edtData);
         edtHoraInicio = view.findViewById(R.id.edtHoraInicio);
         edtHoraFim = view.findViewById(R.id.edtHoraFim);
-        lvPalestrantesM = findViewById(R.id.lvPalestrantesM);
+        lvPalestrantesM = view.findViewById(R.id.lvPalestrantesM);
 
         btnAtualizar = view.findViewById(R.id.btnAtualizar);
         btnExcluir = view.findViewById(R.id.btnExcluir);

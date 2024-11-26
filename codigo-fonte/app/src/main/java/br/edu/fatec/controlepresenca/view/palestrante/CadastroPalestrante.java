@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import br.edu.fatec.controlepresenca.controller.PalestranteController;
 import br.edu.fatec.controlepresenca.util.Palestrante;
-import br.edu.fatec.diariosaude.R; //VERIFICAR SE É POSSÍVEL MUDAR CAMINHO DE DIRETÓRIO
+import br.edu.fatec.controlepresenca.R; //VERIFICAR SE É POSSÍVEL MUDAR CAMINHO DE DIRETÓRIO
 
 public class CadastroPalestrante extends Fragment {
 
