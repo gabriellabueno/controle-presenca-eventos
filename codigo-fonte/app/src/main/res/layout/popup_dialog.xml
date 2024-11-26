@@ -30,6 +30,7 @@
         android:id="@+id/popup_btn_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/cor_primaria"
         android:text="Opção 2"
         style="@style/botao"
         />
@@ -38,6 +39,7 @@
         android:id="@+id/popup_btn_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/cor_primaria"
         android:text="Opção 3"
         style="@style/botao"
         />

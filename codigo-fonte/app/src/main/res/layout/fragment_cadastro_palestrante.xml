@@ -17,7 +17,7 @@
 
     <!-- Botão Cadastrar -->
     <Button
-        android:id="@+id/btnCadastrar"
+        android:id="@+id/btnCadastrarPlt"
         android:text="@string/str_btn_cadastrar"
         android:layout_marginTop="20dp"
         style="@style/botao"

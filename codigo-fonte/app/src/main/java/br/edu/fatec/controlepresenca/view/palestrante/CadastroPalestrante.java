@@ -1,34 +1,28 @@
 package br.edu.fatec.controlepresenca.view.palestrante;
 
-import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Switch;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import br.edu.fatec.controlepresenca.controller.ParticipanteController;
+import br.edu.fatec.controlepresenca.controller.PalestranteController;
 import br.edu.fatec.controlepresenca.util.Palestrante;
+import br.edu.fatec.diariosaude.R; //VERIFICAR SE É POSSÍVEL MUDAR CAMINHO DE DIRETÓRIO
 
 public class CadastroPalestrante extends Fragment {
-    
+
     // Variáveis para componentes XML
-    private EditText edtNome, edtGenero, edtIdade, edtAltura, edtPeso;
-    private Switch swtSedentario;
-    private RadioButton rdbMasculino, rdbFeminino;
-    private Switch swtGestante;
+    private EditText edtNome, edtCpf, edtEmail;
     private Button btnCadastrar;
 
     // Variáveis para Controller
-    private ParticipanteController pessoaController;
+    private PalestranteController palestranteController;
     private Palestrante palestrante;
 
     // Variáveis para definir valores booleanos
@@ -41,18 +35,19 @@ public class CadastroPalestrante extends Fragment {
                              Bundle savedInstanceState) {
 
         // Infla o layout do Fragment
-        View view = inflater.inflate(R.layout.fragment_cadastro, container, false);
+        View view = inflater.inflate(R.layout.fragment_cadastro_palestrante, container, false);
 
-        pessoa = new Pessoa();
+        palestrante = new Palestrante();
         // Inicializa Controller
-        pessoaController = new ParticipanteController(this.getContext());
+        palestranteController = new PalestranteController(this.getContext());
 
 
         // Variáveis para componentes XML
-        edtNome = view.findViewById(R.id.edtNome);
-        edtGenero = view.findViewById(R.id.edtGenero);
-        edtIdade = view.findViewById(R.id.edtIdade);
-        edtAltura = view.findViewById(R.id.edtAltura);
+        edtNome = view.findViewById(R.id.edtNomePlt);
+        edtCpf = view.findViewById(R.id.edtCpfPlt);
+        edtEmail = view.findViewById(R.id.edtEmailPlt);
+
+        /* POSSÍVEL MÉTODO PARA MÁSCARA DE CPF
 
         // Máscara para input altura #.##
         edtAltura.setFilters(new InputFilter[]{(source, start, end, dest, dstart, dend) -> {
@@ -66,65 +61,21 @@ public class CadastroPalestrante extends Fragment {
             }
             return null;
         }});
+        */
 
-        edtPeso = view.findViewById(R.id.edtPeso);
-        swtSedentario = view.findViewById(R.id.swtSedentario);
-        rdbMasculino = view.findViewById(R.id.rdbMasculino);
-        rdbFeminino = view.findViewById(R.id.rdbFeminino);
-        swtGestante = view.findViewById(R.id.swtGestante);
-        btnCadastrar = view.findViewById(R.id.btnCadastrar);
-
-
-        swtGestante.setVisibility(View.GONE); // switch gestante invisível até selecionar sexo
-
-        // RADIO BUTTON FEMININO
-        // Listener para mudanças na seleção dos RadioButtons
-        rdbFeminino.setOnCheckedChangeListener(
-                (compoundButton, b) -> {
-                    if(rdbFeminino.isChecked()) {
-                        swtGestante.setVisibility(View.VISIBLE);
-                        sexo = 1;
-                    } else {
-                        swtGestante.setVisibility(View.GONE);
-                        sexo = 0;
-                    }
-                }
-        );
-
-        // SWITCH GESTANTE
-        swtGestante.setOnCheckedChangeListener((compoundButton, b) -> {
-            gestante = swtGestante.isChecked() ? 1 : 0;
-        });
-
-
-        // SWITCH SEDENTARIO
-        swtSedentario.setOnCheckedChangeListener((compoundButton, b) -> {
-            sedentario = swtSedentario.isChecked() ? 1 : 0;
-        });
-
+        btnCadastrar = view.findViewById(R.id.btnCadastrarPlt);
 
         // BOTÃO CADASTRAR
         btnCadastrar.setOnClickListener(v -> {
-            pessoa = recebeInputs();
+            palestrante = recebeInputs();
 
-            /*
-            if(pessoa == null) {
+            if (palestrante == null) {
                 Toast.makeText(getContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             } else {
-               if (pessoa.getIdade() <18)
-                    mostraPopup();
-               else {
-                    pessoaController.create(pessoa);
-                    pessoaController.mostrarMensagem("inserida");
-                    limpaCamposEdt();
-                }
-
+                palestranteController.create(1, palestrante); //VERIFICAR COMO RECEBER INPUT DE idEvento
+                palestranteController.mostrarMensagem("inserido");
+                limpaCamposEdt();
             }
-             */
-
-            sexo = 0;
-            gestante = 0;
-            sedentario = 0;
         });
 
 
@@ -137,55 +88,28 @@ public class CadastroPalestrante extends Fragment {
     }
 
 
-    // Recebe dados do usuário e armazena em nova instância de Pessoa
-    public Pessoa recebeInputs() {
+    // Recebe dados e armazena em nova instância de Palestrante
+    public Palestrante recebeInputs() {
 
         if (edtNome.getText().toString().isEmpty()
-                || edtIdade.getText().toString().isEmpty()
-                || edtAltura.getText().toString().isEmpty()
-                || edtPeso.getText().toString().isEmpty()
-                || !rdbFeminino.isChecked() && !rdbMasculino.isChecked())
-        {
+                || edtCpf.getText().toString().isEmpty()
+                || edtEmail.getText().toString().isEmpty()) {
             return null;
-        } else {
-            pessoa = new Pessoa();
-            pessoa.setNome(edtNome.getText().toString());
-            return pessoa;
-        }
 
+        } else {
+            palestrante = new Palestrante();
+            palestrante.setNome(edtNome.getText().toString());
+            palestrante.setCpf(edtCpf.getText().toString());
+            palestrante.setEmail(edtEmail.getText().toString());
+            return palestrante;
+        }
     }
 
     public void limpaCamposEdt() {
         edtNome.setText(null);
-        edtGenero.setText(null);
-        edtIdade.setText(null);
-        edtAltura.setText(null);
-        edtPeso.setText(null);
-        swtGestante.setVisibility(View.GONE);
-        rdbFeminino.setChecked(false);
-        rdbMasculino.setChecked(false);
-        swtSedentario.setChecked(false);
+        edtCpf.setText(null);
+        edtEmail.setText(null);
     }
 
-    private void mostraPopup() {
-        Dialog dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.popup_dialog);
-
-        // Configurando os elementos do poup
-        TextView title = dialog.findViewById(R.id.popup_title);
-        TextView text = dialog.findViewById(R.id.popup_txt);
-        Button button = dialog.findViewById(R.id.popup_button);
-
-        title.setText("Aviso");
-        text.setText("Para uma melhor experiência esse aplicativo é destinado apenas para pessoas que atingiram a maioridade. " +
-                "\n\nO cálculo de IMC para crianças e jovens depende de outros critérios específicos.");
-
-
-        button.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
-
-        dialog.show();
-    }
 
 }

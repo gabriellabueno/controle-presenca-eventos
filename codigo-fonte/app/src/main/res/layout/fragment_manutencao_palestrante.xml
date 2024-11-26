@@ -24,7 +24,7 @@
 
         <!-- Botão Atualizar -->
         <Button
-            android:id="@+id/btnAtualizar"
+            android:id="@+id/btnAtualizarPlt"
             style="@style/botao"
             android:text="@string/str_btn_atualizar" />
 
@@ -35,7 +35,7 @@
 
         <!-- Botão Excluir -->
         <Button
-            android:id="@+id/btnExcluir"
+            android:id="@+id/btnExcluirPlt"
             style="@style/botao"
             android:text="@string/str_btn_excluir" />
     </LinearLayout>

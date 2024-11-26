@@ -2,23 +2,27 @@ package br.edu.fatec.controlepresenca.util;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalTime;
+import java.time.Duration;
+import java.util.List;
 
 public class Evento {
 
     //ATRIBUTOS
-    private String nome, local, organizadores;
+    private String nome, local, organizadores, duracao;
     private Date data;
     private Time horaInicio, horaFim;
     private Palestrante[] palestrantes;
-    private Participante[] participantes;
-    private Integer id, duracao, status;
+    //private Participante[] participantes;
+    private List<Participante> participantes;
+    private Integer id, status;
 
     //CONSTRUTORES
     public Evento() {}
 
 
     public Evento(String nome, String local, Date data, Time horaInicio, Time horaFim,
-                  Palestrante[] palestrantes, String organizadores, Participante[] participantes, Integer duracao, Integer status) {
+                  Palestrante[] palestrantes, String organizadores, List<Participante> participantes, String duracao, Integer status) {
         this.nome = nome;
         this.local = local;
         this.data = data;
@@ -38,7 +42,7 @@ public class Evento {
 
     //MÉTODO PARA ADICIONAR PARTICIPANTE NO EVENTO
     public void adicionaParticipante(Participante participante) {
-        
+        participantes.add(participante);
     }
 
     //GETTERS E SETTERS
@@ -107,20 +111,28 @@ public class Evento {
         this.organizadores = organizadores;
     }
 
-    public Participante[] getParticipantes() {
+    public List<Participante> getParticipantes() {
         return participantes;
     }
 
-    public void setParticipantes(Participante[] participantes) {
+    public void setParticipantes(List<Participante> participantes) {
         this.participantes = participantes;
     }
 
-    public Integer getDuracao() {
+    public String getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(Integer duracao) {
-        this.duracao = duracao;
+    public void setDuracao() {
+        // Calculando a diferença em milissegundos
+        long diferencaMili = Math.abs(horaFim.getTime() - horaInicio.getTime());
+
+        // Convertendo para horas e minutos
+        int horas = (int) (diferencaMili / (1000 * 60 * 60));
+        int minutos = (int) ((diferencaMili / (1000 * 60)) % 60);
+
+        //Passando para String
+        duracao = horas + ":" + minutos;
     }
 
     public Integer getStatus() {

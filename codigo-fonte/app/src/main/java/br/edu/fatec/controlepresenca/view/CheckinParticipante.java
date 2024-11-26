@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import br.edu.fatec.controlepresenca.R;
 
 /**
  * A simple {@link Fragment} subclass.

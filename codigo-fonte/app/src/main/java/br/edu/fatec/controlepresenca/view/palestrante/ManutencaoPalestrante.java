@@ -1,6 +1,7 @@
 package br.edu.fatec.controlepresenca.view.palestrante;
 
-import android.app.Dialog;
+import static android.os.Build.VERSION_CODES.R;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,52 +12,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
-import br.edu.fatec.controlepresenca.R;
-import br.edu.fatec.controlepresenca.controller.ParticipanteController;
+import br.edu.fatec.controlepresenca.controller.PalestranteController;
+import br.edu.fatec.controlepresenca.util.Palestrante;
 
 public class ManutencaoPalestrante extends Fragment {
 
     // Variáveis para componentes XML
-    private EditText edtNome, edtGenero, edtIdade, edtAltura, edtPeso;
-    private Switch swtSedentario;
-    private RadioButton rdbMasculino, rdbFeminino;
-    private Switch swtGestante;
+    private EditText edtNome, edtCpf, edtEmail;
     private Button btnAtualizar, btnExcluir;
 
-    // Variáveis para controller:
-    private ParticipanteController controller;
-    private Pessoa pessoa;
+    // Variáveis para Controller
+    private PalestranteController palestranteController;
+    private Palestrante palestrante;
 
-    // Variáveis para definir valores booleanos
-    // Salvos como INT pois o MySQL não aceita booleano
-    private Integer sexo, gestante, sedentario;
-
-    // Variável para manipular pessoa selecionada em Controle
-    private Integer pessoaSelecionadaID;
-
+    // Variável para manipular palestrante selecionado no ListView
+    private String palestranteSelecionadoCpf;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Apresenta o layout do Fragment
-        View view = inflater.inflate(R.layout.fragment_manutencao, container, false);
+        View view = inflater.inflate(R.layout.fragment_manutencao_palestrante, container, false); //VERIFICAR ESSE ERRO
 
+        palestrante = new Palestrante();
         // Inicializa Controller
-        controller = new ParticipanteController(this.getContext());
+        palestranteController = new PalestranteController(this.getContext());
 
         // Variáveis para componentes XML
-        edtNome = view.findViewById(R.id.edtNome);
-        edtGenero = view.findViewById(R.id.edtGenero);
-        edtIdade = view.findViewById(R.id.edtIdade);
-        edtPeso = view.findViewById(R.id.edtPeso);
-        edtAltura = view.findViewById(R.id.edtAltura);
+        edtNome = view.findViewById(br.edu.fatec.diariosaude.R.id.edtNome);
+        edtCpf = view.findViewById(br.edu.fatec.diariosaude.R.id.edtCpf);
+        edtEmail = view.findViewById(br.edu.fatec.diariosaude.R.id.edtEmail);
+
+        /* POSSÍVEL MÉTODO PARA MÁSCARA DE CPF
 
         // Máscara para input altura #.##
         edtAltura.setFilters(new InputFilter[]{(source, start, end, dest, dstart, dend) -> {
@@ -70,84 +61,45 @@ public class ManutencaoPalestrante extends Fragment {
             }
             return null;
         }});
+        */
 
-        swtSedentario = view.findViewById(R.id.swtSedentario);
-        rdbMasculino = view.findViewById(R.id.rdbMasculino);
-        rdbFeminino = view.findViewById(R.id.rdbFeminino);
-        swtGestante = view.findViewById(R.id.swtGestante);
-        btnAtualizar = view.findViewById(R.id.btnAtualizar);
-        btnExcluir = view.findViewById(R.id.btnExcluir);
+        btnAtualizar = view.findViewById(R.id.btnAtualizarPlt);
+        btnExcluir = view.findViewById(R.id.btnExcluirPlt);
 
-        // Recebe ID da pessoa selecionada da tela Controle
+        // Recebe CPF da pessoa selecionada da tela Controle
         if (getArguments() != null) {
-            pessoaSelecionadaID = getArguments().getInt("pessoaSelecionadaID");
+            palestranteSelecionadoCpf = getArguments().getString("palestranteSelecionadoCpf");
         }
 
-        // Busca dados a partir do ID e armazena em instância de Pessoa
-        //pessoa = controller.read(pessoaSelecionadaID);
-
-
-        swtGestante.setVisibility(View.GONE); // switch gestante invisível até selecionar sexo
-
-        // RADIO BUTTON FEMININO
-        // Listener para mudanças na seleção dos RadioButtons
-        rdbFeminino.setOnCheckedChangeListener(
-                (compoundButton, b) -> {
-                    if(rdbFeminino.isChecked()) {
-                        swtGestante.setVisibility(View.VISIBLE);
-                        sexo = 1;
-                    } else {
-                        swtGestante.setVisibility(View.GONE);
-                        sexo = 0;
-                    }
-                }
-        );
-
-        // SWITCH GESTANTE
-        swtGestante.setOnCheckedChangeListener((compoundButton, b) -> {
-            gestante = swtGestante.isChecked() ? 1 : 0;
-        });
-
-
-        // SWITCH SEDENTARIO
-        swtSedentario.setOnCheckedChangeListener((compoundButton, b) -> {
-            sedentario = swtSedentario.isChecked() ? 1 : 0;
-        });
-
+        // Busca dados a partir do CPF e armazena em instância de Palestrante
+        palestrante = palestranteController.read(palestranteSelecionadoCpf);
 
 
         // Preenche campos de inputs com os dados retornados
-        preencheCamposEdt(pessoa);
+        preencheCamposEdt(palestrante);
 
 
         // BOTÃO ATUALIZAR
         btnAtualizar.setOnClickListener(v -> {
-            pessoa = recebeInputs();
+            palestrante = recebeInputs();
 
-            if(pessoa == null) {
+            if (palestrante == null) {
                 Toast.makeText(getContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             } else {
-                if (pessoa.getIdade() <18)
-                    mostraPopup();
-                else {
-                    pessoa.setId(pessoaSelecionadaID);
-                   // controller.update(pessoa);
-                    controller.mostrarMensagem("atualizada");
-                }
+                palestrante.setCpf(palestranteSelecionadoCpf);
+                palestranteController.update(palestrante);
+                palestranteController.mostrarMensagem("atualizado");
             }
 
-            sexo = 0;
-            gestante = 0;
-            sedentario = 0;
         });
 
 
         //Botão Excluir
         btnExcluir.setOnClickListener(v -> {
-            pessoa = new Pessoa();
-            pessoa.setId(pessoaSelecionadaID);
-           // controller.delete(pessoa);
-            controller.mostrarMensagem("removida");
+            palestrante = new Palestrante();
+            palestrante.setCpf(palestranteSelecionadoCpf);
+            palestranteController.delete(palestrante);
+            palestranteController.mostrarMensagem("removido");
             limpaCamposEdt();
         });
 
@@ -161,89 +113,40 @@ public class ManutencaoPalestrante extends Fragment {
     }
 
 
-    // Recebe dados do usuário e armazena em nova instância de Pessoa
-    public Pessoa recebeInputs() {
+    // Recebe dados e armazena em nova instância de Palestrante
+    public Palestrante recebeInputs() {
+
         if (edtNome.getText().toString().isEmpty()
-                || edtIdade.getText().toString().isEmpty()
-                || edtAltura.getText().toString().isEmpty()
-                || edtPeso.getText().toString().isEmpty()
-                || !rdbFeminino.isChecked() && !rdbMasculino.isChecked())
-        {
+                || edtCpf.getText().toString().isEmpty()
+                || edtEmail.getText().toString().isEmpty()) {
             return null;
+
         } else {
-            pessoa = new Pessoa();
-            pessoa.setNome(edtNome.getText().toString());
-            pessoa.setGenero(edtGenero.getText().toString());
-            pessoa.setIdade(Integer.parseInt(edtIdade.getText().toString()));
-            pessoa.setAltura(Float.parseFloat(edtAltura.getText().toString()));
-            pessoa.setPeso(Double.parseDouble(edtPeso.getText().toString()));
-            pessoa.setSexo(sexo);
-            pessoa.setGestante(gestante);
-            pessoa.setSedentario(sedentario);
-            return pessoa;
+            palestrante = new Palestrante();
+            palestrante.setNome(edtNome.getText().toString());
+            palestrante.setCpf(edtCpf.getText().toString());
+            palestrante.setEmail(edtEmail.getText().toString());
+            return palestrante;
         }
     }
 
+
     // Preenche campos de inputs com os dados da pessoa para Manutencao
-    public void preencheCamposEdt(Pessoa pessoa) {
-        edtNome.setText(pessoa.getNome());
-        edtGenero.setText(pessoa.getGenero());
-        edtIdade.setText(String.valueOf(pessoa.getIdade()));
+    public void preencheCamposEdt(Palestrante palestrante) {
+        edtNome.setText(palestrante.getNome());
+        edtCpf.setText(palestrante.getCpf());
+        edtEmail.setText(String.valueOf(palestrante.getEmail()));
 
-        String alturaFormatada = new DecimalFormat("#.00").format(pessoa.getAltura());
+        /*Depois usar para CPF
+        String alturaFormatada = new DecimalFormat("#.00").format(palestrante.getAltura());
         edtAltura.setText(alturaFormatada);
-
-        edtPeso.setText(String.valueOf(pessoa.getPeso()));
-
-        if(pessoa.getSexo() == 1) {
-            rdbFeminino.setChecked(true);
-            swtGestante.setVisibility(View.VISIBLE);
-        } else {
-            rdbMasculino.setChecked(true);
-            swtGestante.setVisibility(View.GONE);
-        }
-
-        if(pessoa.isGestante() == 1) {
-            swtGestante.setChecked(true);
-        }
-
-        if(pessoa.isSedentario() == 1)
-            swtSedentario.setChecked(true);
+         */
     }
 
     public void limpaCamposEdt() {
         edtNome.setText(null);
-        edtGenero.setText(null);
-        edtIdade.setText(null);
-        edtAltura.setText(null);
-        edtPeso.setText(null);
-        swtGestante.setVisibility(View.GONE);
-        rdbFeminino.setChecked(false);
-        rdbMasculino.setChecked(false);
-        swtSedentario.setChecked(false);
+        edtCpf.setText(null);
+        edtEmail.setText(null);
     }
-
-    private void mostraPopup() {
-        Dialog dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.popup_dialog);
-
-        // Configurando os elementos do poup
-        TextView title = dialog.findViewById(R.id.popup_title);
-        TextView text = dialog.findViewById(R.id.popup_txt);
-        Button button = dialog.findViewById(R.id.popup_button);
-
-        title.setText("Aviso");
-        text.setText("Para uma melhor experiência esse aplicativo é destinado apenas para pessoas que atingiram a maioridade. " +
-                "\n\nO cálculo de IMC para crianças e jovens depende de outros critérios específicos.");
-
-
-        button.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
-
-        dialog.show();
-    }
-
-
 
 }
