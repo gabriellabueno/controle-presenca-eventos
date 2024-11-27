@@ -41,6 +41,7 @@
         <Button
             android:id="@+id/popup_btn_1"
             style="@style/botao"
+            android:width="200dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opção 1" />
@@ -48,6 +49,7 @@
         <Button
             android:id="@+id/popup_btn_2"
             style="@style/botao"
+            android:width="200dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opção 2" />
@@ -55,6 +57,7 @@
         <Button
             android:id="@+id/popup_btn_3"
             style="@style/botao"
+            android:width="200dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/cor_primaria"
@@ -63,6 +66,7 @@
         <Button
             android:id="@+id/popup_btn_4"
             style="@style/botao"
+            android:width="200dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#D54D43"

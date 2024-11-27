@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Controle de Presença</string>
     <string name="str_palestrantes">Palestrantes</string>
+    <string name="str_descricao">"Gerencie seus eventos de forma prática! Cadastre, edite e adicione participantes rapidamente utilizando QR Code."</string>
 
     <!-- Itens menu drawer-->
     <string name="str_home">Página Inicial</string>
