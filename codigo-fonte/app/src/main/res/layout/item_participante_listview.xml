@@ -1,0 +1,86 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D5D3D3"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!-- Nome -->
+        <TextView
+            android:id="@+id/tvNome"
+            android:text="Nome do Participante"
+            style="@style/titulo_item_listview" />
+
+        <!-- Layout para restate dos itens -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- CPF -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="right"
+                >
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:text="CPF:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvCPF"
+                    android:text="CPF" />
+            </LinearLayout>
+
+            <!-- EMAIL -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:text="E-mail:"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvEmail"
+                    android:text="Email" />
+            </LinearLayout>
+
+
+            <!-- CURSO -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:text="Curso:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/txt_listview"
+                    android:id="@+id/tvCurso"
+                    android:text="Curso" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

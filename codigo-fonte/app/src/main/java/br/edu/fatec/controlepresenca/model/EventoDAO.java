@@ -73,7 +73,7 @@ public class EventoDAO {
 
         String[] idEvento = {String.valueOf(evento.getId())};
 
-        banco.update(table, values, "id_evento_pk=?" , idEvento);
+        banco.update(table, values,  id + "=?" , idEvento);
     }
 
     // Reseta ID da tabela "evento"
@@ -89,16 +89,16 @@ public class EventoDAO {
     public void delete(Evento evento) {
         String[] idEvento = {String.valueOf(evento.getId())};
 
-        banco.delete(table,"id_evento_pk=?", idEvento);
+        banco.delete(table,id + "=?", idEvento);
     }
 
 
     // READ
-    public Evento read(Integer id) {
-        String[] idEvento = {String.valueOf(id)};
+    public Evento read(Integer idInput) {
+        String[] idEvento = {String.valueOf(idInput)};
 
-        Cursor cursor = banco.query(table, args,
-                "id_evento_pk=?", idEvento, null, null, null);
+        Cursor cursor = banco.query(table, args, id + "=?", idEvento,
+                null, null, null);
 
         cursor.moveToFirst();
 

@@ -25,9 +25,6 @@ public class ManutencaoEvento extends Fragment {
     private EventoController controller;
     private Evento evento;
 
-    // Variáveis para definir valores booleanos
-    // Salvos como INT pois o MySQL não aceita booleano
-    private Integer status;
 
     // Variável para manipular evento selecionado em Controle
     private Integer eventoSelecionadoID;

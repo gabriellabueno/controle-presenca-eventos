@@ -82,11 +82,12 @@ public class ParticipanteDAO {
 
 
     // READ
-    public Participante read(String cpf) {
-        String[] cpfParticipante = {cpf};
+    public Participante read(String cpfInput) {
+        String[] cpfParticipante = {cpfInput};
 
         Cursor cursor = banco.query(table, args,
-                ParticipanteDAO.cpf + "=?", cpfParticipante, null, null, null);
+                cpf + "=?", cpfParticipante, null, null, null);
+
 
         cursor.moveToFirst();
 
@@ -98,30 +99,35 @@ public class ParticipanteDAO {
             participante.setNome(cursor.getString(2));
             participante.setEmail(cursor.getString(3));
             participante.setCurso(cursor.getString(4));
-
         }
+
         cursor.close();
         return participante;
     }
 
     // Retorna uma lista com todos os registros
     // para apresentar no ListView
-    public List<Participante> listAll() {
-        List<Participante> participantes = new ArrayList<>(); // Array de participantes
+    public List<Participante> listAll(Integer id) {
+        List<Participante> participantes = new ArrayList<>();
 
-        String[] args = {cpf, nome, email, curso};
+        String[] idEvento = { String.valueOf(id) };
 
-        Cursor cursor = banco.query(table, args,
-                null, null, null, null, null );
+        Cursor cursor = banco.rawQuery(
+                    "SELECT cpf_participante_pk, nome, email, curso " +
+                        "FROM tb_participante " +
+                        "INNER JOIN tb_inscricao " +
+                        "ON tb_participante.cpf_participante_pk = tb_inscricao.cpf_participante_fk " +
+                        "WHERE tb_inscricao.id_evento_fk = ?", idEvento
+        );
 
         // Loop para percorrer todas as linhas da tabela
         while (cursor.moveToNext()) {
             Participante p = new Participante();
 
-            p.setCpf(cursor.getString(1));
-            p.setNome(cursor.getString(2));
-            p.setEmail(cursor.getString(3));
-            p.setCurso(cursor.getString(4));
+            p.setCpf(cursor.getString(cursor.getColumnIndexOrThrow(cpf)));
+            p.setNome(cursor.getString(cursor.getColumnIndexOrThrow(nome)));
+            p.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(email)));
+            p.setCurso(cursor.getString(cursor.getColumnIndexOrThrow(curso)));
             participantes.add(p); // adiciona pessoa ao array
         }
 

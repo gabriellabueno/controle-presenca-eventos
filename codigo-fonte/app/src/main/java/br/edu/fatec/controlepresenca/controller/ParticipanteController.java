@@ -38,8 +38,8 @@ public class ParticipanteController {
         return dao.read(cpf);
     }
 
-    public List<Participante> listAll() {
-        return dao.listAll();
+    public List<Participante> listAll(Integer eventoSelecionadoID) {
+        return dao.listAll(eventoSelecionadoID);
     }
 
     public void mostrarMensagem(String mensagem) {

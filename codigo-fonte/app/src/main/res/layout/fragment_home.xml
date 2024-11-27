@@ -27,7 +27,9 @@
                     android:fontFamily="@font/aboreto"
                     android:textColor="@color/cor_primaria"
                     android:textSize="40sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    />
 
                 <ImageView
                     android:id="@+id/imgHome"
@@ -41,19 +43,10 @@
                     android:layout_height="wrap_content"
                     android:text="\nBem-vindo(a)!"
                     android:textAlignment="textStart"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:layout_marginVertical="20dp"
                     />
 
-                <TextView
-                    android:id="@+id/txtIntroducao"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:justificationMode="inter_word"
-                    android:textAlignment="textStart"
-                    android:textSize="15sp"
-                    android:text="Texto introdução ao app"
-                    />
 
                 <Button
                     android:id="@+id/btnComecar"

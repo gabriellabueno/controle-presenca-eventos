@@ -25,13 +25,6 @@ public class Home extends Fragment {
 
 
         btnComecar = view.findViewById(R.id.btnComecar);
-        txtIntroducao = view.findViewById((R.id.txtIntroducao));
-
-
-        // Insere texto no TextView (txtIntroducao)
-        String introducao = "";
-        txtIntroducao.setText(introducao);
-
 
         // BOTÃO COMEÇAR
         // Redireciona para tela de Cadastro

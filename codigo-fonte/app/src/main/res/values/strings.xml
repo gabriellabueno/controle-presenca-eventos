@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Controle de Presença em Evento</string>
+    <string name="app_name">Controle de Presença</string>
     <string name="str_palestrantes">Palestrantes</string>
 
     <!-- Itens menu drawer-->
@@ -12,6 +12,7 @@
     <string name="str_evento_manutencao">Atualizar Evento</string>
     <string name="str_palestrante_cadastro">Cadastro de Palestrante</string>
     <string name="str_palestrante_manutencao">Atualizar informações do Palestrante</string>
+    <string name="str_lista_participante">Lista de Participantes</string>
     <string name="str_checkin_participante">Check-in Participante</string>
 
 
@@ -20,6 +21,8 @@
     <string name="str_btn_atualizar">Atualizar</string>
     <string name="str_btn_excluir">Excluir</string>
     <string name="aberto">Aberto</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

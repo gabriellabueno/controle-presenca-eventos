@@ -38,6 +38,13 @@
                 app:argType="integer" />
         </action>
         <action
+            android:id="@+id/action_popup_to_lista"
+            app:destination="@id/nav_lista_participante">
+            <argument
+                android:name="eventoSelecionadoID"
+                app:argType="integer" />
+        </action>
+        <action
             android:id="@+id/action_popup_to_manutencao"
             app:destination="@id/nav_manutencao_evento">
             <argument
@@ -55,12 +62,19 @@
         android:label="@string/str_checkin_participante"
         tools:layout="@layout/fragment_checkin_participante" />
 
+    <!-- LISTA DE PARTICIPANTES -->
+    <fragment
+        android:id="@+id/nav_lista_participante"
+        android:name="br.edu.fatec.controlepresenca.view.ListaParticipantes"
+        android:label="@string/str_lista_participante"
+        tools:layout="@layout/fragment_participantes" />
+
     <!-- MANUTENÇÃO EVENTO -->
     <fragment
         android:id="@+id/nav_manutencao_evento"
         android:name="br.edu.fatec.controlepresenca.view.evento.ManutencaoEvento"
         android:label="@string/str_evento_manutencao"
-        tools:layout="@layout/fragment_manutencao_evento">
+        tools:layout="@layout/fragment_participantes">
     </fragment>
 
 

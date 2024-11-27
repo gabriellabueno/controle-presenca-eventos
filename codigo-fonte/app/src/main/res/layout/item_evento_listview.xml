@@ -11,7 +11,8 @@
         android:background="#D5D3D3"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        >
 
         <!-- Nome -->
         <TextView
@@ -29,9 +30,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="right"
-                >
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/txt_listview"
@@ -58,17 +58,6 @@
                     android:text="Status:"
                     android:textStyle="bold" />
 
-                <TextView
-                    style="@style/txt_listview"
-                    android:text="Palestrante(s):"
-                    android:textStyle="bold" />
-
-                <TextView
-                    style="@style/txt_listview"
-                    android:text="Organizador(es):"
-                    android:textStyle="bold" />
-
-
 
             </LinearLayout>
 
@@ -76,48 +65,73 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:orientation="vertical">
 
 
                 <TextView
-                    style="@style/txt_listview"
                     android:id="@+id/tvData"
+                    style="@style/txt_listview"
                     android:text="00/00/0000" />
 
                 <TextView
-                    style="@style/txt_listview"
                     android:id="@+id/tvInicio"
+                    style="@style/txt_listview"
                     android:text="00:00" />
 
                 <TextView
-                    style="@style/txt_listview"
                     android:id="@+id/tvFim"
+                    style="@style/txt_listview"
                     android:text="00:00" />
 
                 <TextView
-                    style="@style/txt_listview"
                     android:id="@+id/tvLocal"
+                    style="@style/txt_listview"
                     android:text="Local" />
 
                 <TextView
-                    style="@style/txt_listview"
                     android:id="@+id/tvStatus"
+                    style="@style/txt_listview"
                     android:text="Status" />
 
-                <TextView
-                    style="@style/txt_listview"
-                    android:id="@+id/tvPalestrantes"
-                    android:text="Palestrantes" />
-
-
-                <TextView
-                    style="@style/txt_listview"
-                    android:id="@+id/tvOrganizador"
-                    android:text="Orgs" />
 
             </LinearLayout>
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/txt_listview"
+                android:text="Palestrante(s):"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPalestrantes"
+                style="@style/txt_listview"
+                android:text="Palestrantes"
+                android:textAlignment="textStart" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/txt_listview"
+                android:text="Organizador(es):"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvOrganizador"
+                style="@style/txt_listview"
+                android:text="Orgs"
+                android:textAlignment="textStart" />
         </LinearLayout>
 
     </LinearLayout>

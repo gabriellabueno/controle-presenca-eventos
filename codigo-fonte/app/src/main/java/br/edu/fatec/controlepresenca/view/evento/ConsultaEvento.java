@@ -1,8 +1,5 @@
 package br.edu.fatec.controlepresenca.view.evento;
 
-import static androidx.core.os.BundleKt.bundleOf;
-import static androidx.navigation.Navigation.findNavController;
-
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,7 +23,7 @@ import br.edu.fatec.controlepresenca.R;
 public class ConsultaEvento extends Fragment {
 
     // ListView
-    private ListView listViewControle;
+    private ListView listView;
 
     // Variáveis para Controller
     private EventoController controller;
@@ -44,14 +41,14 @@ public class ConsultaEvento extends Fragment {
         controller = new EventoController(this.getContext());
 
         // XML ListView
-        listViewControle = view.findViewById(R.id.listViewControle);
+        listView = view.findViewById(R.id.listViewControle);
 
 
         listAll();
 
 
         // Clica no item da ListView leva para a tela de Manutenção
-        listViewControle.setOnItemClickListener((parent, v, position, id) -> {
+        listView.setOnItemClickListener((parent, v, position, id) -> {
 
             // Obtém o pessoa clicada
             Evento eventoSelecionado = adapter.getItem(position);
@@ -92,7 +89,7 @@ public class ConsultaEvento extends Fragment {
         adapter = new EventoAdapter(getContext(), eventos);
 
         // Popula ListView com itens do array
-        listViewControle.setAdapter(adapter);
+        listView.setAdapter(adapter);
     }
 
     private void mostraPopup(Integer eventoSelecionadoID) {
@@ -104,14 +101,16 @@ public class ConsultaEvento extends Fragment {
         Button btn_1 = dialog.findViewById(R.id.popup_btn_1),
                 btn_2 = dialog.findViewById(R.id.popup_btn_2),
                 btn_3 = dialog.findViewById(R.id.popup_btn_3),
+                btn_4 = dialog.findViewById(R.id.popup_btn_4),
                 btn_sair = dialog.findViewById(R.id.btn_sair);
 
 
         //Definindo texto do título e botões
         title.setText("Selecione a opção desejada");
         btn_1.setText("Adicionar participante");
-        btn_2.setText("Alterar evento");
-        btn_3.setText("Encerrar evento");
+        btn_2.setText("Lista de participantes");
+        btn_3.setText("Alterar evento");
+        btn_4.setText("Encerrar evento");
 
         // Checkin Participante
         btn_1.setOnClickListener(v -> {
@@ -122,8 +121,17 @@ public class ConsultaEvento extends Fragment {
             dialog.dismiss();
         });
 
-        // Manutencao Evento
+        // Lista de Participantes
         btn_2.setOnClickListener(view -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            Bundle bundle = new Bundle();
+            bundle.putInt("eventoSelecionadoID", eventoSelecionadoID);
+            navController.navigate(R.id.action_popup_to_lista, bundle);
+            dialog.dismiss();
+        });
+
+        // Manutencao Evento
+        btn_3.setOnClickListener(view -> {
             NavController navController = NavHostFragment.findNavController(this);
             Bundle bundle = new Bundle();
             bundle.putInt("eventoSelecionadoID", eventoSelecionadoID);
@@ -132,7 +140,7 @@ public class ConsultaEvento extends Fragment {
         });
 
         // Finaliza Evento
-        btn_3.setOnClickListener(view -> {
+        btn_4.setOnClickListener(view -> {
             Evento evento = controller.read(eventoSelecionadoID);
             evento.finalizaEvento();
             dialog.dismiss();

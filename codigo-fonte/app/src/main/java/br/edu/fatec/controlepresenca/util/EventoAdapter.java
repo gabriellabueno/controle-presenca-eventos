@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import java.util.List;
 
 import br.edu.fatec.controlepresenca.R;
@@ -35,6 +33,7 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
 
         // Linkando componentes XML com variáveis
         TextView tvNome = convertView.findViewById(R.id.tvNome),
+                tvData = convertView.findViewById(R.id.tvData),
                 tvInicio = convertView.findViewById(R.id.tvInicio),
                 tvFim = convertView.findViewById(R.id.tvFim),
                 tvLocal = convertView.findViewById(R.id.tvLocal),
@@ -47,6 +46,7 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
         Evento evento = getItem(position);
         if (evento != null) {
             tvNome.setText(evento.getNome());
+            tvData.setText(evento.getData());
             tvInicio.setText(evento.getHoraInicio());
             tvFim.setText(evento.getHoraFim());
             tvLocal.setText(evento.getLocal());
