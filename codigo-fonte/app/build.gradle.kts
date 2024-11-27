@@ -62,7 +62,6 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.legacy.support.v4)
     implementation(libs.zxing.android.embedded)
-    implementation(libs.gson)
     implementation(libs.json)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)

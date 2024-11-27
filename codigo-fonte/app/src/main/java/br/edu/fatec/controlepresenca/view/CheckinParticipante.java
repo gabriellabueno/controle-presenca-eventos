@@ -64,10 +64,11 @@ public class CheckinParticipante extends Fragment {
 
         // Listener botão Ler QR CODE
         btnLerQrCode.setOnClickListener(view1 -> {
+            // Utiliza dependência "zxing-android-embedded"
             IntentIntegrator integrator = new IntentIntegrator(requireActivity());
             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
             integrator.setPrompt("Escaneie o QR Code");
-            integrator.setCameraId(0); // Use a câmera traseira
+            integrator.setCameraId(0); // Uso da câmera traseira
             integrator.setBeepEnabled(true); // Som ao escanear
             integrator.setOrientationLocked(true); // Rotação automática desligada
             integrator.setBarcodeImageEnabled(false); // Não salva a imagem do QR Code
@@ -95,15 +96,26 @@ public class CheckinParticipante extends Fragment {
         return view;
     }
 
+    // Cria um ActivityResultLauncher para manipular o resultado do scan do QR Code
     private final ActivityResultLauncher<Intent> qrCodeLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-                    IntentResult intentResult = IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
-                    if (intentResult.getContents() != null) {
-                        String qrData = intentResult.getContents();
-                        try {
-                            JSONObject jsonObject = new JSONObject(qrData);
 
+                // Verifica se o scan foi bem sucedido e se os dados não são nulos
+                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+
+                    // Analisa o resultado usando a classe IntentIntegrator para obter os dados do QR Code
+                    IntentResult intentResult = IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
+
+                    // Verifica se os dados do QR Code foram obtidos com sucesso
+                    if (intentResult.getContents() != null) {
+                        // Armazena dados do QR Code em uma string
+                        String qrData = intentResult.getContents();
+
+                        try {
+                            // Cria um objeto JSON a partir dos dados do QR Code
+                            JSONObject jsonObject = new JSONObject(qrData); // Utiliza dependência "org.json"
+
+                            // Preenche inputs com os dados
                             edtNome.setText(jsonObject.getString("nome"));
                             edtCpf.setText(jsonObject.getString("cpf"));
                             edtEmail.setText(jsonObject.getString("email"));
@@ -113,6 +125,7 @@ public class CheckinParticipante extends Fragment {
                             Toast.makeText(getContext(), "Erro ao analisar o QR Code: " + e.getMessage(),
                                     Toast.LENGTH_SHORT).show();
                         }
+
                     } else {
                         Toast.makeText(getContext(), "Leitura do QR Code cancelada",
                                 Toast.LENGTH_SHORT).show();
