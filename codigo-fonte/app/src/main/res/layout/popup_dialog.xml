@@ -3,44 +3,62 @@
     android:orientation="vertical"
     android:layout_width="315dp"
     android:layout_height="wrap_content"
-    android:padding="20dp"
-    android:gravity="center"
     >
 
-    <TextView
-        android:id="@+id/popup_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Título do Popup"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"
-        />
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/popup_btn_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Opção 1"
-        android:backgroundTint="@color/cor_primaria"
-        style="@style/botao"
-        />
+        <Button
+            android:id="@+id/btn_sair"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/ic_sair" />
 
-    <Button
-        android:id="@+id/popup_btn_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/cor_primaria"
-        android:text="Opção 2"
-        style="@style/botao"
-        />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/popup_btn_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/cor_primaria"
-        android:text="Opção 3"
-        style="@style/botao"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+
+        <TextView
+            android:id="@+id/popup_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity=""
+            android:layout_marginBottom="20dp"
+            android:text="Título do Popup"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/popup_btn_1"
+            style="@style/botao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/cor_primaria"
+            android:text="Opção 1" />
+
+        <Button
+            android:id="@+id/popup_btn_2"
+            style="@style/botao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/cor_primaria"
+            android:text="Opção 2" />
+
+        <Button
+            android:id="@+id/popup_btn_3"
+            style="@style/botao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opção 3" />
+    </LinearLayout>
+
 </LinearLayout>
