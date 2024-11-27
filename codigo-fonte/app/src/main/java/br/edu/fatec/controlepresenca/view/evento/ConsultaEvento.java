@@ -142,7 +142,15 @@ public class ConsultaEvento extends Fragment {
         // Finaliza Evento
         btn_4.setOnClickListener(view -> {
             Evento evento = controller.read(eventoSelecionadoID);
+
+            // atualiza status na classe
             evento.finalizaEvento();
+            // atualiza status no BD
+            controller.updateStatus(eventoSelecionadoID);
+
+            // atualiza List View
+            listAll();
+
             dialog.dismiss();
         });
 

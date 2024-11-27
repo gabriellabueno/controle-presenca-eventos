@@ -18,19 +18,18 @@ public class Evento {
                   String palestrantes, String organizadores, List<Participante> participantes) {
         this.nome = nome;
         this.local = local;
-        this.status = "Aberto";
+        this.status = status;
         this.data = data;
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;
         this.palestrantes = palestrantes;
         this.organizadores = organizadores;
         this.participantes = participantes;
-
     }
 
     //MÉTODO PARA FINALIZAR O EVENTO
     public void finalizaEvento() {
-        status = "Finalizado";
+        status = "Encerrado";
     }
 
     //MÉTODO PARA ADICIONAR PARTICIPANTE NO EVENTO

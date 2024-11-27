@@ -28,6 +28,11 @@ public class EventoController {
         dao.update(evento);
     }
 
+    public void updateStatus(Integer id) {
+        dao = new EventoDAO(context);
+        dao.updateStatus(id);
+    }
+
     public void delete(Evento evento) {
         dao = new EventoDAO(context);
         dao.delete(evento);

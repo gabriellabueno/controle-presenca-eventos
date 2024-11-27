@@ -52,7 +52,7 @@ public class EventoDAO {
         values.put(hora_inicio, evento.getHoraInicio());
         values.put(hora_fim, evento.getHoraFim());
         values.put(local, evento.getLocal());
-        values.put(status, "Aberto");
+        values.put(status, evento.getStatus());
         values.put(palestrante, evento.getPalestrantes());
         values.put(organizador, evento.getOrganizadores());
 
@@ -72,6 +72,16 @@ public class EventoDAO {
         values.put(organizador, evento.getOrganizadores());
 
         String[] idEvento = {String.valueOf(evento.getId())};
+
+        banco.update(table, values,  id + "=?" , idEvento);
+    }
+
+    public void updateStatus(Integer idInput) {
+        ContentValues values = new ContentValues();
+
+        values.put(status, "Encerrado");
+
+        String[] idEvento = {String.valueOf(idInput)};
 
         banco.update(table, values,  id + "=?" , idEvento);
     }

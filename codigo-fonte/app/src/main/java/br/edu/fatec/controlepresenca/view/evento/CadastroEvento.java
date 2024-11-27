@@ -62,6 +62,7 @@ public class CadastroEvento extends Fragment {
                 Toast.makeText(getContext(), "Por favor, preencha todos os campos",
                         Toast.LENGTH_SHORT).show();
             } else {
+                evento.setStatus("Aberto");
                 eventoController.create(evento);
                 eventoController.mostrarMensagem("cadastrado");
                 limpaCamposEdt();

@@ -8,8 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
+import android.graphics.Color;
 
+import androidx.fragment.app.Fragment;
 
 import br.edu.fatec.controlepresenca.R;
 import br.edu.fatec.controlepresenca.controller.EventoController;
@@ -63,6 +64,11 @@ public class ManutencaoEvento extends Fragment {
 
         // Preenche campos de inputs com os dados retornados
         preencheCamposEdt(evento);
+
+        if(evento.getStatus().equals("Encerrado")) {
+            desativaAtualizacao();
+        }
+
 
 
         // BOTÃO ATUALIZAR
@@ -146,4 +152,21 @@ public class ManutencaoEvento extends Fragment {
         edtHoraInicio.setText(null);
         edtHoraFim.setText(null);
     }
+
+    public void desativaAtualizacao() {
+
+        // Desativa botão Atualizar
+        btnAtualizar.setEnabled(false);
+        btnAtualizar.setBackgroundColor(Color.DKGRAY);
+
+        // Desativa campos
+        edtNome.setEnabled(false);
+        edtLocal.setEnabled(false);
+        edtPalestrante.setEnabled(false);
+        edtOrganizador.setEnabled(false);
+        edtData.setEnabled(false);
+        edtHoraInicio.setEnabled(false);
+        edtHoraFim.setEnabled(false);
+    }
+
 }
