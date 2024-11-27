@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.activity)
     implementation(libs.legacy.support.v4)
+    implementation(libs.zxing.android.embedded)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 }
