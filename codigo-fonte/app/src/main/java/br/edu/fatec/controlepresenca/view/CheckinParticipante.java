@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONObject;
+
 import br.edu.fatec.controlepresenca.R;
 import br.edu.fatec.controlepresenca.controller.ParticipanteController;
 import br.edu.fatec.controlepresenca.util.Participante;
@@ -64,7 +66,7 @@ public class CheckinParticipante extends Fragment {
         btnLerQrCode.setOnClickListener(view1 -> {
             IntentIntegrator integrator = new IntentIntegrator(requireActivity());
             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-            integrator.setPrompt("Escaneie um QR Code");
+            integrator.setPrompt("Escaneie o QR Code");
             integrator.setCameraId(0); // Use a câmera traseira
             integrator.setBeepEnabled(true); // Som ao escanear
             integrator.setOrientationLocked(true); // Rotação automática desligada
@@ -97,20 +99,23 @@ public class CheckinParticipante extends Fragment {
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
                     IntentResult intentResult = IntentIntegrator.parseActivityResult(result.getResultCode(), result.getData());
-                    if (intentResult != null && intentResult.getContents() != null) {
-                        // Trate os dados do QR Code aqui
+                    if (intentResult.getContents() != null) {
                         String qrData = intentResult.getContents();
-                        String[] parts = qrData.split("\\,");
-                        if (parts.length == 4) {
-                            edtNome.setText(parts[0]);
-                            edtCpf.setText(parts[1]);
-                            edtEmail.setText(parts[2]);
-                            edtCurso.setText(parts[3]);
-                        } else {
-                            Toast.makeText(getContext(), "Formato inválido de QR Code!", Toast.LENGTH_SHORT).show();
+                        try {
+                            JSONObject jsonObject = new JSONObject(qrData);
+
+                            edtNome.setText(jsonObject.getString("nome"));
+                            edtCpf.setText(jsonObject.getString("cpf"));
+                            edtEmail.setText(jsonObject.getString("email"));
+                            edtCurso.setText(jsonObject.getString("curso"));
+
+                        } catch (Exception e) {
+                            Toast.makeText(getContext(), "Erro ao analisar o QR Code: " + e.getMessage(),
+                                    Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getContext(), "Leitura do QR Code cancelada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Leitura do QR Code cancelada",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
             });
