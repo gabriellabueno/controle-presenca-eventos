@@ -19,7 +19,7 @@
     <string name="str_btn_cadastrar">Cadastrar</string>
     <string name="str_btn_atualizar">Atualizar</string>
     <string name="str_btn_excluir">Excluir</string>
-
+    <string name="aberto">Aberto</string>
 
 
 </resources>

@@ -1,5 +1,8 @@
 package br.edu.fatec.controlepresenca.view.evento;
 
+import static androidx.core.os.BundleKt.bundleOf;
+import static androidx.navigation.Navigation.findNavController;
+
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,7 +34,6 @@ public class ConsultaEvento extends Fragment {
     // Adapter para apresentar dados no ListView
     EventoAdapter adapter;
 
-
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -44,11 +46,8 @@ public class ConsultaEvento extends Fragment {
         // XML ListView
         listViewControle = view.findViewById(R.id.listViewControle);
 
-        // Listar pessoas no ListView
-        List<Evento> eventos = listAll();
-        if (eventos == null) {
-            controller.updateTable();
-        }
+
+        listAll();
 
 
         // Clica no item da ListView leva para a tela de Manutenção
@@ -59,9 +58,9 @@ public class ConsultaEvento extends Fragment {
             Integer eventoSelecionadoID = eventoSelecionado.getId();
 
 
-           if(eventoSelecionadoID != null) {
+           if(eventoSelecionadoID != null)
                 mostraPopup(eventoSelecionadoID);
-            }
+
 
         });
 
@@ -80,13 +79,11 @@ public class ConsultaEvento extends Fragment {
         super.onResume();
 
         listAll();
-        if (adapter.isEmpty())
-            controller.updateTable();
     }
 
 
     // Listar todos os eventos na ListvIiew
-    public List<Evento> listAll() {
+    public void listAll() {
 
         // Popula array com dados do BD
         List<Evento> eventos = controller.listAll();
@@ -96,7 +93,6 @@ public class ConsultaEvento extends Fragment {
 
         // Popula ListView com itens do array
         listViewControle.setAdapter(adapter);
-        return eventos;
     }
 
     private void mostraPopup(Integer eventoSelecionadoID) {
@@ -112,10 +108,10 @@ public class ConsultaEvento extends Fragment {
 
 
         //Definindo texto do título e botões
-        title.setText("Selecione a opção desejada:");
+        title.setText("Selecione a opção desejada");
         btn_1.setText("Adicionar participante");
         btn_2.setText("Alterar evento");
-        btn_3.setText("Finalizar evento");
+        btn_3.setText("Encerrar evento");
 
         // Checkin Participante
         btn_1.setOnClickListener(v -> {
@@ -123,6 +119,7 @@ public class ConsultaEvento extends Fragment {
             Bundle bundle = new Bundle();
             bundle.putInt("eventoSelecionadoID", eventoSelecionadoID);
             navController.navigate(R.id.action_popup_to_checkin, bundle);
+            dialog.dismiss();
         });
 
         // Manutencao Evento
@@ -131,13 +128,14 @@ public class ConsultaEvento extends Fragment {
             Bundle bundle = new Bundle();
             bundle.putInt("eventoSelecionadoID", eventoSelecionadoID);
             navController.navigate(R.id.action_popup_to_manutencao, bundle);
+            dialog.dismiss();
         });
 
         // Finaliza Evento
         btn_3.setOnClickListener(view -> {
-
             Evento evento = controller.read(eventoSelecionadoID);
             evento.finalizaEvento();
+            dialog.dismiss();
         });
 
         // Sair

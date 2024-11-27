@@ -1,39 +1,36 @@
 package br.edu.fatec.controlepresenca.util;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.util.List;
 
 public class Evento {
 
     //ATRIBUTOS
-    private String nome, local, organizadores, duracao, palestrantes;
-    private Date data;
-    private Time horaInicio, horaFim;
+    private String nome, local, status, organizadores, palestrantes,
+            data, horaInicio, horaFim;
     private List<Participante> participantes;
-    private Integer id, status;
+    private Integer id;
 
     //CONSTRUTORES
     public Evento() {}
 
 
-    public Evento(String nome, String local, Date data, Time horaInicio, Time horaFim,
-                  String palestrantes, String organizadores, List<Participante> participantes, String duracao, Integer status) {
+    public Evento(String nome, String local, String status, String data, String horaInicio, String horaFim,
+                  String palestrantes, String organizadores, List<Participante> participantes) {
         this.nome = nome;
         this.local = local;
+        this.status = "Aberto";
         this.data = data;
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;
         this.palestrantes = palestrantes;
         this.organizadores = organizadores;
         this.participantes = participantes;
-        this.duracao = duracao;
-        this.status = 1;
+
     }
 
     //MÉTODO PARA FINALIZAR O EVENTO
     public void finalizaEvento() {
-        status = 0;
+        status = "Finalizado";
     }
 
     //MÉTODO PARA ADICIONAR PARTICIPANTE NO EVENTO
@@ -41,17 +38,7 @@ public class Evento {
         participantes.add(participante);
     }
 
-    public void calculaDuracao() {
-        // Calculando a diferença em milissegundos
-        long diferencaMili = Math.abs(horaFim.getTime() - horaInicio.getTime());
 
-        // Convertendo para horas e minutos
-        int horas = (int) (diferencaMili / (1000 * 60 * 60));
-        int minutos = (int) ((diferencaMili / (1000 * 60)) % 60);
-
-        //Passando para String
-        duracao = horas + ":" + minutos;
-    }
 
     //GETTERS E SETTERS
 
@@ -79,27 +66,27 @@ public class Evento {
         this.local = local;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public Time getHoraInicio() {
+    public String getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Time horaInicio) {
+    public void setHoraInicio(String horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public Time getHoraFim() {
+    public String getHoraFim() {
         return horaFim;
     }
 
-    public void setHoraFim(Time horaFim) {
+    public void setHoraFim(String horaFim) {
         this.horaFim = horaFim;
     }
 
@@ -127,17 +114,12 @@ public class Evento {
         this.participantes = participantes;
     }
 
-    public String getDuracao() {
-        return duracao;
-    }
 
-    public void setDuracao(String duracao) {}
-
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

@@ -31,30 +31,22 @@
         android:label="@string/str_eventos"
         tools:layout="@layout/fragment_consulta_evento">
         <action
-            android:id="@+id/action_popup"
-            app:destination="@id/nav_popup">
+            android:id="@+id/action_popup_to_checkin"
+            app:destination="@id/nav_checkin_participante">
+            <argument
+                android:name="eventoSelecionadoID"
+                app:argType="integer" />
+        </action>
+        <action
+            android:id="@+id/action_popup_to_manutencao"
+            app:destination="@id/nav_manutencao_evento">
             <argument
                 android:name="eventoSelecionadoID"
                 app:argType="integer" />
         </action>
     </fragment>
 
-    <!-- POPUP-->
-    <fragment
-        android:id="@+id/nav_popup"
-        android:name="br.edu.fatec.controlepresenca.view.CheckinParticipante"
-        android:label=""
-        tools:layout="@layout/popup_dialog" >
-        <action
-            android:id="@+id/action_popup_to_checkin"
-            app:destination="@id/nav_checkin_participante" />
-        <action
-            android:id="@+id/action_popup_to_manutencao"
-            app:destination="@id/nav_manutencao_evento" />
-        <argument
-            android:name="eventoSelecionadoID"
-            app:argType="integer" />
-    </fragment>
+
 
     <!-- CHECK-IN PARTICIPANTE -->
     <fragment

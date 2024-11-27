@@ -54,7 +54,7 @@ public class ParticipanteDAO {
     public void inscreveParticipante(Integer idEvento, String cpfParticipante){
         ContentValues values = new ContentValues();
 
-        values.put("id_evento_fk", String.valueOf(idEvento));
+        values.put("id_evento_fk", idEvento);
         values.put("cpf_participante_fk", cpfParticipante);
 
         banco.insert("tb_inscricao", null, values);
@@ -72,13 +72,6 @@ public class ParticipanteDAO {
 
        banco.update(table, values, cpf + "=?", cpfParticipante);
     }
-
-    // Reseta ID da tabela "pessoa"
-    public void updateTableID() {
-        banco.delete("sqlite_sequence", "name = ?", new String[]{table});
-        banco.delete(table, null, null);
-    }
-
 
     // DELETE
     public void delete(Participante participante) {

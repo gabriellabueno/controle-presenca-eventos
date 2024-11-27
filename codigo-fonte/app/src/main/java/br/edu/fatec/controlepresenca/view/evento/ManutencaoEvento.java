@@ -6,13 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import java.sql.Date;
-import java.sql.Time;
 
 import br.edu.fatec.controlepresenca.R;
 import br.edu.fatec.controlepresenca.controller.EventoController;
@@ -25,7 +22,7 @@ public class ManutencaoEvento extends Fragment {
     private Button btnAtualizar, btnExcluir;
 
     // Variáveis para controller:
-    private EventoController eventoController;
+    private EventoController controller;
     private Evento evento;
 
     // Variáveis para definir valores booleanos
@@ -43,8 +40,9 @@ public class ManutencaoEvento extends Fragment {
         View view = inflater.inflate(R.layout.fragment_manutencao_evento, container, false);
 
         evento = new Evento();
+
         // Inicializa Controller
-        eventoController = new EventoController(this.getContext());
+        controller = new EventoController(this.getContext());
 
         // Variáveis para componentes XML
         edtNome = view.findViewById(R.id.edtNome);
@@ -63,7 +61,7 @@ public class ManutencaoEvento extends Fragment {
         }
 
         // Busca dados a partir do ID e armazena em instância de Evento
-        evento = eventoController.read(eventoSelecionadoID);
+        evento = controller.read(eventoSelecionadoID);
 
 
         // Preenche campos de inputs com os dados retornados
@@ -79,8 +77,8 @@ public class ManutencaoEvento extends Fragment {
                         Toast.LENGTH_SHORT).show();
             } else {
                 evento.setId(eventoSelecionadoID);
-                eventoController.update(evento);
-                eventoController.mostrarMensagem("atualizado");
+                controller.update(evento);
+                controller.mostrarMensagem("atualizado");
             }
 
         });
@@ -90,8 +88,8 @@ public class ManutencaoEvento extends Fragment {
         btnExcluir.setOnClickListener(v -> {
             evento = new Evento();
             evento.setId(eventoSelecionadoID);
-            eventoController.delete(evento);
-            eventoController.mostrarMensagem("removido");
+            controller.delete(evento);
+            controller.mostrarMensagem("removido");
             limpaCamposEdt();
         });
 
@@ -123,9 +121,9 @@ public class ManutencaoEvento extends Fragment {
             evento.setLocal(edtLocal.getText().toString());
             evento.setPalestrantes(edtPalestrante.getText().toString());
             evento.setOrganizadores(edtOrganizador.getText().toString());
-            evento.setData(Date.valueOf(edtData.getText().toString()));
-            evento.setHoraInicio(Time.valueOf(edtHoraInicio.getText().toString()));
-            evento.setHoraInicio(Time.valueOf(edtHoraFim.getText().toString()));
+            evento.setData(edtData.getText().toString());
+            evento.setHoraInicio(edtHoraInicio.getText().toString());
+            evento.setHoraFim(edtHoraFim.getText().toString());
             return evento;
         }
 
@@ -135,7 +133,7 @@ public class ManutencaoEvento extends Fragment {
     public void preencheCamposEdt(Evento evento) {
         edtNome.setText(evento.getNome());
         edtLocal.setText(evento.getLocal());
-        edtPalestrante.setText(evento.getOrganizadores());
+        edtPalestrante.setText(evento.getPalestrantes());
         edtOrganizador.setText(evento.getOrganizadores());
         edtData.setText(String.valueOf(evento.getData()));
         edtHoraInicio.setText(String.valueOf(evento.getHoraInicio()));

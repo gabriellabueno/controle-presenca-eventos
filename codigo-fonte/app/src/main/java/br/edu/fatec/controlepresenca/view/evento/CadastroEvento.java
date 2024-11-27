@@ -63,7 +63,7 @@ public class CadastroEvento extends Fragment {
                         Toast.LENGTH_SHORT).show();
             } else {
                 eventoController.create(evento);
-                eventoController.mostrarMensagem("inserido");
+                eventoController.mostrarMensagem("cadastrado");
                 limpaCamposEdt();
             }
         });
@@ -94,11 +94,11 @@ public class CadastroEvento extends Fragment {
             evento = new Evento();
             evento.setNome(edtNome.getText().toString());
             evento.setLocal(edtLocal.getText().toString());
+            evento.setPalestrantes(edtPalestrante.getText().toString());
             evento.setOrganizadores(edtOrganizador.getText().toString());
-            evento.setOrganizadores(edtPalestrante.getText().toString());
-            evento.setData(Date.valueOf(edtData.getText().toString()));
-            evento.setHoraInicio(Time.valueOf(edtHoraInicio.getText().toString()));
-            evento.setHoraInicio(Time.valueOf(edtHoraFim.getText().toString()));
+            evento.setData(edtData.getText().toString());
+            evento.setHoraInicio(edtHoraInicio.getText().toString());
+            evento.setHoraFim(edtHoraFim.getText().toString());
             return evento;
         }
 

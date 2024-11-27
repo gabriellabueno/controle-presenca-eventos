@@ -32,7 +32,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtCpf"
-            android:hint="Cpf"
+            android:hint="CPF"
             android:inputType="text"
             style="@style/edt_input"
             />

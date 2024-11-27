@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import br.edu.fatec.controlepresenca.R;
+import br.edu.fatec.controlepresenca.controller.EventoController;
 import br.edu.fatec.controlepresenca.controller.ParticipanteController;
 import br.edu.fatec.controlepresenca.util.Participante;
 
@@ -33,6 +35,9 @@ public class CheckinParticipante extends Fragment {
         // Apresenta o layout do Fragment
         View view = inflater.inflate(R.layout.fragment_checkin_participante, container, false);
 
+        controller = new ParticipanteController(this.getContext());
+
+
         // Elementos XML
         edtNome = view.findViewById(R.id.edtNome);
         edtCpf = view.findViewById(R.id.edtCpf);
@@ -41,6 +46,14 @@ public class CheckinParticipante extends Fragment {
         btnLerQrCode = view.findViewById(R.id.btnLerQrCode);
         btnPresenca = view.findViewById(R.id.btnPresenca);
 
+        // Recebe ID do evento selecionada da tela Consulta
+        if (getArguments() != null) {
+            eventoSelecionadoID = getArguments().getInt("eventoSelecionadoID");
+        }
+
+
+
+        // BOTÕES
 
         // Listener botão Ler QR CODE
         btnLerQrCode.setOnClickListener(view1 -> {
@@ -49,16 +62,21 @@ public class CheckinParticipante extends Fragment {
         });
 
 
-        // Recebe ID do evento selecionada da tela Consulta
-        if (getArguments() != null) {
-            eventoSelecionadoID = getArguments().getInt("eventoSelecionadoID");
-        }
-
         // Listener botão Registrar Presença
-        btnPresenca.setOnClickListener(view1 -> {
+        btnPresenca.setOnClickListener(view2 -> {
             Participante participante = recebeInputs();
 
-            controller.create(eventoSelecionadoID, participante);
+
+
+            if (participante == null) {
+                Toast.makeText(getContext(), "Por favor, preencha todos os campos",
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                controller.create(eventoSelecionadoID, participante);
+                controller.mostrarMensagem("cadastrado");
+                limpaCamposEdt();
+            }
+
         });
 
 
@@ -92,4 +110,11 @@ public class CheckinParticipante extends Fragment {
 
     }
 
+    public void limpaCamposEdt() {
+        edtNome.setText(null);
+        edtCpf.setText(null);
+        edtEmail.setText(null);
+        edtCurso.setText(null);
+    }
 }
+

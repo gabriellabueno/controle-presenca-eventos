@@ -31,10 +31,9 @@
             android:id="@+id/popup_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity=""
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:text="Título do Popup"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
@@ -42,7 +41,6 @@
             style="@style/botao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/cor_primaria"
             android:text="Opção 1" />
 
         <Button
@@ -58,6 +56,7 @@
             style="@style/botao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="#D54D43"
             android:text="Opção 3" />
     </LinearLayout>
 

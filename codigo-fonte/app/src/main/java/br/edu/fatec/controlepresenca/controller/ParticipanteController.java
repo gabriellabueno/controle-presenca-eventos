@@ -42,10 +42,6 @@ public class ParticipanteController {
         return dao.listAll();
     }
 
-    public void updateTable() {
-        dao.updateTableID();
-    }
-
     public void mostrarMensagem(String mensagem) {
         Toast.makeText(context, "Participante foi " + mensagem + " com sucesso",
                 Toast.LENGTH_SHORT).show();

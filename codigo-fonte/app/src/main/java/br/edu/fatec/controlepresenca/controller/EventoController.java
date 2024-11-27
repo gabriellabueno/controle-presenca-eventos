@@ -41,10 +41,11 @@ public class EventoController {
     public List<Evento> listAll() {
         return dao.listAll();
     }
-
+/*
     public void updateTable() {
         dao.updateTableID();
     }
+ */
 
     public void mostrarMensagem(String mensagem) {
         Toast.makeText(context, "Evento foi " + mensagem + " com sucesso",

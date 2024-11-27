@@ -22,9 +22,8 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
         this.context = context;
     }
 
-    @NonNull
     @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
 
         // Se não houver nenhuma view para reutilizar, cria uma nova
         if (convertView == null) {
@@ -36,10 +35,8 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
 
         // Linkando componentes XML com variáveis
         TextView tvNome = convertView.findViewById(R.id.tvNome),
-                tvID = convertView.findViewById(R.id.tvID),
                 tvInicio = convertView.findViewById(R.id.tvInicio),
                 tvFim = convertView.findViewById(R.id.tvFim),
-                tvDuracao = convertView.findViewById(R.id.tvDuracao),
                 tvLocal = convertView.findViewById(R.id.tvLocal),
                 tvStatus = convertView.findViewById(R.id.tvStatus),
                 tvOrganizador = convertView.findViewById(R.id.tvOrganizador),
@@ -50,18 +47,11 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
         Evento evento = getItem(position);
         if (evento != null) {
             tvNome.setText(evento.getNome());
-            tvID.setText(evento.getId());
-            tvInicio.setText(evento.getHoraInicio().toString());
-            tvFim.setText(evento.getHoraFim().toString());
-            tvDuracao.setText(evento.getDuracao());
+            tvInicio.setText(evento.getHoraInicio());
+            tvFim.setText(evento.getHoraFim());
             tvLocal.setText(evento.getLocal());
-
-            if(evento.getStatus() == 1)
-                tvStatus.setText("Aberto");
-            else
-                tvStatus.setText("Fechado");
-
-            tvOrganizador.setText(evento.getNome());
+            tvStatus.setText(evento.getStatus());
+            tvOrganizador.setText(evento.getOrganizadores());
             tvPalestrantes.setText(evento.getPalestrantes());
         }
 

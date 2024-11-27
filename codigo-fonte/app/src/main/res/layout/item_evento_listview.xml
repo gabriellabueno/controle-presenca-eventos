@@ -35,11 +35,6 @@
 
                 <TextView
                     style="@style/txt_listview"
-                    android:text="ID:"
-                    android:textStyle="bold" />
-
-                <TextView
-                    style="@style/txt_listview"
                     android:text="Data:"
                     android:textStyle="bold" />
 
@@ -51,11 +46,6 @@
                 <TextView
                     style="@style/txt_listview"
                     android:text="Fim:"
-                    android:textStyle="bold" />
-
-                <TextView
-                    style="@style/txt_listview"
-                    android:text="Duração:"
                     android:textStyle="bold" />
 
                 <TextView
@@ -88,10 +78,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/txt_listview"
-                    android:id="@+id/tvID"
-                    android:text="ID" />
 
                 <TextView
                     style="@style/txt_listview"
@@ -107,11 +93,6 @@
                     style="@style/txt_listview"
                     android:id="@+id/tvFim"
                     android:text="00:00" />
-
-                <TextView
-                    style="@style/txt_listview"
-                    android:id="@+id/tvDuracao"
-                    android:text="0 h" />
 
                 <TextView
                     style="@style/txt_listview"
