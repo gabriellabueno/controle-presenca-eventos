@@ -2,12 +2,14 @@ package br.edu.fatec.controlepresenca.view;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +23,9 @@ import com.google.zxing.integration.android.IntentResult;
 import org.json.JSONObject;
 
 import br.edu.fatec.controlepresenca.R;
+import br.edu.fatec.controlepresenca.controller.EventoController;
 import br.edu.fatec.controlepresenca.controller.ParticipanteController;
+import br.edu.fatec.controlepresenca.util.Evento;
 import br.edu.fatec.controlepresenca.util.Participante;
 
 
@@ -30,8 +34,14 @@ public class CheckinParticipante extends Fragment {
     private EditText edtNome, edtCpf, edtEmail, edtCurso;
     private Button btnLerQrCode, btnPresenca;
 
+    //Variável para evento
+    private Evento evento;
+
     // Variável para Controller
     private ParticipanteController controller;
+
+    //Variável para controller de evento
+    private EventoController eventoController;
 
     // Variável para manipular evento selecionado em Controle
     private Integer eventoSelecionadoID;
@@ -43,8 +53,11 @@ public class CheckinParticipante extends Fragment {
         // Apresenta o layout do Fragment
         View view = inflater.inflate(R.layout.fragment_checkin_participante, container, false);
 
+        //Controller para o participante
         controller = new ParticipanteController(this.getContext());
 
+        //Controler para o evento
+        eventoController = new EventoController(this.getContext());
 
         // Elementos XML
         edtNome = view.findViewById(R.id.edtNome);
@@ -54,9 +67,31 @@ public class CheckinParticipante extends Fragment {
         btnLerQrCode = view.findViewById(R.id.btnLerQrCode);
         btnPresenca = view.findViewById(R.id.btnPresenca);
 
+        edtCpf.setFilters(new InputFilter[]{(source, start, end, dest, dstart, dend) -> {
+            if (end > start) {
+                String resultingTxt = dest.toString().substring(0, dstart) +
+                        source.subSequence(start, end) +
+                        dest.toString().substring(dend);
+
+                if (!resultingTxt.matches("^\\d{0,3}(\\.\\d{0,3}){0,2}(-\\d{0,2})?$")) {
+                    return "";
+                }
+            }
+            return null;
+        }});
+
+
         // Recebe ID do evento selecionada da tela Consulta
         if (getArguments() != null) {
             eventoSelecionadoID = getArguments().getInt("eventoSelecionadoID");
+        }
+
+        // Busca dados a partir do ID e armazena em instância de Evento
+        evento = eventoController.read(eventoSelecionadoID);
+
+        //Desativa checkin caso evento seja encerrado
+        if(evento.getStatus().equals("Encerrado")) {
+            desativaCheckin();
         }
 
 
@@ -165,6 +200,23 @@ public class CheckinParticipante extends Fragment {
         edtCpf.setText(null);
         edtEmail.setText(null);
         edtCurso.setText(null);
+    }
+
+    public void desativaCheckin() {
+
+        //Desativa botão de ler QR code
+        btnLerQrCode.setEnabled(false);
+        btnLerQrCode.setBackgroundColor(Color.DKGRAY);
+
+        // Desativa botão Registrar Presença
+        btnPresenca.setEnabled(false);
+        btnPresenca.setBackgroundColor(Color.DKGRAY);
+
+        // Desativa campos
+        edtNome.setEnabled(false);
+        edtCpf.setEnabled(false);
+        edtEmail.setEnabled(false);
+        edtCurso.setEnabled(false);
     }
 }
 

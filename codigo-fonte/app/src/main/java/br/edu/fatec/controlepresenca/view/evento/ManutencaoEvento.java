@@ -1,6 +1,7 @@
 package br.edu.fatec.controlepresenca.view.evento;
 
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,45 @@ public class ManutencaoEvento extends Fragment {
         edtHoraFim = view.findViewById(R.id.edtHoraFim);
         btnAtualizar = view.findViewById(R.id.btnAtualizar);
         btnExcluir = view.findViewById(R.id.btnExcluir);
+
+        // Máscara para input data ##/##/####
+        edtData.setFilters(new InputFilter[]{(source, start, end, dest, dstart, dend) -> {
+            if (end > start) {
+                String resultingTxt = dest.toString().substring(0, dstart) +
+                        source.subSequence(start, end) +
+                        dest.toString().substring(dend);
+                if (!resultingTxt.matches("^\\d{0,2}(/\\d{0,2})?(/\\d{0,4})?$")) {
+                    return "";
+                }
+            }
+            return null;
+        }});
+
+        // Máscara para input horas ##:##
+        edtHoraInicio.setFilters(new InputFilter[]{(source, start, end, dest, dstart, dend) -> {
+            if (end > start) {
+                String resultingTxt = dest.toString().substring(0, dstart) +
+                        source.subSequence(start, end) +
+                        dest.toString().substring(dend);
+                if (!resultingTxt.matches("^\\d{0,2}(:\\d{0,2})?$")) {
+                    return "";
+                }
+            }
+            return null;
+        }});
+
+        // Máscara para input horas ##:##
+        edtHoraFim.setFilters(new InputFilter[]{(source, start, end, dest, dstart, dend) -> {
+            if (end > start) {
+                String resultingTxt = dest.toString().substring(0, dstart) +
+                        source.subSequence(start, end) +
+                        dest.toString().substring(dend);
+                if (!resultingTxt.matches("^\\d{0,2}(:\\d{0,2})?$")) {
+                    return "";
+                }
+            }
+            return null;
+        }});
 
         // Recebe ID do evento selecionado da tela Consulta
         if (getArguments() != null) {

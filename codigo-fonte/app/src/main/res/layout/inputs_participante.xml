@@ -33,6 +33,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtCpf"
             android:hint="CPF"
+            android:maxLength="15"
             android:inputType="text"
             style="@style/edt_input"
             />

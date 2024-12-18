@@ -80,6 +80,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtData"
             android:hint="Data"
+            android:maxLength="10"
             android:inputType="date"
             style="@style/edt_input"
         />
@@ -102,6 +103,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtHoraInicio"
                 android:hint="Horário Inicial"
+                android:maxLength="5"
                 style="@style/edt_input_data"
             />
 
@@ -125,6 +127,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtHoraFim"
                 android:hint="Horário Final"
+                android:maxLength="5"
                 style="@style/edt_input_data"
             />
 
