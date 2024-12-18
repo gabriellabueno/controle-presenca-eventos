@@ -29,7 +29,7 @@ O aplicativo tem o objetivo de atuar como uma ferramenta para controle de presen
 - **Padrão MVC:** Model-View-Controller; organizar a estrutura do código em camadas.
 - **Padrão DAO:** Data Access Object; gerenciar a persistência de dados de forma eficiente.
 - **Biblioteca ZXing ("Zebra Crossing"):** Biblioteca Java para scaneamento de QR Code.
-- **JSR 353** API Java para processamento de dados em formato .json, foi utilizado a classe "JSONObject".
+- **JSR 353:** API Java para processamento de dados em formato .json, foi utilizado a classe "JSONObject".
 
 
 <h2 align="center">Interface</h2>
