@@ -1,3 +1,6 @@
+[![English Translation](https://img.shields.io/badge/English%20Translation-2d314a?style=for-the-badge)](https://github.com/gabriellabueno/controle-presenca-eventos/blob/main/README-translation.md) 
+
+
 <div align="center">
   
 # 📆 Event Track </h1>
